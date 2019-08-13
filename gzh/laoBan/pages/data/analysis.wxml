@@ -1,0 +1,125 @@
+<view class='stap-wrap'>
+  <view class='fliter-navbar'>
+    <view bindtap='switchRightTab' data-title="{{item.title}}" data-id="{{index}}" wx:for="{{typelist}}" class="fliter-link {{type == index ? 'active' : ''}}">{{item.title}}
+    </view>
+  </view>
+</view>
+<view class="inner-wrap {{!type==0 ? 'e-panel-body2' : ''}}">
+  <view class='time-bar justify'>
+    <getdatatime2 title="开始时间" data="{{begin}}" datatime="{{begintime}}" bind:resdata="getdatatimebegin" bind:resshow="resshow"></getdatatime2>
+    <getdatatime2 title="结束时间" data="{{end}}" datatime="{{endtime}}" bind:resdata="getdatatimeend" bind:resshow="resshow"></getdatatime2>
+  </view>
+  <view class='stat-flex'>
+    <view class='stat-flex-item'>
+      <view class='data-box'>
+        <view>{{chongzhijine}}</view>
+        <view>会员卡充值金额（元）</view>
+        <image src='../../images/xbg1.png' class='itembg'></image>
+      </view>
+    </view>
+    <view class='stat-flex-item'>
+      <view class='data-box'>
+        <view>{{xiaofeijine}}</view>
+        <view>会员卡消费金额（元）</view>
+        <image src='../../images/xbg2.png' class='itembg'></image>
+      </view>
+    </view>
+  </view>
+  <view class="e-panel">
+    <view class='e-panel-hd' bindtap='ceshi'>客户消费统计报表</view>
+    <view class="e-panel-body {{!showchart ? 'e-panel-body2' : ''}}" style='height:500rpx;'>
+      <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar"></ec-canvas>
+    </view>
+  </view>
+  <view class="e-table-panel">
+    <view class='e-table-tit'>客户日营业统计报表</view>
+    <view class='e-table-body'>
+      <view class='table-scroll'>
+        <view class='table table-lg'>
+          <view class='thead'>
+            <view class='tr'>
+              <view class='td'></view>
+              <view class='td'>合计</view>
+              <view class='td' wx:for="{{listdate}}">{{item}}</view>
+            </view>
+          </view>
+          <view class='tbody'>
+            <view class='tr'>
+              <view class='td'>消费总金额</view>
+              <view class='td'>
+                <text class='text-red'>{{xiaofeizonge_count}}</text>
+              </view>
+              <view class='td' wx:for="{{xiaofeizonge}}">{{item}}</view>
+            </view>
+            <view class='tr'>
+              <view class='td'>非会员消费金额</view>
+              <view class='td'>
+                <text class='text-red'>{{feihuiyuanxiaofei_count}}</text>
+              </view>
+              <view class='td' wx:for="{{feihuiyuanxiaofei}}">{{item}}</view>
+            </view>
+            <view class='tr'>
+              <view class='td'>会员消费金额</view>
+              <view class='td'>
+                <text class='text-red'>{{huiyuanxiaofei_count}}</text>
+              </view>
+              <view class='td' wx:for="{{huiyuanxiaofei}}">{{item}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="inner-wrap {{!type==1 ? 'e-panel-body2' : ''}}">
+  <view class='time-bar justify'>
+    <getdatatime2 title="开始时间" data="{{begin}}" datatime="{{begintime}}" bind:resdata="getdatatimebegin" bind:resshow="resshow"></getdatatime2>
+    <getdatatime2 title="结束时间" data="{{end}}" datatime="{{endtime}}" bind:resdata="getdatatimeend" bind:resshow="resshow"></getdatatime2>
+  </view>
+  <view class='stat-grid'>
+    <view class='stat-cell'>
+      <view class='stat-box'>
+        <view>{{xinzenghuiyuan}}</view>
+        <view>新增会员数（个）</view>
+      </view>
+    </view>
+    <image src='../../images/tongjibg.png'></image>
+  </view>
+  <view class='stat-flex'>
+    <view class='stat-flex-item'>
+      <view class='data-box'>
+        <view>{{chongzhijine}}</view>
+        <view>会员卡充值金额（元）</view>
+        <image src='../../images/xbg1.png' class='itembg'></image>
+      </view>
+    </view>
+    <view class='stat-flex-item'>
+      <view class='data-box'>
+        <view>{{xiaofeijine}}</view>
+        <view>会员卡消费金额（元）</view>
+        <image src='../../images/xbg2.png' class='itembg'></image>
+      </view>
+    </view>
+    <view class='stat-flex-item'>
+      <view class='data-box'>
+        <view>{{qichuyue}}</view>
+        <view>会员卡期初余额（元）</view>
+        <image src='../../images/xbg3.png' class='itembg'></image>
+      </view>
+    </view>
+    <view class='stat-flex-item'>
+      <view class='data-box'>
+        <view>{{qimoyue}}</view>
+        <view>会员卡期末余额（元）</view>
+        <image src='../../images/xbg4.png' class='itembg'></image>
+      </view>
+    </view>
+  </view>
+  <view class="e-panel">
+    <view class='e-panel-hd'>会员充值和消费统计（近七天）</view>
+    <view class="e-panel-body {{!showchart ? 'e-panel-body2' : ''}}" style='height:500rpx;'>
+      <ec-canvas id="mychart-dom-bar2" canvas-id="mychart-bar"></ec-canvas>
+    </view>
+  </view>
+</view>
+<tagger show='{{show}}'></tagger>

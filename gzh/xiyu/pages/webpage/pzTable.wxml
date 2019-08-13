@@ -1,0 +1,96 @@
+<view class='inner-wrap'>
+  <!-- 选项 -->
+  <view class='pz-select'>
+    <view wx:for="{{datatype}}" class="select-item {{tagid==index?'active':''}}" data-title="{{item}}" data-id='{{index}}' bindtap='tagcheck'>
+      <view class='iconx'>
+        <text wx:if="{{icon[index]}}" class='iconfont {{icon[index]}}'></text>
+        <text wx:else class='iconfont icon-mingxing'></text>
+      </view>
+      <view class='text'>{{item.name}}</view>
+    </view>
+  </view>
+  <!-- 排序 -->
+  <view class='pz-filter justify'>
+    <view class='pz-item'>全部状态
+      <text class='iconfont icon-sanx-down'></text>
+    </view>
+    <view class='pz-item'>全部级别
+      <text class='iconfont icon-sanx-down'></text>
+    </view>
+    <view class='pz-item'>全部性别
+      <text class='iconfont icon-sanx-down'></text>
+    </view>
+  </view>
+  <!-- lists -->
+  <view class='lists'>
+    <!-- box -->
+    <view class='pz-card' wx:if="{{data.length!=''}}" wx:for="{{data}}">
+      <view class='pz-header'>
+        <view class='pz-num'>{{item.techId}}</view>
+        <view class='pz-info'>
+          <text>{{item.gender}}</text>
+          <!-- <text>初级</text> -->
+        </view>
+        <view class='pz-status'>
+          <text class='text-green'>{{item.status}}</text>
+        </view>
+      </view>
+      <view class='pz-body'>
+        <view class='pz-bar justify'>
+          <view class='pz-tag'>
+            <text class='tag-blue'>{{datatype[tagid].name}}</text>
+            <text class='tag-green'>{{item.banCi}}</text>
+          </view>
+          <!-- <view class='pz-cout'>
+            <view class='cont-btn'>
+              <text class='iconfont icon-jian'></text>
+            </view>
+            <view class='cout-box'>未开轮</view>
+            <view class='cont-btn'>
+              <text class='iconfont icon-plusx'></text>
+            </view>
+          </view> -->
+        </view>
+        <view class='pz-row justify'>
+          <view>轮钟：{{item.lunZhong}}</view>
+          <view>调钟：{{item.lunGuo}}</view>
+          <view>挑钟：{{item.tiaoZhong}}</view>
+          <!-- <view>买钟：0</view> -->
+          <view>点钟：{{item.dianZhong}}</view>
+          <!-- <view>续钟：0</view> -->
+        </view>
+        <!-- <view class='pz-row justify'>
+          <view>call钟：0</view>
+          <view>预约：0</view>
+          <view>选牌：0</view>
+          <view>调钟：0</view>
+        </view> -->
+      </view>
+    </view>
+     <nolist show="{{data.length==''}}"></nolist>
+  </view>
+</view>
+<!-- 提示 -->
+<!-- <view class='half-modal'>
+  <view class='text'>
+    <image src='../../images/user.png'></image>
+    <text>所有技师：39</text>
+  </view>
+  <view class='flag-list'>
+    <view class='flag-row justify'>
+      <view class='flag-gree'>空闲：25</view>
+      <view class='flag-pour'>上钟：0</view>
+      <view class='flag-red'>锁定：0</view>
+    </view>
+    <view class='flag-row justify'>
+      <view class='flag-warin'>留牌：25</view>
+      <view>未签到：0</view>
+      <view>休假：0</view>
+    </view>
+    <view class='flag-row justify'>
+      <view>落牌：25</view>
+      <view>停牌：0</view>
+      <view>圈牌：0</view>
+    </view>
+  </view>
+</view> -->

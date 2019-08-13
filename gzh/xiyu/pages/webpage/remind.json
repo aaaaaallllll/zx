@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "nolist": "/component/nolist"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "上下钟提醒"
+}

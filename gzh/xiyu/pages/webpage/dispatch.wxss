@@ -1,0 +1,171 @@
+.weui-text {
+  margin-bottom: 10rpx;
+}
+
+.weui-tags {
+  overflow: hidden;
+  margin: 0 -10rpx;
+}
+
+.weui-tab-li {
+  width: 33.33%;
+  padding: 10rpx;
+  float: left;
+  box-sizing: border-box;
+}
+
+.tag-text {
+  display: block;
+  height: 72rpx;
+  line-height: 72rpx;
+  background-color: #f2f2f2;
+  color: #666;
+  font-size: 26rpx;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.weui-tab-li.active .tag-text {
+  background-color: #2971f9;
+  color: #fff;
+}
+
+/*主容器*/
+
+.stepper {
+  width: 130rpx;
+  /* height: 45rpx; */
+  margin: 0 auto;
+  /* border: 1rpx solid #ccc; */
+  border-radius: 3rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.van-stepper__minus, .van-stepper__plus {
+  width: 20px;
+}
+
+/*加号和减号*/
+
+.stepper text {
+  float: left;
+  width: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+}
+
+/*数值*/
+
+/* .stepper input {
+  width: 40rpx;
+  height: 40rpx !important;
+  float: left;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 12px;
+  border-left: 1rpx solid #ccc;
+  border-right: 1rpx solid #ccc;
+  min-height: 40rpx;
+  line-height: 40rpx;
+} */
+
+/*普通样式*/
+
+.stepper .normal {
+  color: black;
+}
+
+/*禁用样式*/
+
+.stepper .disable {
+  color: #ccc;
+}
+
+.lunzhonglist {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.weui-cell2 {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.lunzhonglist {
+  width: 100%;
+}
+
+.steppers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 0;
+}
+
+.steppers text.title {
+  color: #9c9c9c;
+}
+
+.add {
+  border: 1rpx solid #6ae9d1;
+  color: #6ae9d1;
+  font-size: 22rpx;
+  width: 130rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  border-radius: 56rpx;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.del {
+  background: #2971f9;
+  font-size: 22rpx;
+  width: 130rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 56rpx;
+}
+
+.listcard {
+  width: 680rpx;
+  background: #fff;
+  border: 10rpx;
+  min-height: 150rpx;
+  margin-bottom: 100rpx;
+}
+
+.listcardhead {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 26rpx;
+  text-align: center;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+
+.w130 {
+  width: 130rpx;
+}
+
+.listcardh1 {
+  width: 100rpx;
+
+}
+.listcardhead2{
+  font-size: 22rpx;
+  color: #A1A1A1;
+}
+.listcardhead2.hover{
+  background: #A1A1A1;
+  color: #000;
+}

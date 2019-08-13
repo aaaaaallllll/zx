@@ -1,0 +1,10 @@
+<!--component/toggle/toggle.wxml-->
+<formid bind:resdata='toList' class="tagger {{show?'on':''}}" >
+    <view class='box' >
+        <text class='iconfont icon-zhihuan 'style=' color: #FFF;font-size: 30rpx;'></text>
+        <text class='text' style=' color: #FFF;font-size: 22rpx;'>门店</text>
+    </view>
+</formid>
+<!-- <view class='back' bindtouchmove='showTg' bindtouchend='showCg'>
+
+</view> -->

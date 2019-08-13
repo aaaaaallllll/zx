@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script>
+    let arr=[
+      {
+        name:'1',
+        id:0
+      },
+      {
+        name:'2',
+        id:0
+      },
+      {
+        name:'1',
+        id:1
+      },
+      {
+        name:'1',
+        id:2
+      },
+      {
+        name:'2',
+        id:1
+      },
+      {
+        name:'1',
+        id:3
+      },
+    ]
+    let list1=[]
+    let list2=[]
+    arr.forEach(v=>{
+      const index=list1.indexOf(v.name)
+      if(index === -1){
+        let list3=[]
+        list3.push(v)
+        list1.push(v.name)
+        list2.push(list3)
+      }else {
+        list2[index].push(v)
+      }
+    })
+    console.log(list2)
+  </script>
+</head>
+<body>
+
+</body>
+</html>

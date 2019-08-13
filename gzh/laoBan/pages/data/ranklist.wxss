@@ -1,0 +1,53 @@
+.e-panel{
+  border-radius: 20rpx;
+  margin-top: 30rpx;
+}
+.e-panel:first-child{
+  margin-top: 0;
+}
+.rank-cell{
+  position: relative;
+  height:60rpx;
+  margin-bottom: 20rpx;
+}
+.rank-bar{
+  background-color: #7faafb;
+  border-radius: 60rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0 24rpx;
+  color: #fff;
+  font-size: 26rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  min-width: 300rpx;
+}
+.rank-cell:nth-child(1) .rank-bar{
+  background-color: #f67f6e;
+}
+.rank-cell:nth-child(2) .rank-bar{
+  background-color: #f8ae00;
+}
+.rank-cell:nth-child(3) .rank-bar{
+  background-color: #e977fc;
+}
+
+.filter-item{
+  width: 155rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 60rpx;
+  border:1px solid #aaaaaa;
+  text-align: center;
+  color: #999;
+  font-size: 30rpx;
+}
+.filter-item.active{
+  background-color: #2971f9;
+  color: #fff;
+  border:1px solid #2971f9;
+}
+
+
+

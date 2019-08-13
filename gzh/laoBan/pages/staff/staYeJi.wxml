@@ -1,0 +1,189 @@
+<!--pages/staff/staYeJi.wxml-->
+<view class="search-cells" >
+  <view class='form-inner'>
+    <getdatatime bind:resdata="getdatatimebegin" title="开始日期" data="{{begin}}" datatime="{{begintime}}" ></getdatatime>
+    <getdatatime bind:resdata="getdatatimeend" title="结束日期" data="{{end}}" datatime="{{endtime}}"></getdatatime>
+    <!-- 部门 -->
+     <view class='weui-cell' bindtap='checkjs'>
+      <view class='weui-label'>部门:</view>
+        <view class='weui-cell__bd'>
+          <picker bindchange="bindPickeryuEtype" value="{{index}}" range-key="name" range="{{yuEList}}" >
+            <input value='{{yuEType}}' data-name='jishitypename' class='weui-input' disabled placeholder='请选择部门'></input>
+          </picker>
+      </view>
+      <text class='iconfont icon-sanx-up'></text>
+    </view>
+    <!-- 项目类别 -->
+     <view class='weui-cell' bindtap='checkjs'>
+      <view class='weui-label'>项目类别:</view>
+        <view class='weui-cell__bd'>
+          <picker bindchange="bindPickerCattype" value="{{index}}" range-key="name" range="{{catList}}" >
+            <input value='{{catType}}' data-name='jishitypename' class='weui-input' disabled placeholder='请选择项目类别'></input>
+          </picker>
+      </view>
+      <text class='iconfont icon-sanx-up'></text>
+    </view>
+     <!-- 项目名称 -->
+     <view class='weui-cell' bindtap='checkjs' bindtap="getPage">
+      <view class='weui-label'>项目名称:</view>
+        <view class='weui-cell__bd'>
+          <picker bindchange="bindPickerHuoDongtype" value="{{index}}" range-key="name" range="{{huoDongList}}" >
+            <input value='{{huoDongType}}' data-name='jishitypename' class='weui-input' disabled placeholder='请选择项目名称'></input>
+          </picker>
+      </view>
+      <text class='iconfont icon-sanx-up'></text>
+    </view>
+    <!-- 职位 -->
+     <view class='weui-cell' bindtap='checkjs'>
+      <view class='weui-label'>职位:</view>
+        <view class='weui-cell__bd'>
+          <picker bindchange="bindPickerJobtype" value="{{index}}" range-key="name" range="{{jobList}}" >
+            <input value='{{jobType}}' data-name='jishitypename' class='weui-input' disabled placeholder='请选择职位'></input>
+          </picker>
+      </view>
+      <text class='iconfont icon-sanx-up'></text>
+    </view>
+    <!-- 员工号 -->
+    <view class='weui-cell'>
+        <view class='weui-label'>员工号:</view>
+        <view class='weui-cell__bd'>
+          <input value='{{seatText}}' bindinput="updateValue" data-name='seatText' class='weui-input' placeholder='请输入员工号'></input>
+        </view>
+        <text class='iconfont icon-sanx-up'></text>
+    </view>
+    <!-- 显示方式 -->
+    <view class='weui-cell' bindtap='checkjs'>
+      <view class='weui-label'>显示方式:</view>
+        <view class='weui-cell__bd'>
+          <picker bindchange="bindPickerXstype" value="{{index}}" range-key="name" range="{{xsList}}" >
+            <input value='{{xsType}}'  class='weui-input' disabled placeholder='请选择显示方式'></input>
+          </picker>
+      </view>
+      <text class='iconfont icon-sanx-up'></text>
+    </view>
+    <!-- 时间格式 -->
+     <view class='weui-cell' bindtap='checkjs'>
+      <view class='weui-label'>时间格式:</view>
+        <view class='weui-cell__bd'>
+          <picker bindchange="bindPickerTimetype" value="{{index}}" range-key="name" range="{{timeList}}" >
+            <input value='{{ldType}}'  class='weui-input' disabled placeholder='请选择时间格式'></input>
+          </picker>
+      </view>
+      <text class='iconfont icon-sanx-up'></text>
+    </view>
+    <!-- 是否结账 -->
+     <view class='weui-cell' bindtap='checkjs'>
+      <view class='weui-label'>是否结账:</view>
+        <view class='weui-cell__bd'>
+          <picker bindchange="bindPickerJztype" value="{{index}}" range-key="name" range="{{jzList}}" >
+            <input value='{{jzType}}'  class='weui-input' disabled placeholder='请选择是否结账'></input>
+          </picker>
+      </view>
+      <text class='iconfont icon-sanx-up'></text>
+    </view>
+    <button bindtap='getList' class='btn'>查询</button>
+  </view>
+</view>
+
+<!-- 统计 -->
+<view class='e-table-tit'>{{shopName}}员工业绩报表</view>
+  <!-- <tagger/> -->
+<scroll-view scroll-x="true" class='scrollClass' bindscroll='getLeft'  enable-back-to-top="true" >
+  <view class='table'>
+    <!-- 表头 -->
+    <view class='table_header'>
+      <view class='tc zhon'id='title' >
+        员工号
+      </view>
+      <view  class="tc zhon">
+        <view class='tt'>姓名</view>
+      </view> 
+      <view  class="tc zhon">
+        <view class='tt' >职位</view>
+      </view>
+      <view  class="tc zhon">
+        <view class='tt'>部门</view>
+      </view> 
+      <view  class="tc zhon">
+        <view class='tt'>数量</view>
+      </view>
+      <view  class="tc zhon">
+        <view class='tt'>应收金额</view>
+      </view>  
+      <view  class="tc zhon">
+        <view class='tt'>实收金额</view>
+      </view>  
+      <view  class="tc zhon">
+        <view class='tt'>提成</view>
+      </view>  
+      <view  class="tc zhon">
+        <view class='tt'>业绩指标</view>
+      </view>  
+      <view  class="tc zhon">
+        <view class='tt'>指标完成率</view>
+      </view>  
+
+    </view>
+    <!-- 表头固定 -->
+    <view class='table_header one' style="left:-{{left}}px" wx-if="{{scrollTop>offsetTop}}">
+      <view class='tc zhon one2'>
+        员工号
+      </view>
+      <view class='tc zhon'>
+        员工号
+      </view>
+      <view  class="tc zhon">
+        <view class='tt'>姓名</view>
+      </view> 
+      <view  class="tc zhon">
+        <view class='tt' >职位</view>
+      </view>
+      <view  class="tc zhon">
+        <view class='tt'>部门</view>
+      </view> 
+      <view  class="tc zhon">
+        <view class='tt'>数量</view>
+      </view>
+      <view  class="tc zhon">
+        <view class='tt'>应收金额</view>
+      </view>  
+      <view  class="tc zhon">
+        <view class='tt'>实收金额</view>
+      </view>  
+      <view  class="tc zhon">
+        <view class='tt'>提成</view>
+      </view>  
+      <view  class="tc zhon">
+        <view class='tt'>业绩指标</view>
+      </view>  
+      <view  class="tc zhon">
+        <view class='tt'>指标完成率</view>
+      </view>  
+      
+    </view>
+    <!-- 内容 -->
+    <view class='table_body'>
+      <view class='tr one'style="top:{{offsetTop-scrollTop}}px;color:#BBB" >
+        <!-- 固定门店 -->
+        <view class='td' style='background: linear-gradient(to right,#0984e3,#178feb);color:#FFF;border:none'>员工号</view>
+      </view>
+      <view class='tr' wx:for='{{gradeData}}' wx:key='index'>
+        <!-- 固定列头 -->
+        <view class='td one' style="top:{{offsetTop+(40*(index+1))-scrollTop}}px;color:#2d3436" >{{item.userId}}</view>
+        <view class='td'>{{item.userId}}</view>
+        <view class='td'>{{item.userName}}</view>
+        <view class='td'>{{item.job}}</view>
+        <view class='td'>{{item.depart}}</view>
+        <view class='td'>{{item.number}}</view>
+        <view class='td'>{{item.yingShou}}</view>
+        <view class='td'>{{item.shiShou}}</view>
+        <view class='td'>{{item.tiCheng}}</view>
+        <view class='td'>{{item.yeJiZhiBiao}}</view>
+        <view class='td'>{{item.wanChengLv}}</view>
+      </view>
+
+    </view>
+  </view>
+</scroll-view>
+<tagger/>
+

@@ -1,0 +1,45 @@
+<!--pages/select/select.wxml-->
+<view class='page2'>
+  <view class='header'>
+    <view class="header-btn {{tymIndex==0?'on':''}}" bindtap='alterDay' data-id='0'>
+      <text>{{today}}</text>
+      <text>今天</text>
+    </view>
+     <view class="header-btn {{tymIndex==1?'on':''}}" bindtap='alterDay' data-id='1'>
+      <text>{{tomorrow}}</text>
+      <text>明天</text>
+    </view>
+     <view class="header-btn {{tymIndex==2?'on':''}}" bindtap='alterDay' data-id='2'>
+      <text>{{afterday}}</text>
+      <text>后天</text>
+    </view>
+  </view>
+  <view class='center'>
+    <view class="{{sjIndex==0?'on':''}}" bindtap='alterSj' data-id='0'>
+      <text class='iconfont icon-taiyang'></text>
+      00:00-17.30
+    </view>
+    <view class="{{sjIndex==1?'on':''}}" bindtap='alterSj' data-id='1'>
+      <text class='iconfont icon-yueliang'></text>
+      18:00-23.30
+    </view>
+  </view>
+    <view wx-if="{{tymIndex==0}}">
+        <view class='content' wx-if="{{sjIndex==0}}">
+          <view wx:for="{{daytimelist}}" class="content-btn {{index == jqIndex&item.id>=disableid?'on':''}}"  bindtap='alterjq' data-id='{{index}}' style="color:{{item.id<disableid?'#AAA':''}}"  data-time='{{item.time}}' data-name='{{item.id}}'>{{item.time}}</view>
+        </view>
+        <view class='content' wx-if="{{sjIndex==1}}">
+          <view  wx:for="{{nighttimelist}}"  class="content-btn {{index == jqIndex2&item.id>=disableid?'on':''}}"  bindtap='alterjq2' data-id='{{index}}' style="color:{{item.id<disableid?'#AAA':''}}" data-time='{{item.time}}' data-name='{{item.id}}'>{{item.time}}</view>
+    </view>
+  </view>
+  <view wx-if="{{tymIndex!=0}}">
+        <view class='content' wx-if="{{sjIndex==0}}">
+          <view wx:for="{{daytimelist}}" class="content-btn {{index == jqIndex?'on':''}}"  bindtap='alterjq' data-id='{{index}}' data-time='{{item.time}}' >{{item.time}}</view>
+        </view>
+        <view class='content' wx-if="{{sjIndex==1}}">
+          <view  wx:for="{{nighttimelist}}"  class="content-btn {{index == jqIndex2?'on':''}}"  bindtap='alterjq2' data-id='{{index}}' data-time='{{item.time}}' >{{item.time}}</view>
+    </view>
+  </view>
+  
+  <view class='btn' bindtap='chenk'>选好了</view>
+</view>

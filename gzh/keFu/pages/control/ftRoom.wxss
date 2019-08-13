@@ -1,0 +1,390 @@
+/* pages/control/ftRoom.wxss */
+@font-face {
+  font-family: 'iconfont';  /* project id 1291482 */
+  src: url('//at.alicdn.com/t/font_1291482_tm0ww1fs2o.eot');
+  src: url('//at.alicdn.com/t/font_1291482_tm0ww1fs2o.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1291482_tm0ww1fs2o.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1291482_tm0ww1fs2o.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1291482_tm0ww1fs2o.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1291482_tm0ww1fs2o.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* color: rgb(173, 173, 173); */
+}
+
+.icon-116:before {
+  content: "\e671";
+}
+
+.icon-icon1:before {
+  content: "\e693";
+}
+
+.icon-mangluzhong-copy:before {
+  content: "\e616";
+}
+
+.icon-229:before {
+  content: "\e648";
+}
+
+.icon-bofang:before {
+  content: "\e646";
+}
+
+.icon-gou:before {
+  content: "\e636";
+}
+
+.icon-jishi:before {
+  content: "\e614";
+}
+
+.icon-kaishishijian:before {
+  content: "\e626";
+}
+
+.icon-xingbie-nv:before {
+  content: "\e620";
+}
+
+.icon-fangdajing:before {
+  content: "\e602";
+}
+
+.icon-laba:before {
+  content: "\e627";
+}
+
+.icon-xiuxi:before {
+  content: "\e6dc";
+}
+
+.icon-fangjian-:before {
+  content: "\e6c2";
+}
+
+.icon-shangxiasaofeng:before {
+  content: "\e60a";
+}
+
+.icon-zuoyousaofeng:before {
+  content: "\e60d";
+}
+
+.icon-kongtiao:before {
+  content: "\e607";
+}
+
+.icon-icon129:before {
+  content: "\e61e";
+}
+
+.icon-yinliang:before {
+  content: "\e61f";
+}
+
+.icon-fuwu2:before {
+  content: "\e601";
+}
+
+.icon-8-copy:before {
+  content: "\e615";
+}
+
+.icon-wenjianjia:before {
+  content: "\e610";
+}
+
+.icon-fangjian2:before {
+  content: "\e62a";
+}
+
+.icon-kuozhan:before {
+  content: "\e64c";
+}
+
+.icon-xingzhuangkaobei:before {
+  content: "\e60c";
+}
+
+.icon-daidasao:before {
+  content: "\e641";
+}
+
+.icon-bottom:before {
+  content: "\e600";
+}
+
+.icon-biaoge:before {
+  content: "\e696";
+}
+
+.icon-qingjingmoshi:before {
+  content: "\e609";
+}
+
+.icon-nanxing:before {
+  content: "\e61c";
+}
+
+.icon-yinle1:before {
+  content: "\e76c";
+}
+
+.icon-b_icon__lamplight:before {
+  content: "\e70c";
+}
+
+.icon-fengsu:before {
+  content: "\e611";
+}
+
+.icon-fangkerenshu:before {
+  content: "\e666";
+}
+
+.icon-fangjian:before {
+  content: "\e650";
+}
+
+.icon-baoxiang:before {
+  content: "\e647";
+}
+
+.icon-quanbuzhankai:before {
+  content: "\e697";
+}
+
+.icon-yinle:before {
+  content: "\e6af";
+}
+
+.icon-gift:before {
+  content: "\e603";
+}
+
+.icon-gou-:before {
+  content: "\e6b3";
+}
+
+.icon-fangjian1:before {
+  content: "\e608";
+}
+
+.icon-jian:before {
+  content: "\e71b";
+}
+
+.icon-kongxian:before {
+  content: "\e6c3";
+}
+
+.icon-fanhui:before {
+  content: "\e65b";
+}
+
+.icon-icon-test:before {
+  content: "\e6b0";
+}
+
+.icon-zantingtingzhi:before {
+  content: "\e674";
+}
+
+.icon-mingliangmoshi-:before {
+  content: "\e6a9";
+}
+
+.icon-kongfang:before {
+  content: "\e60f";
+}
+
+.icon-shengyushijian:before {
+  content: "\e60b";
+}
+/* 正式 */
+.kong{
+  width: 100%;
+  height: 122rpx;
+}
+.header{
+  width: 100%;
+  height: 122rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-bottom: 1rpx solid #D4D4D4;
+  /* background-color: #FFF; */
+  font-size: 30rpx;
+  color: #FFF;
+  /* padding-top: 50rpx; */
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  z-index: 99;
+  background-color: #36A4FF;
+}
+.header .header-left{
+  float: left;
+  height: 54rpx;
+  text-align: center;
+  width: 480rpx;
+  line-height: 54rpx;
+  display: flex;
+}
+.header .header-left .seek{
+  width:320rpx;
+  height:64rpx;
+  background:rgba(255,255,255,0.6);
+  border-radius:16px;
+  color: #FFF;
+  box-sizing: border-box;
+  text-align: left;
+  padding-left: 80rpx;
+}
+.header .header-left text{
+  font-size: 44rpx;
+  position: relative;
+  left: 60rpx;
+  top:5rpx;
+}
+.header .header-left .in{
+  color: #497BF8
+}
+.header .header-center{
+  width: 480rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  /* margin: 0 auto; */
+  position: relative;
+  margin-left: -20rpx;
+}
+.header .header-center text{
+  /* width: 112rpx; */
+  height: 50rpx;
+  transition: font-size 0.2s;
+  display: block;
+}
+.header .header-center span{
+  display: block;
+  height: 5rpx;
+  width: 80rpx;
+  transition: width 0.6s;
+  background-color: #FFF;
+  z-index: 9;
+  top:50rpx;
+  /* left: 20rpx; */
+  position: absolute;
+  transition: all 0.4s;
+}
+.header .header-center .spanOn{
+  width: 72rpx;
+}
+.header .header-center .header-btn{
+  display: inline-block;
+  text-align: center;
+  margin: 0 23rpx;
+  width: 76rpx;
+  position: absolute;
+}
+.header .header-center .on{
+  /* border-bottom: 6rpx solid #497BF8; */
+  font-size: 36rpx;
+
+}
+.content {
+  padding:0 0 0 20rpx;
+  width: 100%;
+}
+.content .box{
+  width:170rpx;
+  height:164rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0 4rpx 8rpx 0 rgba(0,0,0,0.5);
+  border-radius:16rpx;
+  font-size: 20rpx;
+  display: inline-block;
+  margin-bottom: 16rpx;
+  margin-right: 10rpx;
+  color: #5B5B5B
+  
+}
+.content .box .box-top{
+  width:170rpx;
+  height:32rpx;
+  background:rgba(212,212,212,1);
+  border-radius:16rpx 16rpx 0 0;
+  text-align: right;
+  box-sizing: border-box;
+  line-height: 32rpx;
+  padding-right: 8rpx;
+  
+}
+.content .box .box-top text{
+  color: #FFF;
+}
+.content .box .box-content{
+  width: 100%;
+  height: 132rpx;
+}
+.content .box .box-content .back{
+  width: 100%;
+  height: 132rpx;
+  border-radius:0 0 16rpx 16rpx;
+  float: left;
+}
+.content .box .box-content .hang{
+  height: 66rpx;
+  width: 100%;
+  line-height: 66rpx;
+  padding-top: 4rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.content .box .box-content .hang .hang-ge{
+  display: inline-block;
+  height: 66rpx;
+  line-height: 33rpx;
+  position: absolute;
+  width: 66rpx;
+  
+}
+.content .box .box-content .hang .hang-ge text{
+  display: block;
+  text-align: center;
+  
+}
+.content .box .box-content .hang .hang-ge .ico{
+  color: #D4D4D4
+}
+.tsInfo{
+  width: 100%;
+  height: 60rpx;
+  background-color: #FFF;
+  z-index: 99;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  font-size: 20rpx;
+  border-top: 1rpx solid #eee;
+  line-height: 60rpx;
+  color: #5B5B5B
+}
+.tsInfo span{
+  width: 96rpx;
+  height: 40rpx;
+  display: inline-block;
+  margin: 0 15rpx;
+  border-radius: 18rpx;
+  position: relative;
+  top: 2rpx;
+  text-align: center;
+  line-height: 40rpx;
+  z-index: 8
+}

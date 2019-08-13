@@ -1,0 +1,383 @@
+<!--pages/data/data.wxml-->
+<!-- <tabBar showIndex='0'></tabBar> -->
+
+<view class='v-panel' wx-if="{{sqList.shouPaiZhuangTai||sqList.zhongFangZhuangTai}}">
+  <view class='v-header'>在线状态</view>
+  <view class='v-body'>
+    <view class='menu-list'>
+      <view class='menu-list-item' wx-if="{{sqList.shouPaiZhuangTai}}">
+          <formid bind:resdata="goHand">
+            <view class='menu-box'>
+              <image src='../../images/admin_menu1.png' class='menu-lgpic'></image>
+              <view>手牌状态</view>
+            </view>
+         </formid>
+      </view>
+      <view class='menu-list-item' wx-if="{{sqList.zhongFangZhuangTai}}">
+          <form bindsubmit="goRoom" report-submit>
+            <button formType="submit" style='padding:0'> 
+            <view class='menu-box'>
+              <image src='../../images/admin_menu2.png' class='menu-lgpic'></image>
+              <view>钟房状态</view>
+            </view>
+            </button> 
+          </form>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='v-panel' wx-if="{{sqList.yingYeKuaiBao||sqList.shouYinRiBao||sqList.jiShiYeJiYueBao||sqList.keLiuYueBao}}">
+  <view class='v-header'>快报</view>
+  <view class='v-body'>
+    <view class='menu-list'>
+     
+      <view class='menu-list-item' wx-if="{{sqList.yingYeKuaiBao}}">
+        <formid bind:resdata="goYinYeReport">
+          <view class='menu-box'>
+            <image src='../../images/index_menu1.png' class='menu-lgpic'></image>
+            <view>营业快报</view>
+          </view>
+        </formid>
+      </view>
+      <view class='menu-list-item' wx-if="{{sqList.shouYinRiBao}}">
+        <formid bind:resdata="goSyingReport">
+          <view class='menu-box'>
+            <image src='../../images/index_menu1.png' class='menu-lgpic'></image>
+            <view>收银日报</view>
+          </view>
+        </formid>
+      </view>
+      <!-- <view class='menu-list-item'>
+        <formid bind:resdata="goGradeReport">
+          <view class='menu-box'>
+            <image src='../../images/index_menu5.png' class='menu-lgpic'></image>
+            <view>业绩日报</view>
+          </view>
+        </formid>
+      </view> -->
+       <!-- <view class='menu-list-item'>
+        <formid bind:resdata="goKeDanJiaRiReport">
+          <view class='menu-box'>
+            <image src='../../images/index_menu7.png' class='menu-lgpic'></image>
+            <view>客单价日报</view>
+          </view>
+        </formid>
+      </view>   -->
+      <view class='menu-list-item' wx-if="{{sqList.jiShiYeJiYueBao}}">
+        <formid bind:resdata="goJsyjReport">
+          <view class='menu-box'>
+            <image src='../../images/index_menu3.png' class='menu-lgpic'></image>
+            <view>技师业绩月报</view>
+          </view>
+        </formid>
+      </view>
+      <!-- <view class='menu-list-item'>
+        <formid bind:resdata="goCasReport">
+          <view class='menu-box'>
+            <image src='../../images/data_menu5.png' class='menu-lgpic'></image>
+            <view>收银月报</view>
+          </view>
+        </formid>
+      </view> -->
+      <!-- <view class='menu-list-item'>
+        <formid bind:resdata="goHuiYuanKaBaoBiao">
+          <view class='menu-box'>
+            <image src='../../images/data_menu1.png' class='menu-lgpic'></image>
+            <view>会员卡分析月报</view>
+          </view>
+        </formid>
+      </view>  -->
+      <view class='menu-list-item' wx-if="{{sqList.keLiuYueBao}}">
+        <formid bind:resdata="goKeLiuReport">
+          <view class='menu-box'>
+            <image src='../../images/index_menu6.png' class='menu-lgpic'></image>
+            <view>客流月报</view>
+          </view>
+        </formid>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='v-panel' wx-if="{{sqList.buMenYeJi||sqList.buMenXiangMuBaoBiao}}">
+  <view class='v-header'>部门报表</view>
+  <view class='v-body'>
+    <view class='menu-list'>
+     
+      <view class='menu-list-item' wx-if="{{sqList.buMenYeJi}}">
+        <formid bind:resdata="goSecGrade">
+          <view class='menu-box'>
+            <image src='../../images/data_menu2.png' class='menu-lgpic'></image>
+            <view>部门业绩</view>
+          </view>
+        </formid>
+      </view>
+      <view class='menu-list-item' wx-if="{{sqList.buMenXiangMuBaoBiao}}">
+        <formid bind:resdata="goSecPage">
+          <view class='menu-box'>
+            <image src='../../images/data_menu6.png' class='menu-lgpic'></image>
+            <view>部门项目报表</view>
+          </view>
+        </formid>
+      </view>
+   
+    </view>
+  </view>
+</view>
+
+
+
+<view class='v-panel' wx-if="{{sqList.keLiuLiangTongJi||sqList.xiangMuXiaoShouTongJi||sqList.jiShiZhongShuTongJi||sqList.huiYuanTongJi||sqList.shouKuanTongJi||sqList.menDianYeJi||sqList.menDianShouYin||sqList.menDianKeLiu||sqList.keDanJiaFenXi||sqList.xiangMuLeiBiePaiMing}}">
+  <view class='v-header'>数据统计</view>
+  <view class='v-body'>
+    <view class='menu-list'>
+      <!-- <view class='menu-list-item'>
+        <formid bind:resdata="goReceivables">
+          <view class='menu-box'>
+            <image src='../../images/data_menu1.png' class='menu-lgpic'></image>
+            <view>收款统计</view>
+          </view>
+        </formid>
+      </view> -->
+      <view class='menu-list-item' wx-if="{{sqList.keLiuLiangTongJi}}">
+        <formid bind:resdata="gopassengerStatistics">
+          <view class='menu-box'>
+            <image src='../../images/index_menu9.png' class='menu-lgpic'></image>
+            <view>客流量统计</view>
+          </view>
+        </formid>
+      </view>
+      <view class='menu-list-item' wx-if="{{sqList.xiangMuXiaoShouTongJi}}">
+        <formid bind:resdata="goProjectStatistics">
+          <view class='menu-box'>
+            <image src='../../images/index_menu6.png' class='menu-lgpic'></image>
+            <view>项目销售统计</view>
+          </view>
+        </formid>
+      </view>
+      <view class='menu-list-item' wx-if="{{sqList.jiShiZhongShuTongJi}}">
+        <formid bind:resdata="goTechNumStatistics">
+          <view class='menu-box'>
+            <image src='../../images/index_menu8.png' class='menu-lgpic'></image>
+            <view>技师钟数统计</view>
+          </view>
+        </formid>
+      </view>
+      <view class='menu-list-item' wx-if="{{sqList.huiYuanTongJi}}">
+        <formid bind:resdata="goUserStatistics">
+            <view class='menu-box'>
+              <image src='../../images/index_menu5.png' class='menu-lgpic'></image>
+              <view>会员统计</view>
+            </view>
+          </formid>
+      </view>
+      <!-- <view class='menu-list-item'>
+        <formid bind:resdata="goYingyeStatistics">
+            <view class='menu-box'>
+              <image src='../../images/index_menu6.png' class='menu-lgpic'></image>
+              <view>营业统计</view>
+            </view>
+          </formid>
+      </view> -->
+       <view class='menu-list-item' wx-if="{{sqList.shouKuanTongJi}}">
+        <formid bind:resdata="goReceivables">
+          <view class='menu-box'>
+            <image src='../../images/index_menu7.png' class='menu-lgpic'></image>
+            <view>收款统计</view>
+          </view>
+        </formid>
+      </view>
+      
+      <view class='menu-list-item' wx-if="{{sqList.menDianYeJi}}">
+        <formid bind:resdata="goMdGrade">
+          <view class='menu-box'>
+            <image src='../../images/index_menu9.png' class='menu-lgpic'></image>
+            <view>门店业绩</view>
+          </view>
+        </formid>
+      </view>
+      <view class='menu-list-item' wx-if="{{sqList.menDianShouYin}}">
+        <formid bind:resdata="goMdCas">
+          <view class='menu-box'>
+            <image src='../../images/index_menu7.png' class='menu-lgpic'></image>
+            <view>门店收银</view>
+          </view>
+        </formid>
+      </view>
+     <view class='menu-list-item' wx-if="{{sqList.menDianKeLiu}}">
+        <formid bind:resdata="goMdKeLiu">
+          <view class='menu-box'>
+            <image src='../../images/index_menu4.png' class='menu-lgpic'></image>
+            <view>门店客流</view>
+          </view>
+        </formid>
+      </view>
+      
+      <!-- <view class='menu-list-item'>
+        <formid bind:resdata="goHuiYuanKaGl">
+          <view class='menu-box'>
+            <image src='../../images/index_menu4.png' class='menu-lgpic'></image>
+            <view>会员卡管理</view>
+          </view>
+        </formid>
+      </view>  -->
+      <view class='menu-list-item' wx-if="{{sqList.keDanJiaFenXi}}">
+        <formid bind:resdata="goKeDanJiaFx">
+          <view class='menu-box'>
+            <image src='../../images/index_menu3.png' class='menu-lgpic'></image>
+            <view>客单价分析</view>
+          </view>
+        </formid>
+      </view>  
+      <view class='menu-list-item' wx-if="{{sqList.xiangMuLeiBiePaiMing}}">
+        <formid bind:resdata="goPageLeiBiePm">
+          <view class='menu-box'>
+            <image src='../../images/index_menu7.png' class='menu-lgpic'></image>
+            <view>项目类别排名</view>
+          </view>
+        </formid>
+      </view>  
+      <!-- <view class='menu-list-item'>
+        <formid bind:resdata="goPageShouRuPm">
+          <view class='menu-box'>
+            <image src='../../images/index_menu5.png' class='menu-lgpic'></image>
+            <view>项目收入排名</view>
+          </view>
+        </formid>
+      </view>   -->
+
+    </view>
+  </view>
+</view>
+
+<view class='v-panel' wx-if="{{sqList.yuanGongYeJiBaoBiao||sqList.yuanGongTiCheng||sqList.yuanGongTiChengMingXi||sqList.yuanGongXiaoShouPaiMing}}">
+  <view class='v-header'>员工报表</view>
+  <view class='v-body'>
+    <view class='menu-list'>
+     <view class='menu-list-item' wx-if="{{sqList.yuanGongYeJiBaoBiao}}">
+        <formid bind:resdata="goStaYeJi">
+          <view class='menu-box'>
+            <image src='../../images/data_menu3.png' class='menu-lgpic'></image>
+            <view>员工业绩报表</view>
+          </view>
+        </formid>
+      </view>  
+      <view class='menu-list-item' wx-if="{{sqList.yuanGongTiCheng}}">
+        <formid bind:resdata="goStaTiCheng">
+          <view class='menu-box'>
+            <image src='../../images/data_menu2.png' class='menu-lgpic'></image>
+            <view>员工提成</view>
+          </view>
+        </formid>
+      </view>  
+       <view class='menu-list-item'  wx-if="{{sqList.yuanGongTiChengMingXi}}">
+        <formid bind:resdata="goStaTiChengXx">
+          <view class='menu-box'>
+            <image src='../../images/data_menu1.png' class='menu-lgpic'></image>
+            <view>员工提成项目名细</view>
+          </view>
+        </formid>
+      </view>
+      <view class='menu-list-item'  wx-if="{{sqList.yuanGongXiaoShouPaiMing}}">
+        <formid bind:resdata="goStaXiaoShou">
+          <view class='menu-box'>
+            <image src='../../images/data_menu5.png' class='menu-lgpic'></image>
+            <view>员工销售排名</view>
+          </view>
+        </formid>
+      </view>    
+
+    </view>
+  </view>
+</view>
+
+<view class='v-panel' wx-if="{{sqList.yingYeFenXi||sqList.keHuFenXi||sqList.paiHangBang}}">
+  <view class='v-header'>营业统计</view>
+  <view class='v-body'>
+    <view class='menu-list'>
+      <view class='menu-list-item' wx-if="{{sqList.yingYeFenXi}}">
+        <formid bind:resdata="goBusinessAnalysis">
+            <view class='menu-box'>
+              <image src='../../images/data_menu7.png' class='menu-lgpic'></image>
+              <view>营业分析</view>
+            </view>
+         </formid>
+      </view>
+      <view class='menu-list-item' wx-if="{{sqList.keHuFenXi}}">
+        <formid bind:resdata="goAnalysis">
+            <view class='menu-box'>
+              <image src='../../images/data_menu8.png' class='menu-lgpic'></image>
+              <view>客户分析</view>
+            </view>
+          </formid>
+      </view>
+      <view class='menu-list-item' wx-if="{{sqList.paiHangBang}}">
+       <formid bind:resdata="goRanklist">
+            <view class='menu-box'>
+              <image src='../../images/data_menu9.png' class='menu-lgpic'></image>
+              <view>排行榜</view>
+            </view>
+          </formid>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class='v-panel' wx-if="{{sqList.jiShiYeJi||sqList.menDianFuWuYeJi||sqList.menDianYeWuZhuanHuaLv||sqList.menDianFuWuZhuanHuaLv||sqList.menDianZuLiaoZhuanHuaLv||sqList.menDianZhuYuZhuanHuaLv}}">
+  <view class='v-header'>服务数据</view>
+  <view class='v-body'>
+    <view class='menu-list'>
+     <view class='menu-list-item' wx-if="{{sqList.jiShiYeJi}}">
+        <formid bind:resdata="goJsGrade">
+          <view class='menu-box'>
+            <image src='../../images/index_menu4.png' class='menu-lgpic'></image>
+            <view>技师业绩</view>
+          </view>
+        </formid>
+      </view>
+     <view class='menu-list-item' wx-if="{{sqList.menDianFuWuYeJi}}">
+        <formid bind:resdata="goMdfwGrade">
+          <view class='menu-box'>
+            <image src='../../images/index_menu8.png' class='menu-lgpic'></image>
+            <view>门店服务业绩</view>
+          </view>
+        </formid>
+      </view>  
+      <view class='menu-list-item' wx-if="{{sqList.menDianYeWuZhuanHuaLv}}">
+        <formid bind:resdata="goMdywCvr">
+          <view class='menu-box'>
+            <image src='../../images/index_menu1.png' class='menu-lgpic'></image>
+            <view>门店业务转化率</view>
+          </view>
+        </formid>
+      </view>
+      <view class='menu-list-item' wx-if="{{sqList.menDianFuWuZhuanHuaLv}}">
+        <formid bind:resdata="goMdfwCvr">
+          <view class='menu-box'>
+            <image src='../../images/index_menu6.png' class='menu-lgpic'></image>
+            <view>门店服务转化率</view>
+          </view>
+        </formid>
+      </view>
+      <view class='menu-list-item' wx-if="{{sqList.menDianZuLiaoZhuanHuaLv}}">
+        <formid bind:resdata="goMdzlCvr">
+          <view class='menu-box'>
+            <image src='../../images/index_menu2.png' class='menu-lgpic'></image>
+            <view>门店足疗转化率</view>
+          </view>
+        </formid>
+      </view>
+      <view class='menu-list-item' wx-if="{{sqList.menDianZhuYuZhuanHuaLv}}">
+        <formid bind:resdata="goMdzyCvr">
+          <view class='menu-box'>
+            <image src='../../images/index_menu3.png' class='menu-lgpic'></image>
+            <view>门店助浴转化率</view>
+          </view>
+        </formid>
+      </view> 
+    </view>
+  </view>
+</view>
+

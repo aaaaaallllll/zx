@@ -1,0 +1,72 @@
+/* pages/clock /clock.wxss */
+page{
+  margin: 0;
+  padding: 0;
+  background-color: rgba(223, 228, 234, 0.3);
+}
+.btn{
+  width: 100%;
+  height: 100rpx;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 100rpx;
+  background-color: #FFFFFF
+}
+.btn text{
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 25rpx;
+  text-align: center;
+  background-color: #FFFFFF;
+  border: 1rpx solid #4876FF;
+  box-sizing: border-box;
+  /* border-radius: 30rpx; */
+  display: inline-block;
+  color: #4876FF;
+  
+}
+.btn .on{
+  background-color: #4876FF;
+  color: #FFFFFF;
+}
+.room{
+  width: 100%;
+  text-align: center;
+  padding: 10rpx 10rpx 10rpx 10rpx;
+}
+.room .box{
+  width: 30%;
+  height: 220rpx;
+  display: inline-block;
+  margin: 8rpx 8rpx 8rpx 8rpx;
+  background-color: #FFFFFF;
+  
+  border-radius: 25rpx;
+  border: 2rpx solid #f1f1f1;
+  transition: 1s;
+  opacity: 0;
+  position: absolute;
+  left: 9999rpx;
+  top: 9999rpx;
+  overflow: hidden;
+}
+.room .box-show{
+  opacity: 1;
+  position: static;
+  float: left;
+  
+}
+.room .box text{
+  font-size: 21rpx;
+  margin: 19rpx auto;
+  display: block;
+  color: #5a5a5a
+}
+.room .box .h3{
+  color: #1b1b1b;
+  font-size: 26rpx;
+}
+.room .box .jis{
+  margin: 11rpx auto;
+}

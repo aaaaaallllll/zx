@@ -1,0 +1,61 @@
+<view class="inner-cells">
+  <view class='card-cell' wx:for="{{data}}">
+    <view class='card-header'>{{item.createTime}}</view>
+    <view class='card-body'>
+      <view class='card-list'>
+        <view class='card-item'>
+          <text class='iconfont icon-dianpu'></text>
+          <text class='text-blue'>{{companyName}}</text>
+        </view>
+        <view class='card-item'>
+          <text class='iconfont icon-paizhao'></text>
+          <text class='text-gray'>客人锁牌：{{item.seatText}}</text>
+        </view>
+        <view class='card-item'>
+          <text class='iconfont icon-weizhi'></text>
+          <text class='text-gray'>位置点：</text>{{item.roomNo}}</view>
+        <view class='card-item'>
+          <text class='iconfont icon-fuwu'></text>
+          <text class='text-gray'>服务项目：</text>{{item.menu}}
+          <navigator class='text-green'>轮钟</navigator>
+        </view>
+        <view class='card-item'>
+          <text class='iconfont icon-tubiaoku-'></text>
+          <text class='text-gray'>服务时长：</text>{{item.timeSpan}}分</view>
+        <view class='card-item'>
+          <text class='iconfont icon-naozhong'></text>
+          <text class='text-gray'>上钟时间：</text>{{item.createTime}}</view>
+        <view class='card-item'>
+          <text class='iconfont icon-naozhong'></text>
+          <text class='text-gray'>下钟时间：</text>{{item.modifyTime}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='card-cell'>
+    <view class='card-body'>
+      <view class='weui-cell'>
+        <view class='weui-label'>数量:</view>
+        <view class='weui-cell__bd'>
+          <input wx:if="{{!inputShowed}}" disabled type="number" bindtap="jiazhongselect" value='{{number}}' bindinput="updateValue" data-name='number' class='weui-input' placeholder='请输入或者选择数量'></input>
+          <input wx:else type="number" value='{{number}}' bindinput="updateValue" data-name='number' class='weui-input' placeholder='请输入或者选择数量'></input>
+        </view>
+        <view bindtap='changeselect' wx:if="{{inputShowed}}">手动输入</view>
+        <view bindtap='changeselect' wx:else>下拉选择</view>
+        <text class='iconfont icon-sanx-up'></text>
+      </view>
+      <view class='weui-cell' bindtap='jiazhongre'>
+        <view class='weui-label'>项目:</view>
+        <view class='weui-cell__bd'>
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{listData}}">
+            <input disabled value='{{menu}}' class='weui-input' placeholder='请选择项目'></input>
+          </picker>
+        </view>
+        <text class='iconfont icon-sanx-up'></text>
+      </view>
+    </view>
+  </view>
+  <view bindtap='jiazhong' class='weui-btn-default'>加钟</view>
+</view>
+<van-popup position="bottom" overlay="{{ false }}" show="{{ show }}">
+  <van-picker show-toolbar title="选择数量" columns="{{ columns }}" bind:cancel="onClose" bind:confirm="onConfirm" />
+</van-popup>

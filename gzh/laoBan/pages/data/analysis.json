@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "ec-canvas": "../../ec-canvas/ec-canvas",
+    "getdatatime2": "/component/getdatatime2",
+    "tagger": "/component/toggle/toggle"
+  },
+  "navigationBarTitleText": "客户分析"
+}

@@ -1,0 +1,34 @@
+<!-- 背景图片 -->
+<view class="all">
+  <image src="../../images/bgp.png"></image>
+</view>
+<view class="all_nei">
+<!-- 输入框 -->
+  <view class="input">
+    <view class="input_1">
+      <image src="../../images/sousuo.png"></image>
+    </view>
+    <input class="input_2" placeholder="请输入房间号" value="{{num1}}" bindinput="srk"></input>
+  </view>
+  <!-- 房间信息 -->
+  <view class="fangjian">
+    <view class="everyone" wx:for="{{roomData1}}" wx:key="index" bindtap="toroom" data-room="{{roomData1}}" data-index="{{index}}">
+    <view style='background-color:#ccc;'>
+      <view style="width:1.1rem;height:1.5rem;padding-right:.3rem;">
+        <image style="width:100%;height:100%;" src="../../images/fangjian.png"></image>
+      </view>
+      <text style="font-size:.7rem;color:#fff;">{{item}}</text>
+    </view>
+    
+    </view>
+  </view>
+</view>
+<!-- 固定底部 -->
+  <view class="bottom">
+      <span class="btm_1" style="background-color: rgba(212,212,212,1);">空闲</span>
+      <span class="btm_1" style="background-color: #e1b12c;">入住</span>
+      <span class="btm_1" style="background-color: rgba(193,13,193,0.4);">等待</span>
+      <span class="btm_1" style="background-color: rgba(36,210,63,0.6);">预约</span>
+      <span class="btm_1" style="background-color: rgba(255,0,0,0.5);">服务</span>
+      <span class="btm_1" style="background-color: rgba(160,160,160,1);">清洁</span>
+    </view>

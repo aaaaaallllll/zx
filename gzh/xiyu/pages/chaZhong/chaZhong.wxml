@@ -1,0 +1,46 @@
+<view class="search-cells">
+  <view class='tips text-blue'>查询日期是以店内的营业时段的日期为准，非自然日时段</view>
+  <view class='form-inner'>
+    <getdatatime data="{{begin}}" datatime="{{begintime}}" bind:resdata="getdatatimebegin"></getdatatime>
+    <getdatatime title="结束时间" data="{{end}}" datatime="{{endtime}}" bind:resdata="getdatatimeend"></getdatatime>
+    <z-select title="技师分类" placeholder="请选择技师分类" data="{{techtypes}}" bind:resdata="resdata"></z-select>
+    <z-select title="技师工号" placeholder="请选择技师工号" data="{{techids}}" bind:resdata="resdatatechids"></z-select>
+    <z-select title="数据排序" placeholder="请选择排序方式" data="{{array2}}" bind:resdata="resdatapaixu"></z-select>
+    <button bindtap="getdata" class='weui-btn weui-cui-button'>查询</button>
+  </view>
+</view>
+<view class='table-cells'>
+  <view class='table-hd justify'>
+    <view class='table-tit'>总计钟数：
+      <text class='text-blue'>{{zhongshu}}</text>
+    </view>
+  </view>
+
+  <view class='table-panel' wx:if="{{list.length!=0}}">
+    <view class='table-scroll'>
+      <scroll-view class="scroll-header" scroll-y scroll-x bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+        <view class='table'>
+          <view class='thead'>
+            <view class='tr'>
+              <view class='td' wx:for="{{listtitle}}">{{item}}</view>
+            </view>
+          </view>
+          <view class='tbody'>
+            <view class='tr' wx:for="{{list}}">
+              <view class='td'>{{item.tech}}</view>
+              <view class='td'>{{item.menu}}</view>
+              <view class='td'>{{item.number}}</view>
+              <view class='td'>{{item.money}}</view>
+              <view class='td'>{{item['轮钟数']}}</view>
+              <view class='td'>{{item['点钟数']}}</view>
+              <view class='td'>{{item['挑钟数']}}</view>
+              <view class='td'>{{item['加班轮钟']}}</view>
+              <view class='td'>{{item['加班点钟']}}</view>
+              <view class='td'>{{item['加班挑钟']}}</view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/admin/login",
+    "pages/hujiaofuwu/hujiaofuwu",
+    "pages/home/my",
+    "pages/webpage/dispatch",
+    "pages/webpage/orderManagement",
+    "pages/webpage/call",
+    "pages/webpage/shangzhong",
+    "pages/webpage/pzTable",
+    "pages/webpage/xiazhong",
+    "pages/webpage/yylists",
+    "pages/webpage/remind",
+    "pages/webpage/statistics",
+    "pages/webpage/ludan",
+    "pages/webpage/statisticsdetail",
+    "pages/chaZhong/chaZhong",
+    "pages/hujiaofuwu/toroom"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "工作台",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#454952",
+    "selectedColor": "#00A4FF",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "selectedIconPath": "/images/icon1_h.png",
+        "iconPath": "/images/icon1.png",
+        "pagePath": "pages/home/home",
+        "text": "工作台"
+      },
+      {
+        "selectedIconPath": "/images/icon3_h.png",
+        "iconPath": "/images/icon3.png",
+        "pagePath": "pages/home/my",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

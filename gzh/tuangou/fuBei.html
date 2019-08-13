@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>支付</title>
+    <script src="js/jquery.js"></script>
+    <style>
+        /*#btn{*/
+        /*    width: 150px;*/
+        /*    height: 50px;*/
+        /*    margin: 10px auto;*/
+        /*    border: 1px solid #000;*/
+        /*    text-align: center;*/
+        /*    line-height: 50px;*/
+        /*    border-radius: 10px;*/
+        /*    background-color: #bbb;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<!--<div id="btn" onclick="uuid()">按钮</div>-->
+<script>
+    // http://intereek.natapp1.cc/pangu/html/?appid=wx6fb30a3965153055&companyCode=m44gwOk2PSU4cMtqHiEw007
+    // const url="http://intereek.natapp1.cc/pangu/"
+    // const url="http://www.intereek.com/pangu/"
+
+    const aUrl  = "http://intereek.natapp1.cc/pangu/xcx.do";
+    // const aUrl  = "http://192.168.1.7:999/pangu/xcx.do";
+    // const aUrl  = "http://www.intereek.com/pangu/xcx.do";
+
+    // var ajaxUrl  = "http://www.intereek.com/";
+    const local = window.location.href;
+    let open_id =queryString('open_id')
+    // const seatTexts =queryString('seatTexts')
+    const heji =queryString('heji')
+    const num =queryString('num')
+    const quanId =queryString('quanId')
+    const jiFen =queryString('jiFen')
+    const openid =queryString('openid')
+    const appid =queryString('appid')
+    let sub_open_id = queryString('sub_open_id')
+    const companyCode = queryString('companyCode')
+    // console.log(seatTexts)
+    console.log(heji)
+    console.log(appid)
+    console.log(companyCode)
+    console.log(openid)
+    //获取url地址属性函数
+    function queryString(name){
+        let reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        let r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
+    }
+    //缓存函数
+    // function setCookie(key, value, iDay) {
+    //     var oDate = new Date();
+    //     oDate.setDate(oDate.getDate() + iDay);
+    //     document.cookie = key + '=' + value + ';expires=' + oDate;
+    //
+    // }
+    // function getCookie(key) {
+    //     var cookieArr = document.cookie.split('; ');
+    //     for(var i = 0; i < cookieArr.length; i++) {
+    //         var arr = cookieArr[i].split('=');
+    //         if(arr[0] === key) {
+    //             return arr[1];
+    //         }
+    //     }
+    //     return false;
+    // }
+    //查看是否有缓存
+    // console.log(getCookie('openid'))
+    // console.log(getCookie('cardName'))
+    // console.log(getCookie('cardPhone'))
+    // if(getCookie('openid')){
+    //     const openid=getCookie('openid')
+    //     const cardName=getCookie('cardName')
+    //     const cardPhone=getCookie('cardPhone')
+    //     const _t = encodeURI(encodeURI(encodeURI(cardName)))
+    //     // window.location.href=`${ajaxUrl}pangu/html/jiShiYuYue/dist/index.html?appid=${appid}&companyCode=${companyCode}&openid=${openid}&cardName=${_t}&cardPhone=${cardPhone}#/`
+    //     window.location.href=`${ajaxUrl}pangu/html/newJiShiYuYue/dist/index.html?appid=${appid}&companyCode=${companyCode}&openid=${openid}&cardName=${_t}&cardPhone=${cardPhone}#/`
+    // }
+
+
+    function getdata() {
+        $.ajax({
+            type: "post",
+            url:aUrl,
+            dataType: "jsonp",
+            data: {
+                companyCode: companyCode,
+                url:local,
+                operationType:'wxFuBeiAuth'
+            },
+            success: function (res) {
+                console.log(res)
+                const data=eval('('+res.result+')')
+                console.log(data)
+                if(data.result_message=='成功'&data.data.authUrl!=''){
+                    console.log('1')
+                    window.location.href=data.data.authUrl
+                }
+            },
+            error:function (err) {
+                console.log(err);
+                console.log('获取失败')
+            }
+        });
+    }
+    function uuid() {
+        var s = [];
+        var hexDigits = "0123456789abcdef";
+        for (var i = 0; i < 32; i++) {
+            s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+        }
+        s[14] = "4";  // bits 12-15 of the time_hi_and_version field to 0010
+        s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);  // bits 6-7 of the clock_seq_hi_and_reserved to 01
+        s[8] = s[13] = s[18] = s[23] ;
+
+        var uuid = s.join("");
+        zf(uuid)
+    }
+    function zf(uuid){
+        console.log('222')
+        $.ajax({
+            type: "post",
+            url:aUrl,
+            dataType: "jsonp",
+            data: {
+                companyCode: companyCode,
+                operationType:'fuBeiMallPay',
+                sub_open_id:sub_open_id,
+                orderNo:uuid,
+                num:num,
+                jiFen:jiFen,
+                quanId:quanId,
+                wxOpenId:openid,
+                openId:open_id,
+                total_fee:heji*num,
+                // seatTexts:seatTexts
+            },
+            success: function (res) {
+                console.log(res)
+                const data=eval('('+res.result+')')
+                // alert(data.data.prepay_id)
+                // alert(res)
+                // alert(JSON.stringify(res))
+                if(data.result_message=='成功'){
+
+                    // let chuanChang=encodeURI(`${url}html/zzPay/prosperity.html?openid=${openid}&seatTexts=${seatTexts}&heji=${heji}&companyCode=${companyCode}&appid=${appid}`)
+                    // // let chuanChang=encodeURIComponent(`http://www.intereek.com/pangu/xcx.do?operationType=fuBeiWxSelfPay&orderNo=${uuid}`)
+                    // let  notifyMap={
+                    //     openid:openid,
+                    //     quanId:quanId,
+                    //     orderNo:uuid,
+                    //     companyCode:companyCode,
+                    //     money:heji,
+                    //     num:num,
+                    //     jiFen:jiFen
+                    // }
+                    // let strnotifyMap= JSON.stringify(notifyMap)
+                    let chuanChang=encodeURIComponent(`http://intereek.natapp1.cc/pangu/xcx.do?operationType=fuBeiMallPaySuccess&orderNo=${uuid}`)
+                    // let chuanChang2=`http://intereek.natapp1.cc/pangu/pangu.do?requestData=${strnotifyMap}`
+
+                    // let chuanChang2=encodeURI(`${url}html/zzPay/zzpay.html?companyCode=${companyCode}&appid=${appid}`)
+                    // alert(chuanChang)
+                    // const bmUuid=encodeURI(uuid)
+                    // const
+                    // alert(chuanChang)
+                    // window.location.href=`https://shq-api.51fubei.com/paypage?prepay_id=${data.data.prepay_id}&callback_url=${chuanChang}&cancel_url=${chuanChang2}`
+                    window.location.href=`https://shq-api.51fubei.com/paypage?prepay_id=${data.data.prepay_id}&callback_url=${chuanChang}`
+                    // window.location.href=`https://shq-api.51fubei.com/paypage?prepay_id=${data.data.prepay_id}&callback_url="http://www.intereek.com/pangu/html/intereek/fukuansuccess.html?qr=${result}&openid=${openid}`
+                }
+
+            },
+            error:function (err) {
+                console.log(err);
+                // alert(err)
+                console.log('获取失败')
+            }
+        });
+    }
+
+    //获取code
+    if(sub_open_id==''||sub_open_id==undefined||sub_open_id==null){
+        getdata()
+    }else {
+        console.log(sub_open_id)
+        // alert(sub_open_id)
+        console.log(open_id)
+        // alert(open_id)
+        uuid()
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<view class="inner-wrap">
+  <view class='yy-table'>
+    <!-- 头部 -->
+    <view class='thead '>
+      <view class="{{showIndex==0?'active':''}}" bindtap='showSh' data-name='0'>待审核</view>
+      <view class="{{showIndex==1?'active':''}}" bindtap='showSh' data-name='1'>审核同意</view>
+      <view class="{{showIndex==2?'active':''}}" bindtap='showSh' data-name='2'>审核不同意</view>
+    </view>
+    <!-- 内容 -->
+    <view class='yy-body' wx-if="{{showIndex==0}}">
+      <view  wx:for='{{auditData}}' wx:key="index" wx:for-item='item' bindtap='select' id='{{index}}' class="tbody {{item.ck?'on':''}}">
+        <view>{{item.id}}</view>
+        <view>{{item.state==0?'已取消':'待审核'}}</view>
+        <view>{{item.data}}</view>
+      </view>
+      <!-- <view class='tbody '>
+        <view>17212341234</view>
+        <view>待审核</view>
+        <view>09/22 20:02</view>
+      </view> -->
+    </view>
+    <view class='yy-body' wx-if="{{showIndex==1}}">
+    </view>
+    <view class='yy-body' wx-if="{{showIndex==2}}">
+      <view class='tbody '>
+        <view>18212341234</view>
+        <view>已取消</view>
+        <view>09/27 20:02</view>
+      </view>
+    </view>
+  </view>
+  <view class='ps'>注：点击订单审核</view>
+  <!-- 无内容 -->
+  <!-- <view class='empty-tips' v-if="{{falue}}">
+    <image src='../../images/kong.png'></image>
+    <view>暂无内容</view>
+  </view> -->
+  <view class='btn' wx-if="{{showBtn}}">
+      <view class='left'>同意</view>
+      <view class='right'>不同意</view>
+  </view>
+</view>
+<popnav></popnav>

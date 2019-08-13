@@ -1,0 +1,140 @@
+<view class="inner-wrap">
+  <view class="yy-header">
+    <view class='yy-tag'>
+      <text data-id='{{item.id}}' bindtap='chaxuncheck' wx:for="{{typelist}}" class="{{item.id==chaXunType?'active':''}}">{{item.title}}</text>
+    </view>
+  </view>
+  <view class='yy-table' wx:if="{{chaXunType==1}}">
+    <view class='thead'>
+      <view>技师</view>
+      <view>客户手机</view>
+      <view class='filter-item'>全部状态
+        <text class='iconfont icon-sanx-down'></text>
+      </view>
+      <view>预抵时间</view>
+    </view>
+    <view wx:for="{{data}}" class='tbody'>
+      <view>{{item.dianZhongTechId}}</view>
+      <view>{{item.kePhone}}</view>
+      <view>{{item.stat}}</view>
+      <view class='yuJiDaoDa'>{{item.yuJiDaoDa}}</view>
+    </view>
+  </view>
+  <view class='yy-table' wx:else>
+    <view class='thead'>
+      <view>房间</view>
+      <view>客户手机</view>
+      <view class='filter-item'>全部状态
+        <text class='iconfont icon-sanx-down'></text>
+      </view>
+      <view>预抵时间</view>
+    </view>
+    <view wx:for="{{data}}" class='tbody'>
+      <view>{{item.roomNo}}</view>
+      <view>{{item.kePhone}}</view>
+      <view>{{item.stat}}</view>
+      <view class='yuJiDaoDa'>{{item.yuJiDaoDa}}</view>
+    </view>
+  </view>
+</view>
+<popnav></popnav>
+<view class='xinzeng' data-id="{{chaXunType}}" bindtap='xinzeng'>
+  新增
+</view>
+<!-- 确认信息 -->
+<van-popup show="{{ show }}" bind:close="onClose">
+  <view class='querenbody'>
+    <view class='close'>
+      <text bind:tap="onClose" class='icon iconfont icon-close1'></text>
+    </view>
+    <view class='lineshu'></view>
+    <view class='queren'>
+      <view class='close'></view>
+      <view class='querendan'>
+        <view class='querendantitle'>
+          新增技师预约
+        </view>
+        <view class='listinputindex'>
+          <!-- <view class='listinput'>
+            <view class='listinputlabel'>
+              技师号
+            </view>
+            <view>
+              <input value='{{seatText}}' bindinput="updateValue" data-name='seatText' placeholder='请输入技师号'></input>
+            </view>
+          </view> -->
+          <view class='listinput'>
+            <view class='listinputlabel'>
+              客户手机
+            </view>
+            <view>
+              <input type='number' value='{{kePhone}}' bindinput="updateValue" data-name='kePhone' placeholder='请输入客户手机'></input>
+            </view>
+          </view>
+          <view class='listinput' bindtap='showtime2'>
+            <view class='listinputlabel'>
+              预约时间
+            </view>
+            <view>
+              <input disabled value='{{yuJiDaoDa}}' bindinput="updateValue" data-name='yuJiDaoDa' placeholder='请输入预抵时间'></input>
+            </view>
+          </view>
+        </view>
+        <view class='sure'>
+          <view class='sure_but' bind:tap="onClose">取消</view>
+          <view class='sure_but active' bind:tap="sublist">确认</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</van-popup>
+<!-- 确认信息 -->
+<van-popup show="{{ show1 }}" bind:close="onClose">
+  <view class='querenbody'>
+    <view class='close'>
+      <text bind:tap="onClose" class='icon iconfont icon-close1'></text>
+    </view>
+    <view class='lineshu'></view>
+    <view class='queren'>
+      <view class='close'></view>
+      <view class='querendan'>
+        <view class='querendantitle'>
+          新增房间预约
+        </view>
+        <view class='listinputindex'>
+          <view class='listinput'>
+            <view class='listinputlabel'>
+              房间号
+            </view>
+            <view>
+              <input value='{{roomNo}}' bindinput="updateValue" data-name='roomNo' placeholder='请输入房间号'></input>
+            </view>
+          </view>
+          <view class='listinput'>
+            <view class='listinputlabel'>
+              客户手机
+            </view>
+            <view>
+              <input type='number' value='{{kePhone}}' bindinput="updateValue" data-name='kePhone' placeholder='请输入客户手机'></input>
+            </view>
+          </view>
+          <view class='listinput' bindtap='showtime2'>
+            <view class='listinputlabel'>
+              预约时间
+            </view>
+            <view>
+              <input disabled value='{{yuJiDaoDa}}' bindinput="updateValue" data-name='yuJiDaoDa' placeholder='请输入预抵时间'></input>
+            </view>
+          </view>
+        </view>
+        <view class='sure'>
+          <view class='sure_but' bind:tap="onClose">取消</view>
+          <view class='sure_but active' bind:tap="sublist">确认</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</van-popup>
+<van-popup show="{{ showtime }}" position="bottom" overlay="{{ false }}" bind:close="onClose">
+  <van-datetime-picker type="datetime" bind:cancel="hideshowtime" value="{{ currentDate }}" bind:confirm="checkdatatime" />
+</van-popup>

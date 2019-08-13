@@ -1,0 +1,91 @@
+.order {
+  width: 680rpx;
+  margin: 20rpx auto;
+  height: 640rpx;
+  background: none;
+  border-radius: 10rpx;
+}
+
+.orders {
+  background: #f5f5f9;
+}
+
+.orderhead {
+  height: 90rpx;
+  background: #fff;
+  margin: auto;
+  border-radius: 15rpx;
+  border-bottom: 1rpx dashed #999;
+}
+
+.orderbody {
+  height: 550rpx;
+  background: #fff;
+  margin: auto;
+  border-radius: 15rpx;
+}
+
+.orderhead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.orderheadl {
+  color: #333;
+  font-size: 28rpx;
+  margin-left: 30rpx;
+}
+
+.orderheadr {
+  color: #ff9d38;
+  font-size: 28rpx;
+  margin-right: 30rpx;
+}
+
+.pingjia {
+  width: 560rpx;
+  height: 80rpx;
+  margin: auto;
+  color: #fff;
+  line-height: 80rpx;
+  text-align: center;
+  background: rgba(41, 113, 249, 1);
+}
+
+.dianpu {
+  color: #2971f9;
+  font-size: 26rpx;
+  padding-top: 30rpx;
+}
+
+.dianpu .icon {
+  color: #2971f9;
+  font-size: 26rpx;
+  margin-right: 30rpx;
+}
+.suo {
+  color: #939393;
+  font-size: 26rpx;
+  padding-top: 20rpx;
+}
+
+.suo .icon {
+  color: #2971f9;
+  font-size: 26rpx;
+  margin-right: 30rpx;
+}
+
+.suo .other{
+  color: #5C5C5C;
+}
+.orderbodyml40{
+  margin-left: 40rpx;
+}
+.pingjia{
+  margin-top: 40rpx;
+}
+.lunzhong{
+  color: #01B2A4;
+  margin-left: 20rpx;
+}

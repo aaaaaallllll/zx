@@ -1,0 +1,103 @@
+<view class="inner-cells">
+  <view class='card-cell'>
+    <view class='card-body'>
+      <view class='weui-cell'>
+        <view class='weui-label'>房间号:</view>
+        <view class='weui-cell__bd'>
+          <picker wx:if="{{!inputShowed}}" bindchange="bindPickerChange" value="{{index}}" range="{{roomNos}}">
+            <input value='{{roomNo}}' bindinput="updateValue" data-name='roomNo' disabled class='weui-input' placeholder='请选择或者输入房间号'></input>
+          </picker>
+          <input wx:else value='{{roomNo}}' bindinput="updateValue" data-name='roomNo' class='weui-input' placeholder='请选择或者输入房间号'></input>
+        </view>
+        <view bindtap='changeselect' wx:if="{{inputShowed}}">手动输入</view>
+        <view bindtap='changeselect' wx:else>下拉选择</view>
+        <text class='iconfont icon-sanx-up'></text>
+      </view>
+      <view class='weui-cell'>
+        <view class='weui-label'>手牌号:</view>
+        <view class='weui-cell__bd'>
+          <input value='{{seatText}}' bindinput="updateValue" data-name='seatText' class='weui-input' placeholder='请选择或者输入手牌号'></input>
+        </view>
+        <text class='iconfont icon-sanx-up'></text>
+      </view>
+      <view class='weui-cell' bindtap='checkjs'>
+        <view class='weui-label'>技师类型:</view>
+        <view class='weui-cell__bd'>
+          <picker bindchange="bindPickerjishitype" value="{{index}}" range-key="name" range="{{jishitype}}">
+            <input value='{{techType}}' data-name='jishitypename' class='weui-input' disabled placeholder='请选择技师类别'></input>
+          </picker>
+        </view>
+        <text class='iconfont icon-sanx-up'></text>
+      </view>
+      <view class='weui-cell'>
+        <view class='weui-label'>技师项目:</view>
+        <view class='weui-cell__bd'>
+          <picker bindchange="bindPickerjishixiangmu" value="{{index}}" range="{{jishixiangmu}}">
+            <input disabled value='{{menuName}}' bindinput="updateValue" data-name='jishixiangmuname' class='weui-input' placeholder='请选择技师项目'></input>
+          </picker>
+        </view>
+        <text class='iconfont icon-sanx-up'></text>
+      </view>
+      <view class='weui-cell weui-cell2'>
+        <view class='weui-label'>轮钟:</view>
+        <view class='lunzhonglist'>
+          <view class='steppers'>
+            <text class='title'>男：</text>
+            <view class='stepper'>
+              <van-stepper bind:change="changenanJiShi" min='0' value="{{ nanJiShi }}" />
+            </view>
+          </view>
+          <view class='steppers'>
+            <text class='title'>女：</text>
+            <view class='stepper'>
+              <van-stepper bind:change="changenvJiShi" min='0' value="{{ nvJiShi }}" />
+            </view>
+          </view>
+          <view class='steppers'>
+            <text class='title'>无：</text>
+            <view class='stepper'>
+              <van-stepper bind:change="changenoGender" min='0' value="{{ noGender }}" />
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='weui-cell'>
+        <view class='weui-label'>点钟工号:</view>
+        <view class='weui-cell__bd'>
+          <input value='{{dianTechId}}' bindinput="updateValue" data-name='dianTechId' class='weui-input' placeholder='请输入点钟工号(用.隔开）'></input>
+        </view>
+        <view class="add" bindtap='addlist'>+添加</view>
+      </view>
+      <view class='weui-cell'>
+        <view class='weui-label'>选钟工号:</view>
+        <view class='weui-cell__bd'>
+          <input value='{{xuanTechId}}' bindinput="updateValue" data-name='xuanTechId' class='weui-input' placeholder='请输入点钟工号(用.隔开）'></input>
+        </view>
+        <view data-id="{{index}}" class="del" bindtap='delitem'>删除</view>
+      </view>
+    </view>
+  </view>
+  <view class='listcard' wx:if="{{paiQianInfo.length>0}}">
+    <view class='listcardhead'>
+      <view class='listcardh1'>序号</view>
+      <view class='listcardh1 w130'>项目</view>
+      <view class='listcardh1'>轮男</view>
+      <view class='listcardh1'>轮女</view>
+      <view class='listcardh1'>轮无</view>
+      <view class='listcardh1'>点钟</view>
+      <view class='listcardh1'>选钟</view>
+    </view>
+    <view class="listcardhead listcardhead2 {{indexs==index?'hover':''}}" wx:for="{{paiQianInfo}}" bindtap="paiQianInfocheck" data-id='{{index}}'>
+      <view class='listcardh1'>{{index}}</view>
+      <view class='listcardh1 w130'>{{item.menuName}}</view>
+      <view class='listcardh1'>{{item.nanJiShi}}</view>
+      <view class='listcardh1'>{{item.nvJiShi}}</view>
+      <view class='listcardh1'>{{item.noGender}}</view>
+      <view class='listcardh1'>{{item.dianTechId}}</view>
+      <view class='listcardh1'>{{item.xuanTechId}}</view>
+    </view>
+  </view>
+  <view bind:tap="sub" class='weui-btn-default'>派遣</view>
+</view>
+<van-popup position="bottom" overlay="{{ false }}" show="{{ show }}" bind:close="onClose">
+  <van-picker show-toolbar title="选择技师类型" bind:cancel="onClose" bind:confirm="onConfirm" columns="{{ columns }}" bind:change="onChange" /></van-popup>

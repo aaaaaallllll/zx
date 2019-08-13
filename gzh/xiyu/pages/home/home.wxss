@@ -1,0 +1,69 @@
+/* pages/home/home.wxss */
+page{
+  background-color: #f5f5fa!important;
+}
+.home-cells{
+  padding: 20rpx 40rpx;
+  height: 744rpx;
+}
+.menu-col{
+  width:324rpx;
+  float: left;
+}
+.menu-col:last-child{
+  float: right
+}
+.menu-box{
+  margin-bottom: 30rpx;
+  font-size: 0;
+  display: block;
+}
+.menu-box image{
+  width: 100%;
+  border-radius: 10rpx;
+}
+.menu-1 image{
+  height: 212rpx;
+  box-shadow: 0 0 16rpx #848bff;
+}
+.menu-2 image{
+  height: 280rpx;
+  box-shadow: 0 0 16rpx #ff7894;
+}
+.menu-3 image{
+  height: 185rpx;
+  box-shadow: 0 0 16rpx #2ce8d6;
+}
+.menu-4 image{
+  height: 212rpx;
+  box-shadow: 0 0 16rpx #ffbc6d;
+}
+.menu-5 image{
+  height: 280rpx;
+  box-shadow: 0 0 16rpx #65aaff;
+}
+.menu-6 image{
+  height: 185rpx;
+  box-shadow: 0 0 16rpx #65aaff;
+}
+swiper{
+  margin-bottom:30rpx;
+  height: 290rpx;
+}
+.slide-image{
+  display: block;
+  width: 100%;
+  height: 290rpx;
+  border-radius: 10rpx;
+}
+
+
+
+
+
+
+
+
+
+
+

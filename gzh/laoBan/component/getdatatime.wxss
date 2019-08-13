@@ -1,0 +1,22 @@
+@import '/app.wxss';
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-cells {
+  background: none;
+}
+.weui-cui-button{
+  border: 0;
+  width: 500rpx;
+  height: 80rpx;
+  background-color: #2971f9;
+  color: #fff;
+  padding: 0;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  border-radius: 40rpx;
+  margin-top: 30rpx;
+}

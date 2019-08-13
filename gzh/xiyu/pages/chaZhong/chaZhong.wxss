@@ -1,0 +1,142 @@
+.weui-cui-button{
+  border: 0;
+  width: 500rpx;
+  height: 80rpx;
+  background-color: #2971f9;
+  color: #fff;
+  padding: 0;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  border-radius: 40rpx;
+  margin-top: 30rpx;
+}
+.tr .td{
+  min-width: 60rpx;
+}
+.tr .td:nth-child(1){
+  width: 32%;
+}
+.tr .td:nth-child(4){
+  width:140rpx;
+}
+
+
+
+
+
+
+.scroll-header {
+  display: flex;
+  white-space: nowrap;
+  /* height: 400rpx; */
+
+}.tr .td {
+  min-width: 150rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+search-cells {
+  padding: 20rpx 30rpx 30rpx 30rpx;
+  background-color: #fff;
+}
+
+.search-cells .tips {
+  font-size: 26rpx;
+  margin-bottom: 30rpx;
+}
+.table-cells {
+  padding: 36rpx 40rpx;
+}
+
+.table-tit {
+  position: relative;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 30rpx;
+  padding-left: 30rpx;
+}
+
+.table-tit::before {
+  content: '　';
+  position: absolute;
+  left: 0;
+  width: 6rpx;
+  height: 30rpx;
+  border-radius: 6rpx;
+  background-color: #2971f9;
+  top: 50%;
+  margin-top: -14rpx;
+}
+
+.table-hd .text {
+  font-size: 22rpx;
+  color: #2971f9;
+}
+
+.table-hd {
+  margin-bottom: 30rpx;
+}
+
+.table-panel {
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding: 0 30rpx;
+  font-size: 28rpx;
+}
+
+.table {
+  text-align: center;
+  width: 100%;
+}
+
+.tr {
+  position: relative;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  width: 100%;
+  height: 100rpx;
+}
+
+.tr .td {
+  justify-content: center;
+  text-align: center;
+  padding: 0 10rpx;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.thead .tr {
+  color: #666;
+}
+
+.tbody .tr {
+  color: #999;
+}
+
+.tbody .tr::before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px solid #e5e5e5;
+  color: #e5e5e5;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  z-index: 2;
+}
+

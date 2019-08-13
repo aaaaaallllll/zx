@@ -1,0 +1,92 @@
+/* pages/user/user.wxss */
+@import'../../wxss/iconfont.wxss';
+.userTop{
+  height: 360rpx;
+  width: 100%;
+  /* background-color: #BBBBBB; */
+  text-align: center;
+  box-sizing: border-box;
+  padding-top: 80rpx
+}
+.userTop .img{
+  height: 170rpx;
+  width: 170rpx;
+  border-radius: 110rpx;
+  border: 10rpx solid #FFFFFF;
+  overflow: hidden;
+  margin: 10rpx auto;
+}
+.userTab{
+width: 100%;
+}
+.userTab .tabCon{
+width: 100%;
+height: 90rpx;
+background-color: #FFF;
+border-top: 2rpx solid rgb(228, 228, 228);
+border-bottom: 2rpx solid rgb(228, 228, 228);
+margin-top: 20rpx;
+font-size: 20rpx;
+line-height: 90rpx;
+color: #535c68;
+padding-left:20rpx; 
+padding-right:30rpx; 
+}
+.fr{
+  float:right;
+  margin-right:30rpx;
+}
+.userTab .tabCon text{
+ display: inline-block;
+}
+.userTab .tabBox{
+  width: 100%;
+}
+.userTab .tabCon .text{
+  font-size: 30rpx; 
+ 
+  height: 90rpx;
+  line-height: 90rpx;
+  margin-left: 20rpx;
+}
+.userTab .tabChild{
+  width: 90%;
+  height: 76rpx;
+  background-color: #e7e7e7;
+  border: 1rpx solid rgb(204, 204, 204);
+  text-align: left;
+  margin-top: 10rpx;
+  line-height: 76rpx;
+  font-size: 26rpx;
+  float: right;
+  padding-left: 10rpx;
+  padding-right: -20rpx;
+  color: #6e6e6e;
+  border-top-left-radius: 2rpx;
+  border-bottom-left-radius: 2rpx;
+}
+.userTab .tabChild text{
+  display: inline-block;
+}
+.userTab .tabChild .cText{
+  margin-left: 10rpx;
+  position: relative;
+  top: -3rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-top: -10rpx;
+}
+.userTab .box{
+  height: 0;
+  /* background-color: #535c68; */
+  width: 100%;
+  text-align: right;
+  overflow: hidden;
+  transition: height 0.6s;
+}
+.userTab .on{
+  height: 280rpx;
+}
+.userTab .on2{
+  height: 190rpx;
+}

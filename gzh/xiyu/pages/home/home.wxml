@@ -1,0 +1,47 @@
+<view class="home-cells">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="#e3e3e3" indicator-active-color="#3285fd">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item.imgUrl}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 菜单 -->
+  <view class='menu-cells'>
+    <view class='menu-col'>
+      <formid bind:resdata="toYygl">
+        <view class='menu-box menu-1'>
+          <image src='../../images/admin1.jpg'></image>
+        </view>
+      </formid>
+      <formid bind:resdata="topzTable">
+        <view class='menu-box menu-2'>
+          <image src='../../images/admin2.jpg'></image>
+        </view>
+      </formid>
+      <formid bind:resdata="toorderm">
+        <view class='menu-box menu-3'>
+          <image src='../../images/admin3.jpg'></image>
+        </view>
+      </formid>
+    </view>
+    <view class='menu-col'>
+      <formid bind:resdata="toRemind">
+        <view class='menu-box menu-4'>
+          <image src='../../images/admin4.jpg'></image>
+        </view>
+      </formid>
+      <formid bind:resdata="toStatistics">
+        <view class='menu-box menu-5' bindtap='toStatistics'>
+          <image src='../../images/admin5.jpg'></image>
+        </view>
+      </formid>
+       <formid bind:resdata="tohujiaofuwu">
+        <view class='menu-box menu-6'>
+          <image src='../../images/admin6.jpg'></image>
+        </view>
+      </formid>
+    </view>
+  </view>
+</view>
+<popnav></popnav>

@@ -1,0 +1,22 @@
+.echart{
+  flex: 1;
+}
+.mask{
+  position: fixed;
+  z-index: 100;
+  background: none;
+  width: 100%;
+  height: 100%;
+}
+.e-panel-body2{
+  position: fixed;
+  left: -1000rpx;
+}
+.e-panel-body3{
+  height: 800rpx;
+  /* width: 500rpx; */
+  /* background-color: #F22 */
+}
+.top-cell{
+  /* margin-top: 300rpx; */
+}

@@ -1,0 +1,61 @@
+<!--index.wxml-->
+<view>
+    <view class="sav on" >
+        <input class='inputBox' data-name='Num' placeholder='请输入手机号' type="number" bindinput='updateValue' value='{{Num}}' id='{{index}}'></input>
+        <button class='btn' bindtap='showText' >
+            <icon type="search" size="30rpx" color="#FFFFFF" />
+        </button>
+    </view>
+    
+    <view class='userInfo'  hidden='{{!showOn}}'>
+        <!-- <view class='list'>
+            {{Num}}
+        </view> -->
+        <view class='list' style='padding-bottom:40rpx;text-align: left'>
+            <span style='color: #060606;'>用户信息</span>
+            <text class='icon-user icon-close'>：{{name}}</text>
+            <text class='icon-mobile iconfont'>：{{phone}}</text>
+            <text class='icon-Dollar-circle-fill iconfont' style='color: #1dd1a1;'>余额：{{balance}}</text>
+            <text style='color: #feca57;'>累计充值：{{debit}}</text>
+            <text style='color: #ee5253;'>累计消费：{{lender}}</text>
+        </view>
+        <view class='xhList' >
+            <span style='text-align: center;' >用户喜好</span>
+            <view  wx:for="{{xiHaoList}}" class="lable {{dIndex==item.id?'on':''}}">
+                <view class='text' bindtap='showDelete' data-id='{{item.id}}'>{{item.xiHao}}</view>
+                <view class='icon-close iconfont' data-xh='{{item.xiHao}}' data-index='{{index}}' data-id='{{item.id}}' bindtap='deleteXihao' wx-if='{{dIndex==item.id}}'></view>
+            </view>
+            <view class='ps'>
+                <view class='icon-plus-circle iconfont push' bindtap='addXihao'></view>
+                <input class='' data-name='xiHao' placeholder='请输入喜好'  bindinput='updateValue' value='{{xiHao}}' ></input>
+            </view>
+            
+        </view>
+        <view class='list' wx-if="{{pgData.length>0}}">
+            <span style='text-align: center;'>常点服务</span>
+            <canvas canvas-id="pieCanvas" disable-scroll="true" class="piccanvas"></canvas>
+        </view>
+        <view class='list' wx-if="{{tcData.length>0}}">
+            <span style='text-align: center;'>常点茶水</span>
+            <view>
+                <!-- <view class='left'>
+                    <text  wx:for='{{tcData}}' wx:key="key" wx:for-item='item'></text>
+                </view> -->
+                <view class='right'>
+                    <text wx:for='{{tcData}}' wx:key="key" wx:for-item='item' style='width:{{6*item.hold}}rpx'>{{item.menu}}</text>
+                </view>
+            </view>
+        </view>
+        <view class='list' wx-if="{{jisData.length>0}}">
+            <span style='text-align: center;'>常点技师</span>
+            <view>
+                <!-- <view class='left'>
+                    <text  wx:for='{{jisData}}' wx:key="key" wx:for-item='item'></text>
+                </view> -->
+                <view class='right'>
+                    <text wx:for='{{jisData}}' wx:key="key" wx:for-item='item' style='width:{{5*item.hold}}rpx;background-color: #1dd1a1;'>{{item.techId}}号</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,95 @@
+.cui-cells{
+  background-color: #fff;
+  padding: 30rpx;
+}
+.cui-cell{
+  padding: 20rpx;
+}
+.cui-txt{
+  color: #2971f9;
+  font-size: 26rpx;
+  margin-bottom: 20rpx;
+}
+.cui-form .weui-input{
+  height: 100rpx;
+  width: 100%;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  font-size: 30rpx;
+  padding: 0 15px;
+  box-sizing: border-box
+}
+.weui-cui-button{
+  border: 0;
+  width: 500rpx;
+  height: 80rpx;
+  background-color: #2971f9;
+  color: #fff;
+  padding: 0;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  border-radius: 40rpx;
+  margin-top: 30rpx;
+}
+.cui-flex{
+  padding: 40rpx 0;
+  overflow: hidden;
+  text-align: center
+}
+.cui-menu .c-icon{
+  width: 120rpx;
+  height: 120rpx;
+  margin: 0 auto;
+  background-color: #dddddd;
+  border-radius: 120rpx;
+  text-align: center;
+  line-height: 120rpx;
+}
+.cui-menu .c-icon .iconfont{
+  color: #aaaaaa;
+  font-size: 60rpx;
+}
+.cui-menu .text{
+  font-size: 26rpx;
+  color: #666;
+  margin-top: 20rpx;
+}
+.cui-menu.active .c-icon{
+  background: -webkit-linear-gradient(top, #2971f9 , #40a6ff); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(top, #2971f9 , #40a6ff); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(top, #2971f9 , #40a6ff); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to top, #2971f9 , #40a6ff); /* 标准的语法 */
+  color: #fff;
+}
+.cui-menu.active .c-icon .iconfont{
+  color: #fff;
+}
+.cui-menu.active .text{
+  color: #2971f9;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

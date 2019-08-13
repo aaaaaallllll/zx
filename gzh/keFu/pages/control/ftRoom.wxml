@@ -1,0 +1,90 @@
+<!--pages/control/ftRoom.wxml-->
+<view class="header">
+    <view class="header-left" bindtap="toStatu2" data-name="2">
+        <!-- <text class="icon-biaoge iconfont {{showIndex==2?'in':''}}"></text> -->
+        <text class="iconfont icon-fangdajing"></text>
+        <input class="seek" data-name='roomName' placeholder='请输入房间号' bindinput='updateValue' value='{{roomName}}' placeholder-style="color:#FFF"></input>
+    </view>
+    <view class="header-center" >
+        <view class="header-btn" style="left:28rpx">
+            <text class="{{showIndex==0?'on':''}}" bindtap="toStatu" data-name="0">全部</text>
+        </view>
+        <view class="header-btn" style="left:145rpx">
+            <text class="{{showIndex==1?'on':''}}" bindtap="toStatu" data-name="1">有客</text>
+            <!-- <span class="{{showIndex==1?'spanOn':''}}"></span> -->
+        </view>
+        <view class="header-btn" style="left:253rpx">
+            <text class="{{showIndex==2?'on':''}}" bindtap="toStatu" data-name="2">空房</text>
+            <!-- <span class="{{showIndex==2?'spanOn':''}}"></span> -->
+        </view>
+        <span style="left:{{dtLeft}}rpx"></span>
+    </view>
+</view>
+<view class="kong"></view>
+<view class="content" wx-if="{{showIndex==0}}">
+    <view class="box" wx:for="{{roomData}}" wx:key="index" style="color:{{item.color}}">
+      <view class="box-top" style="background-color:{{item.color}}">
+          <text class="icon-fangjian2 iconfont" style="font-size: 20rpx;" ></text>
+          <text>2</text>
+      </view>
+      <view class="box-content">
+          <view class="back"></view>
+          <view class="hang">
+              <view class="hang-ge" style="left:50rpx;" wx:if="{{item.techId!=''}}">
+                  <text style="font-size:33rpx">25°C</text>
+                  <text style="font-size:14rpx">当前温度</text>
+                  
+              </view>
+          </view>
+          <view class="hang">
+              <view class="hang-ge" style="left:10rpx;">
+                  <text class="iconfont icon-mingliangmoshi-" style="font-size: 40rpx;"></text>
+                  <text style="font-size:14rpx">灯光-明亮</text>
+              </view>
+              <view class="hang-ge" style="right:12rpx;">
+                  <text class="iconfont icon-fangkerenshu" style="font-size: 40rpx;"></text>
+                  <text style="font-size:14rpx">进客模式</text>
+              </view>
+          </view>
+      </view>
+    </view>
+</view>
+
+<view class="content" wx-if="{{showIndex==1}}">
+2
+    <!-- <view class="box" wx:for="{{jSData}}" wx:key="index">
+      <view class="box-top" style="background-color:{{item.color}}">
+          <text class="icon-jishi iconfont" style="font-size: 20rpx;"></text>
+          <text>{{item.id}}</text>
+      </view>
+      <view class="box-content">
+          <view class="hang">
+              <view class="hang-ge" style="left:10rpx;color:blue" wx-if="{{item.gender=='男'}}">
+                  <text class="iconfont icon-nanxing" style="font-size: 24rpx;color:blue" ></text>
+                  <text>男</text>
+              </view>
+              <view class="hang-ge" style="left:10rpx;color:red" wx-if="{{item.gender=='女'}}">
+                  <text class="iconfont icon-xingbie-nv" style="font-size: 24rpx;color:red" ></text>
+                  <text>女</text>
+              </view>
+              <view class="hang-ge" style="right:10rpx;">
+                  <text class="iconfont icon-kongxian" style="font-size: 30rpx;"></text>
+                  <text>{{item.techStatus}}</text>
+              </view>
+          </view>
+          <view class="hang">
+              <view class="hang-ge" style="left:10rpx;" wx-if="{{item.startTime}}">
+                  <text class="iconfont icon-kaishishijian" style="font-size: 24rpx;"></text>
+                  <text>{{item.startTime}}</text>
+              </view>
+              <view class="hang-ge" style="right:10rpx;" wx-if="{{item.leftTime}}">
+                  <text class="iconfont icon-shengyushijian" style="font-size: 34rpx;"></text>
+                  <text>{{item.leftTime}}min</text>
+              </view>
+          </view>
+      </view>
+    </view> -->
+    
+</view>
+
+

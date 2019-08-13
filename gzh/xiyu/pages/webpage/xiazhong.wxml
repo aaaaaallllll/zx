@@ -1,0 +1,36 @@
+<view class="inner-cells">
+  <view class='card-cell' wx:for="{{data}}">
+    <view class='card-header'>{{item.createTime}}</view>
+    <view class='card-body'>
+      <view class='card-list'>
+        <view class='card-item'>
+          <text class='iconfont icon-dianpu'></text>
+          <text class='text-blue'>{{companyName}}</text>
+        </view>
+        <view class='card-item'>
+          <text class='iconfont icon-paizhao'></text>
+          <text class='text-gray'>客人锁牌：{{item.seatText}}</text>
+        </view>
+        <view class='card-item'>
+          <text class='iconfont icon-weizhi'></text>
+          <text class='text-gray'>位置点：</text>{{item.roomNo}}</view>
+        <view class='card-item'>
+          <text class='iconfont icon-fuwu'></text>
+          <text class='text-gray'>服务项目：</text>{{item.menu}}
+          <navigator class='text-green'>轮钟</navigator>
+        </view>
+        <view class='card-item'>
+          <text class='iconfont icon-tubiaoku-'></text>
+          <text class='text-gray'>服务时长：</text>{{item.timeSpan}}分</view>
+        <view class='card-item'>
+          <text class='iconfont icon-naozhong'></text>
+          <text class='text-gray'>上钟时间：</text>{{item.createTime}}</view>
+        <view class='card-item'>
+          <text class='iconfont icon-naozhong'></text>
+          <text class='text-gray'>下钟时间：</text>{{item.modifyTime}}</view>
+      </view>
+    </view>
+  </view>
+  
+  <view bindtap='xiazhong' class='weui-btn-default'>下钟</view>
+</view>

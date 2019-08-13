@@ -1,0 +1,24 @@
+<view>
+    <view class='btn'>
+        <text class="{{showBox==1?'on':'off'}}" bindtap='show' data-name="1" style='border-bottom-left-radius: 10rpx;border-top-left-radius: 10rpx;'>房间状态</text>
+        <text class="{{showBox==2?'on':'off'}}" bindtap='show' data-name="2" style='border-bottom-right-radius: 10rpx;border-top-right-radius: 10rpx;'>技师状态</text>
+    </view> 
+    <view class='room' wx-if="{{showBox==1}}">
+          <view class="box {{showBox==1?'box-show':''}}" wx:for='{{roomData}}' wx:key="key" wx:for-item='item'  id='{{item.name}}' style='background-color:{{item.color}}'>
+              <text class='h3'>房间号：{{item.name}}</text>
+              <text>服务技师：{{item.techId?item.techId:'无'}}</text>
+              <text>开始时间：{{item.qiZhongTime?item.qiZhongTime:'无'}}</text>
+              <text >剩余时间：{{item.leftTime}}分钟</text>
+          </view>
+    </view> 
+    <view class='room' wx-if="{{showBox==2}}">
+          <view class="box {{showBox==2?'box-show':''}}" wx:for='{{jSData}}' wx:key="key" wx:for-item='item' style='height: 240rpx;'  id='{{item.id}}'>
+              <text class='h3'>技师：{{item.id}}</text>
+              <text class='jis'>性别：{{item.gender}}</text>
+              <text class='jis'>开始时间：{{item.startTime?item.startTime:'无'}}</text>
+              <text class='jis'>剩余时间：{{item.leftTime?item.leftTime:'0'}}分钟</text>
+              <text class='jis' style='color:red'>状态:{{item.techStatus}}</text>
+          </view>
+    </view> 
+</view>
+<tagger/>

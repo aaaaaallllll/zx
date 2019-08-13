@@ -1,0 +1,92 @@
+/* pages/myStore/delete.wxss */
+@import'../../wxss/iconfont.wxss';
+.top{
+  margin-top: 60rpx
+}
+.shop{
+  width: 100%;
+  text-align: center;
+  height: 90rpx;
+  margin-top: 10rpx;
+  font-size: 30rpx;
+  line-height: 100rpx;
+  box-sizing: border-box;
+   /* border: 1rpx solid #CCCCCC; */
+}
+.shop>view{
+   /* margin-top: 10rpx; */
+  width: 700rpx;
+  height: 90rpx;
+  background-color: #FFFFFF;
+  display: inline-block;
+  /* border-top-left-radius: 50rpx;
+  border-bottom-left-radius: 50rpx; */
+  border-radius: 50rpx;
+  font-size: 30rpx;
+  /* overflow: hidden; */
+  box-sizing: border-box;
+  color:#5c5c5c;
+  transition: background-color 0.6s
+}
+.shop>view span{
+  box-sizing: border-box;
+  overflow: hidden;
+  display: inline-block;
+  width: 600rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+.shop text{
+  /* font-size: 20rpx; */
+  color: #FFF;
+  width: 70rpx;
+  height: 70rpx;
+  display: inline-block;
+  /* border: 1rpx solid rgb(155, 155, 155); */
+  border-radius: 50rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+  /* padding: 2rpx; */
+  float: left;
+  margin: 10rpx;
+  line-height: 70rpx;
+  background-color: rgb(223, 223, 223);
+  
+
+}
+.btn{
+  height: 90rpx;
+  width: 700rpx;
+  position: fixed;
+  bottom: 20rpx;
+  left: 50%;
+  margin-left: -350rpx;
+  font-size: 30rpx;
+  background-color: #e74c3c;
+  z-index: 99;
+  border-radius: 50rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+  line-height: 90rpx;
+  color: #FFF;
+  text-align: center;
+  box-shadow: 0 0 5rpx #AAAAAA
+}
+.top>.shop>.on{
+  background-color: #e74c3c;
+  color: #FFF;
+}
+.top>.shop>.on .icon-close-circle-fill{
+  background-color: #e74c3c;
+  font-size: 72rpx;
+  overflow: hidden;
+  float: right;
+  /* text-align: left */
+}
+.kong{
+  font-size: 30rpx;
+  color: #AAAAAA;
+  margin: 300rpx auto;
+  width: 100%;
+  text-align: center
+}

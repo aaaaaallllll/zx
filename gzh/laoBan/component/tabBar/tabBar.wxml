@@ -1,0 +1,14 @@
+<!--component/tabBar/tabBar.wxml-->
+  <view class='nav'>
+      <view class="nav-text {{showIndex==0?'on':''}}" bindtap='router' data-name="0">
+        <text class='iconfont icon-shuju'></text>
+        <text>数据</text>
+      </view>
+       <view class="nav-float {{showIndex==1?'on':''}}" bindtap='router' data-name="1">
+        <text class='iconfont icon-xiaoshoujiqiao'></text>
+      </view>
+       <view class="nav-text {{showIndex==2?'on':''}}" bindtap='router' data-name="2">
+        <text class='iconfont icon-yingyongguanli'></text>
+        <text>管理</text>
+      </view>
+  </view>

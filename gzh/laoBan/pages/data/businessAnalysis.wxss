@@ -1,0 +1,11 @@
+.e-panel-body2{
+  position: fixed;
+  left: -1000rpx;
+}
+ec-canvas{
+  z-index: 80;
+}
+.kong{
+  width: 100%;
+  height: 500rpx;
+}

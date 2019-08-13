@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "业绩统计",
+    "usingComponents": {
+      "popnav": "/component/popnav",
+      "van-picker": "/miniprogram_npm/vant-weapp/picker/index",
+      "van-popup": "/miniprogram_npm/vant-weapp/popup/index",
+      "van-stepper": "/miniprogram_npm/vant-weapp/stepper/index",
+      "van-datetime-picker": "/miniprogram_npm/vant-weapp/datetime-picker/index",
+      "getdata": "/component/getdata",
+      "getdatatime": "/component/getdatatime"
+    }
+}

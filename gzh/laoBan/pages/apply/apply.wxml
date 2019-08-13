@@ -1,0 +1,22 @@
+<!--pages/apply/apply.wxml-->
+<view class='top'>
+  <view class='inp'>
+      <text class='iconfont icon-mobile'></text>
+      <input data-name='phone' placeholder='请输入手机号' type="number" bindinput='updateValue' value='{{phone}}'></input>
+      <text class='iconfont icon-close-circle-fill fr' bindtap='empty'></text>
+  </view> 
+  <view class='inp'>
+      <text class='iconfont icon-lock'></text>
+      <input data-name='pwd' placeholder='请输入密码' type="password" bindinput='updateValue' value='{{pwd}}' wx-if="{{!showPass}}"></input>
+      <input data-name='pwd' placeholder='请输入密码'  bindinput='updateValue' value='{{pwd}}' wx-if="{{showPass}}"></input>
+      <text class='iconfont icon-yincang fr' bindtap='showPwd' wx-if="{{!showPass}}"></text>
+      <text class='iconfont icon-xianshi fr' bindtap='showPwd' wx-if="{{showPass}}"></text>
+  </view> 
+  <!-- <view class=' a' >
+      <text class='iconfont icon-yingyongguanli'></text>
+      <input class='yzm' placeholder='请输入验证码' type="number" bindinput='updateValue' value='{{yzm}}' data-name='yzm'></input>
+      <view class='smsBtn' bindtap='getSms' wx-if="{{djs==0}}">发送验证码</view> 
+      <view class='smsBtn' wx-if="{{djs!=0}}" style='background-color: #CCCCCC'>发送中 {{djs}} s</view> 
+  </view>    -->
+</view>
+<view class='btn' bindtap='sub'>注册</view>

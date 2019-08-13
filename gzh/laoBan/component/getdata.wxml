@@ -1,0 +1,3 @@
+<view class='weui-filter justify mt20'>
+  <view wx:for="{{typelist}}" data-id='{{index}}' bindtap='checkdata' wx:key="{{index}}" class="filter-item {{type==index?'active':''}}">{{item.title}}</view>
+</view>

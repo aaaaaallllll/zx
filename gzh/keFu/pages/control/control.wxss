@@ -1,0 +1,492 @@
+/* pages/control/control.wxss */
+@font-face {
+  font-family: 'iconfont';  /* project id 1291482 */
+  src: url('//at.alicdn.com/t/font_1291482_tm0ww1fs2o.eot');
+  src: url('//at.alicdn.com/t/font_1291482_tm0ww1fs2o.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1291482_tm0ww1fs2o.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1291482_tm0ww1fs2o.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1291482_tm0ww1fs2o.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1291482_tm0ww1fs2o.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* color: rgb(173, 173, 173); */
+}
+
+.icon-116:before {
+  content: "\e671";
+}
+
+.icon-icon1:before {
+  content: "\e693";
+}
+
+.icon-mangluzhong-copy:before {
+  content: "\e616";
+}
+
+.icon-229:before {
+  content: "\e648";
+}
+
+.icon-bofang:before {
+  content: "\e646";
+}
+
+.icon-gou:before {
+  content: "\e636";
+}
+
+.icon-jishi:before {
+  content: "\e614";
+}
+
+.icon-kaishishijian:before {
+  content: "\e626";
+}
+
+.icon-xingbie-nv:before {
+  content: "\e620";
+}
+
+.icon-fangdajing:before {
+  content: "\e602";
+}
+
+.icon-laba:before {
+  content: "\e627";
+}
+
+.icon-xiuxi:before {
+  content: "\e6dc";
+}
+
+.icon-fangjian-:before {
+  content: "\e6c2";
+}
+
+.icon-shangxiasaofeng:before {
+  content: "\e60a";
+}
+
+.icon-zuoyousaofeng:before {
+  content: "\e60d";
+}
+
+.icon-kongtiao:before {
+  content: "\e607";
+}
+
+.icon-icon129:before {
+  content: "\e61e";
+}
+
+.icon-yinliang:before {
+  content: "\e61f";
+}
+
+.icon-fuwu2:before {
+  content: "\e601";
+}
+
+.icon-8-copy:before {
+  content: "\e615";
+}
+
+.icon-wenjianjia:before {
+  content: "\e610";
+}
+
+.icon-fangjian2:before {
+  content: "\e62a";
+}
+
+.icon-kuozhan:before {
+  content: "\e64c";
+}
+
+.icon-xingzhuangkaobei:before {
+  content: "\e60c";
+}
+
+.icon-daidasao:before {
+  content: "\e641";
+}
+
+.icon-bottom:before {
+  content: "\e600";
+}
+
+.icon-biaoge:before {
+  content: "\e696";
+}
+
+.icon-qingjingmoshi:before {
+  content: "\e609";
+}
+
+.icon-nanxing:before {
+  content: "\e61c";
+}
+
+.icon-yinle1:before {
+  content: "\e76c";
+}
+
+.icon-b_icon__lamplight:before {
+  content: "\e70c";
+}
+
+.icon-fengsu:before {
+  content: "\e611";
+}
+
+.icon-fangkerenshu:before {
+  content: "\e666";
+}
+
+.icon-fangjian:before {
+  content: "\e650";
+}
+
+.icon-baoxiang:before {
+  content: "\e647";
+}
+
+.icon-quanbuzhankai:before {
+  content: "\e697";
+}
+
+.icon-yinle:before {
+  content: "\e6af";
+}
+
+.icon-gift:before {
+  content: "\e603";
+}
+
+.icon-gou-:before {
+  content: "\e6b3";
+}
+
+.icon-fangjian1:before {
+  content: "\e608";
+}
+
+.icon-jian:before {
+  content: "\e71b";
+}
+
+.icon-kongxian:before {
+  content: "\e6c3";
+}
+
+.icon-fanhui:before {
+  content: "\e65b";
+}
+
+.icon-icon-test:before {
+  content: "\e6b0";
+}
+
+.icon-zantingtingzhi:before {
+  content: "\e674";
+}
+
+.icon-mingliangmoshi-:before {
+  content: "\e6a9";
+}
+
+.icon-kongfang:before {
+  content: "\e60f";
+}
+
+.icon-shengyushijian:before {
+  content: "\e60b";
+}
+
+page{
+  background-color: #E3F2FF;
+}
+/* 房间信息 */
+.room{
+  width:710rpx;
+  height:300rpx;
+  background:linear-gradient(180deg,rgba(40,120,255,1) 0%,rgba(54,164,255,1) 100%);
+  border-radius:8px;
+  margin: 26rpx auto;
+  position: relative;
+}
+.roomName{
+  color: #FFF;
+  font-size: 24rpx;
+  position: absolute;
+  right: 20rpx;
+  top:20rpx;
+  display: flex;
+}
+.roomName>text{
+  margin-left: 12rpx
+}
+.roomCenter{
+  margin: 0 auto;
+  padding-top: 15rpx;
+  box-sizing: border-box;
+  width: 500rpx;
+  text-align: center;
+  color: #FFF;
+  font-size: 32rpx;
+  display: flex;
+  justify-content: center;
+}
+.roomCenter>image{
+  display: inline-block;
+  height: 56rpx;
+  width: 112rpx;
+  position: relative;
+  top: 62rpx;
+}
+.wdInfo{
+  display: inline-block;
+}
+.wdInfo text{
+  display: block;
+}
+.roomBottom{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: #FFF;
+}
+/* 模式导航栏 */
+.msInfo{
+  display: inline-block;
+  position: relative;
+  margin: 0 110rpx;
+  font-size: 24rpx;
+  top: -24rpx;
+}
+.msInfo text{
+  display: block;
+}
+.ctRoom{
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+}
+.nav{
+  width: 154rpx;
+  height: 704rpx;
+  box-sizing: border-box;
+}
+
+.nav .btn{
+  height: 176rpx;
+  width: 154rpx;
+  font-size:28rpx;
+  color: rgb(153, 153, 153);
+  /* line-height: 88rpx; */
+  padding-top: 30rpx;
+  box-sizing: border-box;
+  background-color: #FFF;
+}
+.btn text{
+  display: block;
+  text-align: center;
+  height: 40rpx;
+  line-height: 40rpx;
+
+}
+.btn text:first-child{
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.nav .btnOn{
+  background-color: rgba(255, 255, 255, 0);
+  color: #2878FF;
+}
+/* 控制页面 */
+.control{
+  height: 704rpx;
+  width: 100%;
+  padding: 0 20rpx;
+  /* background-color: #BBB; */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+/* 灯光模式 */
+.moshi{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.moshi text{
+  width:172rpx;
+  /* width:86px; */
+  height:80rpx;
+  border-radius:8rpx;
+  border:4rpx solid rgba(40,120,255,1);
+  text-align: center;
+  line-height: 72rpx;
+  font-size: 32rpx;
+  color: #2878FF;
+  margin-bottom: 16rpx;
+  box-sizing: border-box;
+}
+.moshi .active{
+  background:linear-gradient(180deg,rgba(54,164,255,1) 0%,rgba(40,120,255,1) 100%);
+  color: #FFF;
+  border:0 solid rgba(40,120,255,1);
+  line-height: 80rpx;
+}
+/* 灯样式 */
+.deng{
+  height: 512rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 30rpx 70rpx;
+  box-sizing: border-box;
+}
+.deng_box{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.deng_box>text{
+  width:144rpx;
+  height:56rpx;
+  border-radius:2rpx;
+  font-size:32rpx;
+  text-align: center;
+  line-height: 56rpx;
+  color: #2878FF;
+  margin-bottom: 2rpx;
+  box-sizing: border-box;
+}
+.deng_box>.active{
+  border:4rpx solid rgba(40,120,255,1);
+  line-height: 48rpx;
+}
+.deng_length{
+  height:28rpx;
+  width:100%;
+  background:linear-gradient(180deg,rgba(54,164,255,1) 0%,rgba(114,190,255,1) 100%);
+  border-radius:2rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+}
+.deng_length>text{
+  width:76rpx;
+  height:16rpx;
+  background:rgba(252,255,0,1);
+  filter:blur(10rpx);
+}
+/* 情景模式 */
+.qjms{
+  width: 100%;
+  height: 100%;
+  padding: 20rpx 40rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+}
+.qj_box{
+  width:200rpx;
+  height:200rpx;
+  border-radius:8rpx;
+  border:4rpx solid rgba(40,120,255,1);
+  margin-bottom: 30rpx;
+  box-sizing: border-box;
+  font-size: 32rpx;
+  color: #2878FF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.qjms .active{
+  background:linear-gradient(180deg,rgba(54,164,255,1) 0%,rgba(40,120,255,1) 100%);
+  color: #FFF;
+  border:0 solid rgba(40,120,255,1);
+}
+.qj_box text:first-child{
+  font-size: 80rpx;
+}
+/* 背景音乐 */
+.music_top{
+  width: 100%;
+  text-align: center;
+  padding-top: 42rpx;
+}
+.music_right{
+  margin: 0 auto;
+  display: inline-block;
+}
+.music_left{
+  display: inline-block;
+  height: 124rpx;
+  line-height: 124rpx;
+  color: #2878FF;
+  position: relative;
+  top:-62rpx;
+  left: -20rpx;
+  font-size: 30rpx;
+}
+.music_top_top{
+  height: 84rpx;
+  width: 260rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+}
+.music_top_top text{
+  font-size: 28rpx;
+  color: #2878FF;
+}
+.music_top_top view{
+  font-size: 44rpx;
+  color: #FFF;
+  width:180rpx;
+  height:84rpx;
+  line-height: 84rpx;
+  text-align: center;
+  background:linear-gradient(180deg,rgba(54,164,255,1) 0%,rgba(40,120,255,1) 100%);
+  border-radius:16rpx;
+}
+.music_top_bottom{
+  font-size:24rpx;
+  text-align: center;
+  color: #2878FF;
+  margin: 10rpx auto 0;
+  height: 30rpx;
+  line-height: 30rpx;
+}
+.music_bottom{
+  width:448rpx;
+  height:446rpx;
+  margin: 0 auto;
+  border-radius: 223rpx;
+}
+.music_bottom image{
+  width:448rpx;
+  height:446rpx;
+  border-radius: 223rpx;
+  /* box-shadow:0px 0px 4px 0px rgba(40,120,255,1); */
+}

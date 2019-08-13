@@ -1,0 +1,69 @@
+<!--pages/clock/handState.wxml-->
+<view>
+    <view class='btn'>
+        <text   style='border-bottom-left-radius: 10rpx;border-top-left-radius: 10rpx;'>表格界面</text>
+        <text   style='border-bottom-right-radius: 10rpx;border-top-right-radius: 10rpx;'>图形界面</text>
+    </view>
+    <view class='btn gddw'>
+        <text class="{{showBox==1?'on':'off'}}" bindtap='show' data-name="1" style='border-bottom-left-radius: 10rpx;border-top-left-radius: 10rpx;'>表格界面</text>
+        <text class="{{showBox==2?'on':'off'}}" bindtap='show' data-name="2" style='border-bottom-right-radius: 10rpx;border-top-right-radius: 10rpx;'>图形界面</text>
+    </view>  
+    <view class='room' wx-if="{{showBox==1}}">
+      <scroll-view scroll-x="true" class='scrollClass' bindscroll='getLeft'  enable-back-to-top="true" >
+        <view class='table'>
+          <!-- 表头 -->
+          <view class='table_header'>
+            <view class='tc zhon'id='title' >
+              台位类型
+            </view>
+            <view wx:for="{{shopTitles}}" wx:key='index' class="tc {{item.list.length>0?'':'zhon'}}">
+              <view class='tt'>{{item}}</view>
+              <!-- <view class='td' wx:for="{{item.list}}">{{item}}</view> -->
+            </view> 
+          </view>
+          <!-- 表头固定 -->
+          <view class='table_header one' style="left:13rpx;top:100rpx" wx-if="{{scrollTop+50>offsetTop}}">
+            <!-- <view class='tc zhon one2'>
+              台位类型
+            </view> -->
+            <view class='tc zhon'>
+              台位类型
+            </view>
+            <view wx:for="{{shopTitles}}" wx:key='index' class="tc {{item.list.length>0?'':'zhon'}}" >
+              <view class='tt'>{{item}}</view>
+              <!-- <view class='td' wx:for="{{item.list}}">{{item}}</view> -->
+            </view> 
+          </view>
+          <!-- 内容 -->
+          <view class='table_body'>
+            <view class='tr one'style="top:{{offsetTop-scrollTop}}px;color:#BBB" >
+              <!-- 固定门店 -->
+              <!-- <view class='td' style='background: linear-gradient(to right,#0984e3,#178feb);color:#FFF;border:none'>台位类型</view> -->
+            </view>
+            <view class='tr' wx:for='{{gradeData}}' wx:key='index'>
+              <!-- 固定列头 -->
+              <!-- <view class='td one' style="top:{{offsetTop+(40*(index+1))-scrollTop}}px;color:#2d3436" >{{item.typeName}}</view> -->
+              <view class='td'>{{item.typeName}}</view>
+              <view class='td'>{{item.keYong}}</view>
+              <view class='td'>{{item.zaiYong}}</view>
+              <view class='td'>{{item.yuDing}}</view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view> 
+    <view class='room' wx-if="{{showBox==2}}">
+        <view class="box" wx:for="{{handList}}" wx:key="index">
+          <view class="box-ke">
+            <view class="box-left" style="background-color:{{item.statusColor}}">
+              <text>牌号：{{item.text}}</text>
+              <text>消费：{{item.expense}}</text>
+            </view>
+            <view class="box-right" style="line-height:{{item.type.length==2?'33':'22'}}rpx;background-color:{{item.typeColor}}">
+              <text >{{item.type}}</text>
+            </view>
+          </view>
+        </view>
+    </view> 
+</view>
+<tagger/>

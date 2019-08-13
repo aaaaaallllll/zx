@@ -1,0 +1,21 @@
+<!--pages/data/hand.wxml-->
+<!-- <view class='btn'>
+    <text>图表</text>
+    <text>信息</text>
+</view> -->
+<view class='hondList'>
+    <view class=' top'>
+        <text>牌号</text>
+        <text>类型</text>
+        <text>状态</text>
+        <text>已消费</text>
+    </view>
+    <!-- 内容 -->
+    <view class='hondItem' wx:for='{{handList}}' wx:key="index" wx:for-item='item'>
+        <text>{{item.text}}</text>
+        <text>{{item.type}}</text>
+        <text>{{item.status}}</text>
+        <text>{{item.expense}}</text>
+    </view>
+</view>
+<tagger/>

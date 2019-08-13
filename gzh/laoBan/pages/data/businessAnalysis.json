@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "ec-canvas": "../../ec-canvas/ec-canvas",
+    "getdata7": "/component/getdata7",
+    "getdatatime": "/component/getdatatime",
+    "tagger": "/component/toggle/toggle"
+  },
+  "navigationBarTitleText": "营业报表分析"
+}

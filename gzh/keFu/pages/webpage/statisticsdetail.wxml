@@ -1,0 +1,55 @@
+<view class="search-cells">
+  <view class='tips text-blue'>查询日期是以店内的营业时段的日期为准，非自然日时段</view>
+  <view class='form-inner'>
+    <view class='form-row' bindtap='showtimebegin'>
+      <view class="picker">
+        <text class='text-gray'>开始日期：</text>{{begin}}
+      </view>
+      <text class='iconfont icon-rili'></text>
+    </view>
+    <view class='form-row' bindtap='showtimeend'>
+      <view class="picker">
+        <text class='text-gray'>结束时间：</text>{{end}}
+      </view>
+      <text class='iconfont icon-rili'></text>
+    </view>
+    <view class='form-row'>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="picker">
+          <text class='text-gray'>项目分类：</text>{{type}}
+        </view>
+      </picker>
+      <text class='iconfont icon-arrDown'></text>
+    </view>
+    <button bindtap='getdetail' class='weui-btn weui-cui-button'>查询</button>
+  </view>
+</view>
+<view class='table-cells'>
+  <!-- <view class='table-hd justify'>
+    <view class='table-tit'>共计金额：<text class='text-red'>￥2870.0</text></view>
+    <view class='text'>共计：5个钟</view>
+  </view> -->
+  <nolist wx:if="{{list.length==0}}"></nolist>
+  <view class='table-panel' wx:if="{{listdata.length!=0}}">
+    <scroll-view class="scroll-header" scroll-y scroll-x bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+      <view class='table'>
+        <view class='thead'>
+          <view class='tr'>
+            <view class='td' wx:for="{{listtitle}}">{{item}}</view>
+          </view>
+        </view>
+        <view class='tbody'>
+          <view class='tr' wx:for="{{listdata}}">
+            <view class='td' wx:for="{{item}}" wx:for-index="idx" wx:for-item="itemName">{{itemName}}</view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<van-popup show="{{ showbegin }}" position="bottom" overlay="{{ true }}" close-on-click-overlay="{{true}}" bind:close="hidetimebegin">
+  <van-datetime-picker type="datetime" bind:cancel="hidetimebegin" value="{{ begintime }}" bind:confirm="checkbegin" />
+</van-popup>
+<van-popup show="{{ showend }}" position="bottom" overlay="{{ true }}" close-on-click-overlay="{{true}}" bind:close="hidetimeend">
+  <van-datetime-picker type="datetime" bind:cancel="hidetimeend" value="{{ endtime }}" bind:confirm="checkend" />
+</van-popup>

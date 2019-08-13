@@ -1,0 +1,17 @@
+<view class='inner-wrap'>
+  <nolist show="{{data.length==0}}"></nolist>
+  <view class='remind-cell' wx:key="{{index}}" wx:for="{{data}}">
+    <view class='remind-time'>{{item.time}}</view>
+    <view class="weui-form-preview">
+        <view class="weui-form-preview__bd">
+          {{item.menu}}项目(客户锁牌号为{{item.seat}};位置点: {{item.room}})服务时间已开始，类型:{{item.type}},派遣时间:{{item.time}}，请前去客户位置点接单上钟。</view>
+        <view class="weui-form-preview__ft">
+            <text class="weui-form-preview__btn weui-form-preview__btn_default" data-id="{{item.id}}" bind:tap="quXiaoTechMsg">取消</text>
+            <text type="submit" class="weui-form-preview__btn weui-form-preview__btn_primary" data-id="{{item.id}}" bind:tap="shangZhong">上钟</text>
+        </view>
+    </view>
+  </view>
+    <view wx:if="{{isEmypt}}" class='noMore'>
+    没有更多内容了
+  </view>
+</view>

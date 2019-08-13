@@ -1,0 +1,40 @@
+.weui-cells{
+  background-color: #fff;
+  margin-bottom: 30rpx;
+}
+.cell-icon .iconfont{
+  color: #999;
+}
+.weui-buttons{
+  font-size: 0;
+}
+.weui-buttons .weui-btn{
+  display: inline-block;
+  padding: 0 30rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  font-size: 24rpx;
+  border-radius: 50px;
+  margin: 0;
+  margin-left: 10rpx;
+}
+.weui-buttons .weui-btn-add{
+  color: #15d1b8;
+  border:1px solid #15d1b8;
+}
+
+.weui-buttons .weui-btn-blue{
+  color: #fff;
+  border:1px solid #2971f9;
+  background-color: #2971f9;
+}
+
+
+
+
+
+
+
+
+
+

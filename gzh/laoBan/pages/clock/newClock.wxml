@@ -1,0 +1,132 @@
+<!--pages/clock/newClock.wxml-->
+<view class="header">
+    <view class="header-left" bindtap="toStatu2" data-name="2">
+        <text class="icon-biaoge iconfont {{showIndex==2?'in':''}}"></text>
+    </view>
+    <view class="header-center">
+        <text class="{{showIndex==0||showIndex==2?'on':''}}" bindtap="toStatu" data-name="0">房间状态</text>
+        <text class="{{showIndex==1?'on':''}}" bindtap="toStatu" data-name="1">技师状态</text>
+    </view>
+</view>
+<view class="kong"></view>
+<view class="content" wx-if="{{showIndex==0}}">
+    <view class="box" wx:for="{{roomData}}" wx:key="index">
+      <view class="box-top" style="background-color:{{item.color}}">
+          <text class="icon-fangjian2 iconfont" style="font-size: 20rpx;" ></text>
+          <text>{{item.name}}</text>
+      </view>
+      <view class="box-content" >
+          <view class="back" style="background-color:{{item.color}};opacity: 0.4"></view>
+          <view class="hang">
+              <view class="hang-ge" style="left:50rpx;" wx:if="{{item.techId!=''}}">
+                  <text class="iconfont icon-jishi " style="font-size: 30rpx;"></text>
+                  <text>{{item.techId}}</text>
+              </view>
+          </view>
+          <view class="hang">
+              <view class="hang-ge" wx:if="{{item.qiZhongTime}}" style="left:10rpx;">
+                  <text class="iconfont icon-kaishishijian" style="font-size: 30rpx;"></text>
+                  <text>{{item.qiZhongTime}}</text>
+              </view>
+              <view class="hang-ge" wx:if="{{item.leftTime!=0}}" style="right:12rpx;">
+                  <text class="iconfont icon-shengyushijian" style="font-size: 40rpx;"></text>
+                  <text>{{item.leftTime}}min</text>
+              </view>
+          </view>
+      </view>
+    </view>
+    <view class="tsInfo">
+      <span style="background-color: rgba(212,212,212,1);">空闲</span>
+      <span style="background-color: #e1b12c;">入住</span>
+      <span style="background-color: rgba(193,13,193,0.4);">等待</span>
+      <text></text>
+      <span style="background-color: rgba(36,210,63,0.6);">预约</span>
+      <text></text>
+      <span style="background-color: rgba(255,0,0,0.5);">服务</span>
+      <text></text>
+      <span style="background-color: rgba(160,160,160,1);">清洁</span>
+      <text></text>
+    </view>
+</view>
+
+<view class="content" wx-if="{{showIndex==1}}">
+    <view class="box" wx:for="{{jSData}}" wx:key="index">
+      <view class="box-top" style="background-color:{{item.color}}">
+          <text class="icon-jishi iconfont" style="font-size: 20rpx;"></text>
+          <text>{{item.id}}</text>
+      </view>
+      <view class="box-content">
+          <view class="hang">
+              <view class="hang-ge" style="left:10rpx;color:blue" wx-if="{{item.gender=='男'}}">
+                  <text class="iconfont icon-nanxing" style="font-size: 24rpx;color:blue" ></text>
+                  <text>男</text>
+              </view>
+              <view class="hang-ge" style="left:10rpx;color:red" wx-if="{{item.gender=='女'}}">
+                  <text class="iconfont icon-xingbie-nv" style="font-size: 24rpx;color:red" ></text>
+                  <text>女</text>
+              </view>
+              <view class="hang-ge" style="right:10rpx;">
+                  <text class="iconfont icon-kongxian" style="font-size: 30rpx;"></text>
+                  <text>{{item.techStatus}}</text>
+              </view>
+          </view>
+          <view class="hang">
+              <view class="hang-ge" style="left:10rpx;" wx-if="{{item.startTime}}">
+                  <text class="iconfont icon-kaishishijian" style="font-size: 24rpx;"></text>
+                  <text>{{item.startTime}}</text>
+              </view>
+              <view class="hang-ge" style="right:10rpx;" wx-if="{{item.leftTime}}">
+                  <text class="iconfont icon-shengyushijian" style="font-size: 34rpx;"></text>
+                  <text>{{item.leftTime}}min</text>
+              </view>
+          </view>
+      </view>
+    </view>
+    
+</view>
+
+<view class="content" wx-if="{{showIndex==2}}">
+  <scroll-view scroll-x="true" class='scrollClass' bindscroll='getLeft'  enable-back-to-top="true" >
+    <view class='table'>
+      <!-- 表头 -->
+      <view class='table_header'>
+        <view class='tc zhon'id='title' >
+          状态
+        </view>
+        <view wx:for="{{shopTitles}}" wx:key='index' class="tc {{item.list.length>0?'':'zhon'}}">
+          <view class='tt'>{{item}}</view>
+          <!-- <view class='td' wx:for="{{item.list}}">{{item}}</view> -->
+        </view> 
+      </view>
+      <!-- 表头固定 -->
+      <view class='table_header one' style="left:20rpx;top:124rpx" wx-if="{{scrollTop+50>offsetTop}}">
+        <!-- <view class='tc zhon one2'>
+          状态
+        </view> -->
+        <view class='tc zhon'>
+          状态
+        </view>
+        <view wx:for="{{shopTitles}}" wx:key='index' class="tc {{item.list.length>0?'':'zhon'}}" >
+          <view class='tt'>{{item}}</view>
+          <!-- <view class='td' wx:for="{{item.list}}">{{item}}</view> -->
+        </view> 
+      </view>
+      <!-- 内容 -->
+      <view class='table_body'>
+        <view class='tr one'style="top:{{offsetTop-scrollTop}}px;color:#BBB" >
+          <!-- 固定门店 -->
+          <!-- <view class='td' style='background: linear-gradient(to right,#0984e3,#178feb);color:#FFF;border:none'>状态</view> -->
+        </view>
+        <view class='tr' wx:for='{{gradeData}}' wx:key='index'>
+          <!-- 固定列头 -->
+          <!-- <view class='td one' style="top:{{offsetTop+(40*(index+1))-scrollTop}}px;color:#2d3436" >{{item.typeName}}</view> -->
+          <view class='td'>{{item.status}}</view>
+          <view class='td'>{{item.count}}</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+<view class="kong2"></view>
+<tagger/>

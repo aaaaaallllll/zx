@@ -1,0 +1,129 @@
+<!--pages/yuYue/yuYue.wxml-->
+<view class="title-btn">
+  <text class="{{showIndex==0?'active':''}}" data-id="0" bindtap="myGoTO">技师</text>
+  <text class="{{showIndex==1?'active':''}}" data-id="1" bindtap="myGoTO">房间</text>
+  <text class="{{showIndex==2?'active':''}}" data-id="2" bindtap="myGoTO">洗浴</text>
+  <text class="{{showIndex==3?'active':''}}" data-id="3" bindtap="myGoTO">餐饮</text>
+</view>
+<!-- 技师预约 -->
+<view class="jiShi" wx-if="{{showIndex==0}}">
+  <view class="box">
+    <text>技师号</text>
+    <input data-name='jiShiId' placeholder='请输入技师号' bindinput='updateValue' value='{{jiShiId}}'></input>
+  </view>
+  <view class="box" bindtap="toSelectPages">
+    <text>预约项目</text>
+    <view></view>
+    <span class="iconfont icon-right"></span>
+  </view>
+  <view class="pages" wx-if="{{xzList.length>0}}">
+    <view wx:for="{{xzList}}">
+      <text>{{item.menuName}}</text>
+      <text>￥{{item.price}}/{{item.shiJian}}分钟</text>
+    </view>
+  </view>
+   <view class="box" bindtap="toSelect">
+    <text>预约时间</text>
+    <view>{{time}}</view>
+    <span class="iconfont icon-right"></span>
+  </view>
+  <view class="box">
+    <text>姓名</text>
+    <input data-name='name' placeholder='请输入姓名' bindinput='updateValue' value='{{name}}'></input>
+  </view>
+  <view class="box">
+    <text>手机号</text>
+    <input data-name='phone' placeholder='请输入手机号' bindinput='updateValue' value='{{phone}}' type="number"></input>
+  </view>
+  <view class="box">
+    <text>房间号(选填)</text>
+    <input data-name='room' placeholder='请输入房间号' bindinput='updateValue' value='{{room}}'></input>
+  </view>
+  <view class="btn" bindtap="sub">预约</view>
+</view>
+
+<!-- 房间预约 -->
+<view wx-if="{{showIndex==1}}" class="fj">
+  <view class="box">
+    <text>房间号</text>
+    <input data-name='roomId' placeholder='请输入房间号' bindinput='updateValue' value='{{roomId}}'></input>
+  </view>
+  <view class="box">
+    <text>房间类型</text>
+  </view>
+  <view class="pages">
+    <view wx:for="{{fjList}}" class="{{item==fjType?'on':''}}" data-name='{{item}}' bindtap="selectRoom">
+      <span class="lx" >{{item}}</span>
+    </view>
+  </view>
+  <view class="box" bindtap="toSelect">
+    <text>预约时间</text>
+    <view>{{time}}</view>
+    <span class="iconfont icon-right"></span>
+  </view>
+   <view class="box">
+    <text>姓名</text>
+    <input data-name='name' placeholder='请输入姓名' bindinput='updateValue' value='{{name}}'></input>
+  </view>
+  <view class="box">
+    <text>手机号</text>
+    <input data-name='phone' placeholder='请输入手机号' bindinput='updateValue' value='{{phone}}' type="number"></input>
+  </view>
+  <view class="box">
+    <text>人数(选填)</text>
+    <input data-name='number' placeholder='请输入人数' bindinput='updateValue' value='{{number}}' type="number"></input>
+  </view>
+  <view class="btn" bindtap="sub2">预约</view>
+</view>
+
+<!-- 洗浴预约 -->
+<view wx-if="{{showIndex==2}}">
+  <view class="box">
+    <text>人数</text>
+    <input data-name='rengShu' placeholder='请输入洗浴人数' bindinput='updateValue' value='{{rengShu}}' type="number"></input>
+  </view>
+  <view class="box" bindtap="toSelect">
+    <text>预约时间</text>
+    <view>{{time}}</view>
+    <span class="iconfont icon-right"></span>
+  </view>
+   <view class="box">
+    <text>姓名</text>
+    <input data-name='name' placeholder='请输入姓名' bindinput='updateValue' value='{{name}}'></input>
+  </view>
+  <view class="box">
+    <text>手机号</text>
+    <input data-name='phone' placeholder='请输入手机号' bindinput='updateValue' value='{{phone}}' type="number"></input>
+  </view>
+  <view class="btn" bindtap="sub3">预约</view>
+</view>
+
+<!-- 餐饮预约 -->
+<view wx-if="{{showIndex==3}}">
+  <view class="box">
+    <text>桌号</text>
+    <input data-name='zuoId' placeholder='请输入桌号' bindinput='updateValue' value='{{zuoId}}'></input>
+  </view>
+  <view class="box">
+    <text>人数</text>
+    <input data-name='rengShu' placeholder='请输入用餐人数' bindinput='updateValue' value='{{rengShu}}' type="number"></input>
+  </view>
+  <view class="box" bindtap="toSelect">
+    <text>预约时间</text>
+    <view>{{time}}</view>
+    <span class="iconfont icon-right"></span>
+  </view>
+   <view class="box">
+    <text>姓名</text>
+    <input data-name='name' placeholder='请输入姓名' bindinput='updateValue' value='{{name}}'></input>
+  </view>
+  <view class="box">
+    <text>手机号</text>
+    <input data-name='phone' placeholder='请输入手机号' bindinput='updateValue' value='{{phone}}' type="number"></input>
+  </view>
+  <view class="btn" bindtap="sub4">预约</view>
+</view>
+<view class="dingdan" bindtap="toDingdan">
+  <text class="iconfont icon-solution"></text>
+  <text>订单</text>
+</view>

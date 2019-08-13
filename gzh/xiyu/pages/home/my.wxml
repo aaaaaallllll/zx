@@ -1,0 +1,19 @@
+<view>
+  <view class='swith2' bindtap='goChaZhong'>
+    <view>
+      <text class='iconfont2 icon-zhong'></text>
+      <text class='swithtitle'>钟数查询</text>
+    </view>
+    <text class='icon iconfont icon-right'></text>
+  </view>
+</view>
+
+<view>
+  <view class='swith' bindtap='switchAccount'>
+    <view>
+      <text class='iconfont icon-qiehuanyonghu'></text>
+      <text class='swithtitle'>切换账号</text>
+    </view>
+    <text class='icon iconfont icon-right'></text>
+  </view>
+</view>

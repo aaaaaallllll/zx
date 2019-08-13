@@ -1,0 +1,28 @@
+<tagger></tagger>
+<view class='top-cell'>
+  <view bindtap='changedata' wx:if="{{status}}" class='top-link'>时段查询</view>
+  <view bindtap='changedata' wx:if="{{!status}}" class='top-link'>日期查询</view>
+</view>
+<view class="search-cells" wx:if="{{status}}">
+  <view class='form-inner'>
+    <getdatatime type="date" bind:resshow="resshow" bind:resdata="getdatatimebegin" title="开始日期" data="{{begin}}" datatime="{{begintime}}"></getdatatime>
+    <getdatatime type="date" bind:resshow="resshow" bind:resdata="getdatatimeend" title="结束日期" data="{{end}}" datatime="{{endtime}}"></getdatatime>
+    <button bindtap='getList' class='weui-btn weui-cui-button'>查询</button>
+  </view>
+</view>
+<getdata7 datetype="date" wx:if="{{!status}}" bind:resdata='getdata'></getdata7>
+<view class="e-panel">
+  <view class='e-panel-hd'>按天分析：{{begin}}至{{end}}</view>
+  <view class="e-panel-body {{!showchart ? 'e-panel-body2' : ''}}">
+    <ec-canvas id="mychart-dom-bar1" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+  </view>
+</view>
+<view class="e-panel">
+  <view class='e-panel-hd'>按月分析</view>
+  <view class="e-panel-body {{!showchart ? 'e-panel-body2' : ''}}">
+    <ec-canvas id="mychart-dom-bar2" canvas-id="mychart-bar" ec="{{ ec2 }}"></ec-canvas>
+  </view>
+</view>
+<view class="kong">
+
+</view>

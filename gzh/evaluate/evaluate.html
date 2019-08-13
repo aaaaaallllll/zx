@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>评价互动</title>
+    <script src="js/jquery.js"></script>
+    <script src="js/vue.min.js"></script>
+    <link rel="stylesheet" href="css/evaluate.css">
+</head>
+<body>
+<div id="pj">
+    <div class="isYn box">
+    <span>
+        请您对服务作出评价
+    </span>
+        <div style="margin-right: 40px" :class="{ysno:good==0}" @click="isGood(0)">
+            <i class="iconfont" :class="{ysno:good==0}">&#xe60a;</i>
+            <span>好</span>
+        </div>
+        <div style="margin-left: 40px" :class="{ysno:good==1}"  @click.stop="isGood(1)">
+            <i class="iconfont" class='cl'  :class="{ysno:good==1}">&#xe618;</i>
+            <span>不好</span>
+        </div>
+    </div>
+    <div class="y box" v-if="good==0" style="height: 600px">
+       <span>
+           单选或者多选
+       </span>
+        <div  v-for="(item,index) in goodKz"  :class="{eav:item.ck}" @click="pinJia(index)">
+            <i class="iconfont" :class="{eav:item.ck}">&#xe60a;</i>
+            <span>{{item.name}}</span>
+        </div>
+<!--        <div>-->
+<!--            <i class="iconfont">&#xe60a;</i>-->
+<!--            <span>服务</span>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <i class="iconfont">&#xe60a;</i>-->
+<!--            <span>美食</span>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <i class="iconfont">&#xe60a;</i>-->
+<!--            <span>技师</span>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <i class="iconfont">&#xe60a;</i>-->
+<!--            <span>活动</span>-->
+<!--        </div>-->
+        <p>
+            <span>其他服务</span>
+            <textarea name="" id="a" cols="30" rows="10"  v-model="qt"></textarea>
+        </p>
+    </div>
+    <div class="y box"  v-if="good==1">
+        <span>
+           您觉得需要完善的地方
+       </span>
+        <textarea name="" id="b" cols="30" rows="10"  v-model="yawp"></textarea>
+
+    </div>
+    <div>
+        <div class="btn" @click="sub" v-show="isShow==0">提交</div>
+        <div class="btn" style="background-color: #a1a1a1" v-show="isShow==1">已提交</div>
+    </div>
+
+</div>
+
+<script>
+    var testServer= "www.intereek.com";
+    var ajaxUrl="http://www.intereek.com/haotian/xcx.do"
+    var vm=new Vue({
+        el:'#pj',
+        data:{
+            good:null,
+            goodKz:[{
+                        name:'卫生',
+                        ck:false
+                    },
+                    {
+                        name:'服务',
+                        ck:false
+                    },
+                    {
+                        name:'美食',
+                        ck:false
+                    },
+                    {
+                        name:'技师',
+                        ck:false
+                    },
+                    {
+                        name:'活动',
+                        ck:false
+                    },
+            ],
+            qt:'',
+            yawp:'',
+            yue:'',
+            ri:'',
+            nian:'',
+            isShow:0,
+            companyCode:'',
+            openid: '',
+            appid:'',
+            goodData:'',
+        },
+        methods:{
+            queryString(name){
+                let reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+                let r = window.location.search.substr(1).match(reg);
+                if(r!=null)return  unescape(r[2]); return null;
+            },
+            isGood(index){
+                const that=this;
+
+                if (index==0) {
+                    that.goodData='好'
+                }else {
+                   that.goodData='不好'
+                }
+                that.good=index
+                console.log(that.goodData)
+            },
+            pinJia(index){
+                const that=this;
+                that.goodKz[index].ck=!that.goodKz[index].ck
+                console.log(that.goodKz)
+            },
+            setCookie(key, value, iDay) {
+                var oDate = new Date();
+                oDate.setDate(oDate.getDate() + iDay);
+                document.cookie = key + '=' + value + ';expires=' + oDate;
+
+            },
+            getCookie(key) {
+                var cookieArr = document.cookie.split('; ');
+                for(var i = 0; i < cookieArr.length; i++) {
+                    var arr = cookieArr[i].split('=');
+                    if(arr[0] === key) {
+                        return arr[1];
+                    }
+                }
+                return false;
+            },
+            removeCookie(key) {
+                setCookie(key, '', -1);//这里只需要把Cookie保质期退回一天便可以删除
+            },
+            getOpenid(c){
+                const that =this;
+                //alert(this.companyCode);
+                //alert(c);
+                $.ajax({
+                    type: "GET",
+                    dataType: "jsonp",
+                    jsonp:'callback',
+                    url: "http://"+testServer+"/pangu/pangu.do?requestData={\"operationType\":\"getOpenid\",\"companyCode\":\""+this.companyCode+"\",\"code\":\""+c+"\"}",
+                    success: function(data){
+                        that.openid=data.result;
+                        console.log(that.openid)
+                        //alert(openid);
+                    }
+
+                });
+            },
+            sub(){
+                const that=this
+
+
+                if(that.goodData==''){
+                    alert('请选择评价')
+                    return
+                }
+                //获取评价内容
+                let list1=[]
+                if (that.goodData=='好') {
+                    for (let i=0;i<that.goodKz.length;i++) {
+                        if(that.goodKz[i].ck){
+                            list1.push(that.goodKz[i].name)
+                        }
+                    }
+                    if(that.qt!=''){
+                        list1.push(that.qt)
+                    }
+                    if(list1.length<=0){
+                        list1.push('')
+                    }
+                }else {
+                    if(that.yawp!=''){
+                        list1.push(that.yawp)
+                    }
+                }
+
+
+                console.log(list1)
+                console.log(that.openid)
+                //提交
+
+                $.ajax({
+                    type: "post",
+                    url:ajaxUrl,
+                    dataType: "jsonp",
+                    data: {
+                        companyCode: that.companyCode,
+                        openid:that.openid,
+                        operationType:'wxPingJiaService',
+                        // type:'query'
+                        pingJia:that.goodData,
+                        pingJiaNeiRong:list1
+                    },
+                    success:function (date) {
+                        // alert('')
+                        console.log('成功')
+                        console.log(date)
+                        if(date.success){
+                           alert('提交成功')
+                            that.setCookie('yue',that.yue , 2)
+                            that.setCookie('ri',that.ri , 2)
+                            that.setCookie('nian',that.nian , 2)
+
+                        }else {
+                            // alert(data.errorDesc)
+                            alert(date.errorDesc)
+                        }
+                        that.isShow=1
+                    },
+                    error:function (err) {
+                        console.log(err);
+                        console.log('获取失败')
+                    }
+                })
+            }
+
+
+        },
+        mounted(){
+            const that=this
+            const oDate = new Date();
+            const a=String(oDate)
+            const list=a.split(' ')
+            console.log(list)
+            that.yue=list[1]
+            that.ri=list[2]
+            that.nian=list[3]
+            that.companyCode=that.queryString('companyCode')
+            const local = window.location.href;
+            that.appid=that.queryString('appid')
+            const code = that.queryString('code')
+            console.log(this.yue)
+            console.log(this.ri)
+            console.log(this.nian)
+            console.log(that.getCookie('yue'))
+            console.log(that.getCookie('ri'))
+            console.log(that.getCookie('nian'))
+            if(that.getCookie('yue')==that.yue && that.getCookie('ri')==that.ri && that.getCookie('nian')==that.nian){
+                console.log('aaa')
+                that.isShow=1
+            }else {
+                console.log('bbb')
+                that.isShow=0
+            }
+            // 获取code
+            if(code == null || code === ""){
+                window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+that.appid+"&redirect_uri="+
+                    encodeURIComponent(local)+"&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect";
+            }else{
+                console.log(code)
+                // that.code=code
+                that.getOpenid(code)
+            }
+
+
+        },
+        computed: {
+            pj(index){
+                return this.goodKz[index]
+            },
+            // isShow(){
+            //     const that=this
+            //     if(that.getCookie('yue')==that.yue || that.getCookie('ri')==that.ri || that.getCookie('nian')==that.nian){
+            //         console.log('aaa')
+            //         return false
+            //     }else {
+            //         console.log('bbb')
+            //         return true
+            //     }
+
+            // }
+        }
+    })
+</script>
+</body>
+</html>

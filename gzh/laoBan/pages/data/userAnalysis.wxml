@@ -1,0 +1,84 @@
+<view class='stap-wrap'>
+  <view class='fliter-navbar'>
+    <navigator url='/pages/data/kehuAnalysis' class='fliter-link '>客户分析</navigator>
+    <navigator url='/pages/data/userAnalysis' class='fliter-link active'>会员分析</navigator>
+  </view>
+</view>
+<view class="inner-wrap">
+  <view class='time-bar justify'>
+    <view class='time-col'>
+      <picker
+        mode="date"
+        value="{{date}}"
+        start="2015-09-01"
+        end="2019-12-01"
+        bindchange="bindDateChange"
+      >
+        <view class="picker">
+          <text class='t'>开始日期</text><text class='d'>{{date}}</text>
+        </view>
+      </picker>
+      <text class='iconfont icon-rili'></text>
+    </view>
+    <view class='time-col'>
+      <picker
+        mode="date"
+        value="{{enddate}}"
+        start="2015-09-01"
+        end="2019-12-01"
+        bindchange="bindDateChange2"
+      >
+        <view class="picker">
+          <text class='t'>结束日期</text><text class='d'>{{enddate}}</text>
+        </view>
+      </picker>
+      <text class='iconfont icon-rili'></text>
+    </view>
+  </view>
+  <view class='stat-grid'>
+    <view class='stat-cell'>
+      <view class='stat-box'>
+        <view>142</view>
+        <view>新增会员数（个）</view>
+      </view>
+    </view>
+    <image src='../../images/tongjibg.png'></image>
+  </view>
+  <view class='stat-flex'>
+    <view class='stat-flex-item'>
+      <view class='data-box'>
+        <view>11500.99</view>
+        <view>会员卡充值金额（元）</view>
+      <image src='../../images/xbg1.png' class='itembg'></image>
+      </view>
+    </view>
+    <view class='stat-flex-item'>
+      <view class='data-box'>
+        <view>11500.00</view>
+        <view>会员卡消费金额（元）</view>
+      <image src='../../images/xbg2.png' class='itembg'></image>
+      </view>
+    </view>
+    <view class='stat-flex-item'>
+      <view class='data-box'>
+        <view>20226.00</view>
+        <view>会员卡消费金额（元）</view>
+      <image src='../../images/xbg3.png' class='itembg'></image>
+      </view>
+    </view>
+    <view class='stat-flex-item'>
+      <view class='data-box'>
+        <view>34911.00</view>
+        <view>会员卡实际余额（元）</view>
+      <image src='../../images/xbg4.png' class='itembg'></image>
+      </view>
+    </view>
+  </view>
+  <view class="e-panel">
+    <view class='e-panel-hd'>会员充值和消费统计（近七天）</view>
+    <view class='e-panel-body' style='height:500rpx;'>
+      <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec2 }}"></ec-canvas>
+    </view>
+  </view>
+</view>
+<tagger></tagger>

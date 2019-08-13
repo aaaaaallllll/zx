@@ -1,0 +1,87 @@
+<view class="inner-wrap">
+  <getdata bind:resdata="getdata" wx:if="{{!status}}"></getdata>
+  <view class="search-cells" wx:if="{{status}}">
+    <view class='form-inner'>
+      <getdatatime bind:resdata="getdatatimebegin" title="开始日期" data="{{begin}}" datatime="{{begintime}}"></getdatatime>
+      <getdatatime bind:resdata="getdatatimeend" title="结束日期" data="{{end}}" datatime="{{endtime}}"></getdatatime>
+      <button bindtap='getList' class='weui-btn weui-cui-button'>查询</button>
+    </view>
+  </view>
+  <view class='stat-grid'>
+    <view class='stat-cell'>
+      <view class='stat-time'>{{begin}}至{{end}}</view>
+      <view class='stat-box'>
+        <view>{{data.xiaoJiShouRu}}</view>
+        <view>小计收入（元）</view>
+      </view>
+    </view>
+    <image src='../../images/tongjibg.png'></image>
+  </view>
+  <view class='stat-tips'>注：实际收入以财务结算为主，因为涉及到客户的结算方式不同，所以会存在一些币种上的换算差异。</view>
+  <view class='stat-flex'>
+    <view class='stat-flex-item'>
+      <view class='data-box'>
+        <view>{{data.zhongShu}}</view>
+        <view>上单总数（单）</view>
+        <image src='../../images/bg1.png' class='itembg'></image>
+      </view>
+    </view>
+    <view class='stat-flex-item' data-end="{{end}}" data-begin="{{begin}}" data-type="基本提成" bindtap='todetail'>
+      <view class='data-box'>
+        <view>{{data.jiBenTiCheng}}</view>
+        <view>基本提成（元）</view>
+        <view class='pos'>详情</view>
+        <image src='../../images/bg2.png' class='itembg'></image>
+      </view>
+    </view>
+    <view class='stat-flex-item' data-end="{{end}}" data-begin="{{begin}}" data-type="小费" bindtap='todetail'>
+      <view class='data-box'>
+        <view>{{data.xiaoFei}}</view>
+        <view>小费（元）</view>
+        <view class='pos'>详情</view>
+        <image src='../../images/bg3.png' class='itembg'></image>
+      </view>
+    </view>
+    <view class='stat-flex-item' data-end="{{end}}" data-begin="{{begin}}" data-type="推钟提成" bindtap='todetail'>
+      <view class='data-box'>
+        <view>{{data.techMsgTiCheng}}</view>
+        <view>推钟提成奖（元）</view>
+        <view class='pos'>详情</view>
+        <image src='../../images/bg4.png' class='itembg'></image>
+      </view>
+    </view>
+    <view class='stat-flex-item' data-end="{{end}}" data-begin="{{begin}}" data-type="销售绩效" bindtap='todetail'>
+      <view class='data-box'>
+        <view>{{data.xiaoShouJiXiao}}</view>
+        <view>销售绩效奖（元）</view>
+        <view class='pos'>详情</view>
+        <image src='../../images/bg5.png' class='itembg'></image>
+      </view>
+    </view>
+    <view class='stat-flex-item'>
+      <view class='data-box'>
+        <view>{{data.gongLingJiang}}</view>
+        <view>工龄奖（元）</view>
+        <image src='../../images/bg6.png' class='itembg'></image>
+      </view>
+    </view>
+    <view class='stat-flex-item'>
+      <view class='data-box'>
+        <view>{{data.haoPingJiang}}</view>
+        <view>好评奖（元）</view>
+        <image src='../../images/bg7.png' class='itembg'></image>
+      </view>
+    </view>
+
+  </view>
+  <view class='end-tips'>每月的跨月提成以次月1号15:00之后查询的数据为准！</view>
+</view>
+<view wx:if="{{!showbegin && !showend}}" class='menu-toggle' bindtap='changedata'>
+  <image src='../../images/plus.png'></image>
+</view>
+<van-popup show="{{ showbegin }}" position="bottom" bind:close="hidetimebegin" overlay="{{ true }}">
+  <van-datetime-picker type="datetime" bind:cancel="hidetimebegin" value="{{ begintime }}" bind:confirm="checkbegin" />
+</van-popup>
+<van-popup overlay="{{ true }}" show="{{ showend }}" position="bottom" bind:close="hidetimeend">
+  <van-datetime-picker type="datetime" bind:cancel="hidetimeend" value="{{ endtime }}" bind:confirm="checkend" />
+</van-popup>

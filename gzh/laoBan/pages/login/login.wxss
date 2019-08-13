@@ -1,0 +1,15 @@
+/* pages/admin/login.wxss */
+page{
+  background-color: #fff;
+}
+.form-row .weui-input{
+  text-indent: 0;
+  margin-left: 56rpx;
+   
+}
+.form-row{
+  border: none;
+}
+.form-row .row-icon{
+  left: 0rpx;
+}

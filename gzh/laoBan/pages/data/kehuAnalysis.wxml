@@ -1,0 +1,106 @@
+<view class='stap-wrap'>
+  <view class='fliter-navbar'>
+    <navigator url='/pages/data/kehuAnalysis' class='fliter-link active'>客户分析</navigator>
+    <navigator url='/pages/data/userAnalysis' class='fliter-link '>会员分析</navigator>
+  </view>
+</view>
+<view class="inner-wrap">
+  <view class='time-bar justify'>
+    <view class='time-col'>
+      <picker
+        mode="date"
+        value="{{date}}"
+        start="2015-09-01"
+        end="2019-12-01"
+        bindchange="bindDateChange"
+      >
+        <view class="picker">
+          <text class='t'>开始日期</text><text class='d'>{{date}}</text>
+        </view>
+      </picker>
+      <text class='iconfont icon-rili'></text>
+    </view>
+    <view class='time-col'>
+      <picker
+        mode="date"
+        value="{{enddate}}"
+        start="2015-09-01"
+        end="2019-12-01"
+        bindchange="bindDateChange2"
+      >
+        <view class="picker">
+          <text class='t'>结束日期</text><text class='d'>{{enddate}}</text>
+        </view>
+      </picker>
+      <text class='iconfont icon-rili'></text>
+    </view>
+  </view>
+  <view class='stat-flex'>
+    <view class='stat-flex-item'>
+      <view class='data-box'>
+        <view>11500.99</view>
+        <view>会员卡充值金额（元）</view>
+      <image src='../../images/xbg1.png' class='itembg'></image>
+      </view>
+    </view>
+    <view class='stat-flex-item'>
+      <view class='data-box'>
+        <view>11500.00</view>
+        <view>会员卡消费金额（元）</view>
+      <image src='../../images/xbg2.png' class='itembg'></image>
+      </view>
+    </view>
+  </view>
+  <view class="e-panel">
+    <view class='e-panel-hd'>客户消费统计报表（近七天）</view>
+    <view class='e-panel-body' style='height:500rpx;'>
+      <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec2 }}"></ec-canvas>
+    </view>
+  </view>
+  <view class="e-table-panel">
+  <view class='e-table-tit'>客户日营业统计报表（近七天）</view>
+  <view class='e-table-body'>
+    <view class='table-scroll'>
+      <view class='table table-lg'>
+        <view class='thead'>
+          <view class='tr'>
+            <view class='td'></view>
+            <view class='td'>合计</view>
+            <view class='td'>12/21</view>
+            <view class='td'>12/22</view>
+            <view class='td'>12/23</view>
+            <view class='td'>12/24</view>
+          </view>
+        </view>
+        <view class='tbody'>
+          <view class='tr'>
+            <view class='td'>消费总金额</view>
+            <view class='td'><text class='text-red'>16051.00</text></view>
+            <view class='td'>16051.00</view>
+            <view class='td'>15951.48</view>
+            <view class='td'>99.52</view>
+            <view class='td'>16051.00</view>
+          </view>
+          <view class='tr'>
+            <view class='td'>非会员消费金额</view>
+            <view class='td'><text class='text-red'>16051.00</text></view>
+            <view class='td'>16051.00</view>
+            <view class='td'>15951.48</view>
+            <view class='td'>99.52</view>
+            <view class='td'>16051.00</view>
+          </view>
+          <view class='tr'>
+            <view class='td'>会员消费金额</view>
+            <view class='td'><text class='text-red'>16051.00</text></view>
+            <view class='td'>16051.00</view>
+            <view class='td'>15951.48</view>
+            <view class='td'>99.52</view>
+            <view class='td'>16051.00</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+</view>
+<tagger></tagger>

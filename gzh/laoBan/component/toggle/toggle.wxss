@@ -1,0 +1,50 @@
+/* component/toggle/toggle.wxss */
+@import'../../wxss/iconfont.wxss';
+page{
+  height: 2000rpx;
+  width: 100%;
+}
+.tagger{
+  position: fixed;
+  bottom: 40rpx;
+  right: 30rpx;
+  height: 100rpx;
+  width: 100rpx;
+  border-radius: 50rpx;
+  background-color: #2971f9;
+ 
+  opacity: 0.7;
+  line-height: 100rpx;
+  text-align: center;
+  box-shadow: 0 0 10rpx #161616;
+  z-index: 200000000000000;
+  transition: right 0.6s;
+}
+.tagger .box{
+  height: 60rpx;
+  width: 100%;
+  text-align: center;
+  line-height: 30rpx;
+  /* background-color: #161616; */
+  display: block;
+  margin-top: 20rpx;
+}
+.tagger .text{
+  display: block;
+}
+.tagger .icon-zhihuan{
+  display: block;
+  font-size: 30rpx;
+}
+.back{
+  /* position: fixed; */
+  /* z-index: 199999999999; */
+  height: 100%;
+  width: 100%;
+  /* top:0;
+  left: 0; */
+  float: left
+}
+.on{
+  right: -80rpx;
+}

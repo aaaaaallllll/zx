@@ -1,0 +1,44 @@
+.weui-cui-button{
+  border: 0;
+  width: 500rpx;
+  height: 80rpx;
+  background-color: #2971f9;
+  color: #fff;
+  padding: 0;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  border-radius: 40rpx;
+  margin-top: 30rpx;
+}
+.tr .td{
+  width:60rpx;
+  padding: 0;
+}
+.tr .td:nth-child(2){
+  width: 128rpx;
+}
+.tr .td:nth-child(3){
+  width: 120rpx;
+}
+.tr .td:nth-child(4){
+  width: 120rpx;
+}
+.tr .td:nth-child(5){
+  width: 80rpx;
+}
+.form-row-grounp .form-row{
+  padding: 0 20rpx;
+  width: 32%;
+  font-size: 28rpx;
+}
+.form-row-grounp .form-row .iconfont{
+  right: 10rpx;
+  font-size: 30rpx;
+}
+
+.tech-tit{
+  color: #999;
+  font-size: 28rpx;
+}
+
+

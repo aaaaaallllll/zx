@@ -1,0 +1,150 @@
+/* pages/select/select.wxss */
+/* 统一按钮 */
+.btn{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90rpx;
+  background-color: #0984e3;
+  color: #FFF;
+  line-height: 90rpx;
+  font-size: 30rpx;
+  text-align: center
+}
+/* 选择时间 */
+.header{
+  width: 100%;
+  height: 100rpx;
+  background-color: #FFF;
+  /* line-height: 100rpx; */
+  text-align: center
+}
+.header .header-btn{
+  display: inline-block;
+  width: 220rpx;
+  height: 80rpx;
+  background-color: #FFF;
+  margin: 10rpx;
+  line-height: 40rpx;
+  border-radius: 40rpx;
+}
+.header .on{
+  background-color: #0984e3;
+  color: #FFF
+}
+.header .header-btn text{
+  display: block;
+  font-size: 24rpx;
+}
+.center{
+  width: 100%;
+  height: 100rpx;
+  /* background-color: #BBB; */
+  background-color: #ecf0f1;
+  text-align: center;
+  line-height: 100rpx;
+}
+.center .on{
+  color: #0984e3
+}
+.center view{
+  display: inline-block;
+  padding-left: 50rpx;
+  padding-right: 50rpx;
+  font-size: 26rpx;
+}
+.content{
+  display: flex;
+  flex-wrap:wrap;
+  padding-left: 10rpx;
+  padding-top: 10rpx;
+  background-color: #FFF;
+}
+
+.content .content-btn{
+  height: 80rpx;
+  width: 163rpx;
+  margin: 10rpx;
+  background-color: #EEE;
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 80rpx;
+  /* flex-grow:0.001; */
+  font-size: 30rpx;
+  color: #666
+}
+.content .on{
+  background-color: #0984e3;
+  color: #FFF
+}
+/* 图标 */
+@font-face {
+  font-family: 'iconfont';  /* project id 1176823 */
+  src: url('//at.alicdn.com/t/font_1176823_snqa16h44dq.eot');
+  src: url('//at.alicdn.com/t/font_1176823_snqa16h44dq.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1176823_snqa16h44dq.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1176823_snqa16h44dq.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1176823_snqa16h44dq.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1176823_snqa16h44dq.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-taiyang:before {
+  content: "\e60f";
+}
+
+.icon-yueliang:before {
+  content: "\e6b8";
+}
+.icon-canyin:before {
+  content: "\e8a4";
+}
+
+.icon-chashuijian-:before {
+  content: "\e602";
+}
+
+.icon-user:before {
+  content: "\e7ae";
+}
+
+.icon-home:before {
+  content: "\e7c6";
+}
+
+.icon-left:before {
+  content: "\e7eb";
+}
+
+.icon-menu:before {
+  content: "\e7f4";
+}
+
+.icon-bath:before {
+  content: "\e662";
+}
+.icon-chongwuxiyu:before {
+  content: "\e66b";
+}
+.icon-caret-down:before {
+  content: "\e8ec";
+}
+
+.icon-caret-left:before {
+  content: "\e8ed";
+}
+.icon-dianhua:before {
+  content: "\e680";
+}
+
+.icon-weizhi:before {
+  content: "\e62e";
+}

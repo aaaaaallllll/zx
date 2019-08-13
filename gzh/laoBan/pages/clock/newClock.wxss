@@ -1,0 +1,295 @@
+/* pages/clock/newClock.wxss */
+@font-face {
+  font-family: 'iconfont';  /* project id 1291482 */
+  src: url('//at.alicdn.com/t/font_1291482_tm0ww1fs2o.eot');
+  src: url('//at.alicdn.com/t/font_1291482_tm0ww1fs2o.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1291482_tm0ww1fs2o.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1291482_tm0ww1fs2o.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1291482_tm0ww1fs2o.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1291482_tm0ww1fs2o.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* color: rgb(173, 173, 173); */
+}
+
+
+/* //3 */
+.icon-jishi:before {
+  content: "\e614";
+}
+
+.icon-kaishishijian:before {
+  content: "\e626";
+}
+
+/* sda */
+.icon-xingbie-nv:before {
+  content: "\e620";
+}
+
+
+/* 22 */
+.icon-fangjian-:before {
+  content: "\e6c2";
+}
+
+/* //uo */
+.icon-fangjian2:before {
+  content: "\e62a";
+}
+
+/* //1 */
+.icon-biaoge:before {
+  content: "\e696";
+}
+/* sasd */
+.icon-nanxing:before {
+  content: "\e61c";
+}
+
+/* asdasd */
+.icon-kongxian:before {
+  content: "\e6c3";
+}
+
+
+/* /as */
+.icon-shengyushijian:before {
+  content: "\e60b";
+}
+/* 正式 */
+.kong{
+  width: 100%;
+  height: 124rpx;
+}
+.header{
+  width: 100%;
+  height: 124rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-bottom: 1rpx solid #D4D4D4;
+  background-color: #FFF;
+  font-size: 28rpx;
+  color: #497BF8;
+  padding-top: 50rpx;
+  box-sizing: border-box;
+  z-index: 99
+}
+.header .header-left{
+  float: left;
+  height: 54rpx;
+  text-align: center;
+  width: 70rpx;
+  line-height: 54rpx;
+  color: #BBB
+}
+.header .header-left text{
+  font-size: 44rpx;
+}
+.header .header-left .in{
+  color: #497BF8
+}
+.header .header-center{
+  width: 324rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  margin: 0 auto;
+}
+.header .header-center text{
+  width: 112rpx;
+  height: 40rpx;
+  margin: 0 25rpx;
+}
+.header .header-center .on{
+  border-bottom: 6rpx solid #497BF8;
+}
+.content {
+  padding: 16rpx 0 0 20rpx;
+  width: 100%;
+}
+.content .box{
+  width:170rpx;
+  height:164rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0 4rpx 8rpx 0 rgba(0,0,0,0.5);
+  border-radius:16rpx;
+  font-size: 20rpx;
+  display: inline-block;
+  margin-bottom: 16rpx;
+  margin-right: 10rpx;
+  color: #5B5B5B
+  
+}
+.content .box .box-top{
+  width:170rpx;
+  height:32rpx;
+  background:rgba(212,212,212,1);
+  border-radius:16rpx 16rpx 0 0;
+  text-align: right;
+  box-sizing: border-box;
+  line-height: 32rpx;
+  padding-right: 8rpx;
+  
+}
+.content .box .box-top text{
+  color: #FFF;
+}
+.content .box .box-content{
+  width: 100%;
+  height: 132rpx;
+}
+.content .box .box-content .back{
+  width: 100%;
+  height: 132rpx;
+  border-radius:0 0 16rpx 16rpx;
+  float: left;
+}
+.content .box .box-content .hang{
+  height: 66rpx;
+  width: 100%;
+  line-height: 66rpx;
+  padding-top: 4rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.content .box .box-content .hang .hang-ge{
+  display: inline-block;
+  height: 66rpx;
+  line-height: 33rpx;
+  position: absolute;
+  width: 66rpx;
+  
+}
+.content .box .box-content .hang .hang-ge text{
+  display: block;
+  text-align: center;
+  
+}
+.content .box .box-content .hang .hang-ge .ico{
+  color: #D4D4D4
+}
+.tsInfo{
+  width: 100%;
+  height: 60rpx;
+  background-color: #FFF;
+  z-index: 99;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  font-size: 20rpx;
+  border-top: 1rpx solid #eee;
+  line-height: 60rpx;
+  color: #5B5B5B
+}
+.tsInfo span{
+  width: 96rpx;
+  height: 40rpx;
+  display: inline-block;
+  margin: 0 15rpx;
+  border-radius: 18rpx;
+  position: relative;
+  top: 2rpx;
+  text-align: center;
+  line-height: 40rpx;
+}
+.kong2{
+  width: 100%;
+  height: 60rpx;
+}
+/* 新表 */
+.scrollClass {
+  display: flex;
+  width: 100%;
+  white-space: nowrap;
+  margin-top: 23rpx;
+  height: 100%;
+  /* background-color: white; */
+  font-size: 24rpx;
+  /* padding: 20rpx;  */
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+.table{
+  display: inline-flex;
+  flex-direction: column;
+  /* border: 1rpx solid rgba(218, 217, 217, 1); */
+  border-bottom: 0;
+  box-sizing: border-box;  
+}
+.table_header {
+  display: inline-flex;
+  /* display: table-header-group; */
+}
+.table_header .zhon{
+  line-height:40px
+}
+.tc{
+  display: inline-block;
+  height: 40px;
+  min-width:180rpx;
+  /* border: 1rpx solid #BBB; */
+  text-align: center; 
+  background: linear-gradient(to right,#0984e3,#178feb);
+  color: #FFF
+}
+
+.tc>.tt{
+  height: 40rpx;
+  box-sizing: border-box;
+  
+}
+.tc>.td{
+  height: 40rpx;
+  width:180rpx;
+  display: inline-block;
+  /* border: 1rpx solid #BBB; */
+  box-sizing: border-box;
+}
+.table_body .tr{
+  display: flex;
+  box-sizing: border-box;
+  /* border: 1rpx solid #BBB; */
+  position: relative;
+}
+.table_body .tr .td{
+  height: 40px;
+  width:180rpx;
+  display: inline-block;
+  border: 0.5rpx dashed rgb(241, 241, 241);
+  text-align: center;
+  line-height: 40px;
+  box-sizing: border-box;
+  background-color: #FFF;
+  color: #636e72
+}
+
+.scrollClass .one{
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 3
+}
+.scrollClass .one2{
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 4
+}
+.table_body .one{
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2
+}
+.gddw{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99
+}

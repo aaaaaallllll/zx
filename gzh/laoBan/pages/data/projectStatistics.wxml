@@ -1,0 +1,44 @@
+<view class="search-cells">
+  <view class='tips text-blue'>查询日期是以店内的营业时段的日期为准，非自然日时段</view>
+  <view class='form-inner'>
+    <getdatatime bind:resdata='getdatatimebegin' data="{{begin}}" datatime="{{begintime}}"></getdatatime>
+    <getdatatime title="结束时间" bind:resdata='getdatatimeend' data="{{end}}" datatime="{{endtime}}"></getdatatime>
+    <select bind:resdata="restype" data="{{list2}}" index="{{index}}"></select>
+    <select bind:resdata="restypename" data="{{list3}}" index="{{index2}}" title="项目名称"></select>
+    <button bindtap='bossXiangMuXiaoShouTongJi' class='weui-btn weui-cui-button'>查询</button>
+  </view>
+</view>
+<view class='table-cells'>
+  <!-- <view class='table-hd justify'>
+    <view class='table-tit'>共计金额：
+      <text class='text-red'>￥2870.0</text>
+    </view>
+    <view class='text'>共计：5个钟</view>
+  </view> -->
+  <view class='table-panel' wx:if="{{listdata.length>0}}">
+    <view class='table'>
+      <view class='thead'>
+        <view class='tr'>
+          <view class='td'>项目</view>
+          <view class='td'>数量</view>
+          <view class='td'>金额</view>
+        </view>
+      </view>
+      <view class='tbody'>
+        <view wx:for="{{listdata}}">
+          <view class='tr par'>
+            <view class='td'>{{item.catName}}</view>
+            <view class='td'>{{item.number}}</view>
+            <view class='td'>{{item.money}}</view>
+          </view>
+          <view class='tr' wx:for="{{item.orders}}" wx:for-index="idx" wx:for-item="itemName">
+            <view class='td zilei'>{{itemName.menuName}}</view>
+            <view class='td'>{{itemName.number}}</view>
+            <view class='td'>{{itemName.money}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<tagger></tagger>

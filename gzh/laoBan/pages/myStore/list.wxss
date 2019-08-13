@@ -1,0 +1,65 @@
+/* pages/myStore/list.wxss */
+@import'../../wxss/iconfont.wxss';
+.list{
+  width: 100%
+}
+.list:nth-child(3n+0){
+
+}
+.list .store{
+  width: 98%;
+  height: 140rpx;
+  background-color: rgb(255, 255, 255);
+  margin: 30rpx auto 0;
+  font-size: 30rpx;
+  text-align: center;
+  border-radius: 70rpx;
+  line-height: 140rpx;
+  overflow: hidden;
+  box-shadow: 0 0 5rpx rgb(180, 180, 180);
+  transition: background-color 0.6s
+}
+.list .store .info{
+  line-height: 70rpx;
+  display: inline-block;
+  /* margin-left: -50rpx; */
+  width: 80%
+}
+.list .store .name{
+  /* border-bottom: 1rpx dashed #BBB; */
+  text-align: left
+}
+.list .store .comCode{
+  font-size: 24rpx;
+  color: rgb(145, 145, 145);
+  text-align: left
+}
+.list .store .on2{
+  color: #FFF
+}
+.list .store .on3{
+  background-color: #FFF;
+  color:  #3498db;
+}
+.store>text{
+    /* font-size: 20rpx; */
+  color: #FFF;
+  width: 100rpx;
+  height: 100rpx;
+  display: inline-block;
+  /* border: 1rpx solid rgb(155, 155, 155); */
+  border-radius: 50rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+  /* padding: 2rpx; */
+  float: left;
+  margin: 20rpx;
+  line-height: 100rpx;
+  background-color: rgb(223, 223, 223);
+  font-size: 50rpx;
+  transition: background-color 0.6s
+}
+.list .on{
+  background-color: #3498db;
+  color: #FFF
+}

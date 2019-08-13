@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "ec-canvas": "../../ec-canvas/ec-canvas",
+    "getdata":"/component/getdata",
+    "getdatatime": "/component/getdatatime",
+    "tagger": "/component/toggle/toggle"
+  },
+  "navigationBarTitleText": "排行榜"
+}

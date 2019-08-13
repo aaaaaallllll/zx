@@ -1,0 +1,107 @@
+<!--pages/table/syingReport.wxml-->
+<!-- <view class='top-cell' >
+  <view bindtap='changedata' wx:if="{{status}}" class='top-link'>时段查询</view>
+  <view bindtap='changedata' wx:if="{{!status}}" class='top-link'>日期查询</view>
+</view> -->
+<view class="search-cells" >
+  <view class='form-inner'>
+    <getdatatime bind:resdata="getdatatimebegin" title="选择日期" data="{{begin}}" datatime="{{begintime}}"></getdatatime>
+    <!-- <getdatatime bind:resdata="getdatatimeend" title="结束日期" data="{{end}}" datatime="{{endtime}}"></getdatatime> -->
+    <button bindtap='getList' class='btn'>查询</button>
+  </view>
+</view>
+<!-- <view class="inner-wrap" >
+  <getdata wx:if="{{!status}}" bind:resdata='resdata'></getdata> -->
+  <!-- <view class='table-cells'>
+    <nolist wx:if="{{listtitle.length==0}}"></nolist>
+    <view class='table2'>
+      <view class='table3 table4'>
+        <view wx:for="{{listtitle}}">{{item}}</view>
+      </view>
+      <view class='table3'>
+        <view wx:for="{{listdata}}">{{item}}</view>
+      </view>
+    </view>
+  </view> -->
+<!-- </view> -->
+
+
+  <tagger/>
+<!-- 统计 -->
+<view class='e-table-tit'>{{shopName}}收银日报</view>
+  <!-- <tagger/> -->
+<scroll-view scroll-x="true" class='scrollClass' bindscroll='getLeft'  enable-back-to-top="true" >
+  <view class='table'>
+    <!-- 表头 -->
+    <view class='table_header'>
+      <view class='tc zhon'id='title' >
+        收款方式
+      </view>
+      <view wx:for="{{shopTitles}}" wx:key='index' class="tc {{item.list.length>0?'':'zhon'}}">
+        <view class='tt'>{{item}}</view>
+        <!-- <view class='td' wx:for="{{item.list}}">{{item}}</view> -->
+      </view> 
+    </view>
+    <!-- 表头固定 -->
+    <view class='table_header one' style="left:-{{left}}px" wx-if="{{scrollTop>offsetTop}}">
+      <view class='tc zhon one2'>
+        收款方式
+      </view>
+      <view class='tc zhon'>
+        收款方式
+      </view>
+      <view wx:for="{{shopTitles}}" wx:key='index' class="tc {{item.list.length>0?'':'zhon'}}" >
+        <view class='tt'>{{item}}</view>
+        <!-- <view class='td' wx:for="{{item.list}}">{{item}}</view> -->
+      </view> 
+    </view>
+    <!-- 内容 -->
+    <view class='table_body'>
+      <view class='tr one'style="top:{{offsetTop-scrollTop}}px;color:#BBB" >
+        <!-- 固定门店 -->
+        <view class='td' style='background: linear-gradient(to right,#0984e3,#178feb);color:#FFF;border:none'>收款方式</view>
+      </view>
+      <!-- 固定列头 -->
+      <view class='tr' wx:for="{{quans}}" wx:key='index'>
+        <view class='td one' style="top:{{offsetTop+(40*(index+1))-scrollTop}}px;color:#2d3436" >{{item.payType}}</view>
+        <view class='td' style='color:#535c68;'>{{item.payType}}</view>
+        <view class='td'>{{item.benRiShuLiang}}</view>
+        <view class='td' >{{item.benRiJinE}}</view>
+        <view class='td' style='color:#ff7979'>{{item.benRiZhanBi}}</view>
+        <view class='td'>{{item.leiJiShuLiang}}</view>
+        <view class='td'>{{item.leiJiJinE}}</view>
+        <view class='td'style='color:#ff7979'>{{item.leiJiZhanBi}}</view>
+      </view>
+      <view class='tr' wx:for="{{gradeData}}">
+        <view class='td one' style="top:{{offsetTop+(40*(quans.length+index+1))-scrollTop}}px;color:#2d3436" >{{item.payType}}</view>
+        <view class='td' style='color:#535c68;'>{{item.payType}}</view>
+        <view class='td'>{{item.benRiShuLiang}}</view>
+        <view class='td' >{{item.benRiJinE}}</view>
+        <view class='td' style='color:#ff7979'>{{item.benRiZhanBi}}</view>
+        <view class='td'>{{item.leiJiShuLiang}}</view>
+        <view class='td'>{{item.leiJiJinE}}</view>
+        <view class='td'style='color:#ff7979'>{{item.leiJiZhanBi}}</view>
+      </view>
+      <view class='tr' wx-if="{{skLIst.length>0}}">
+        <view class='td one' style="top:{{offsetTop+(40*(quans.length+gradeData.length+1))-scrollTop}}px;color:#2d3436" >售卡小计</view>
+        <view class='td'>售卡小计</view>
+      </view>
+      <view class='tr' wx:for="{{skLIst}}">
+        <view class='td one' style="top:{{offsetTop+(40*(quans.length+gradeData.length+index+2))-scrollTop}}px;color:#2d3436" >{{item.payType}}</view>
+        <view class='td' style='color:#535c68;'>{{item.payType}}</view>
+        <view class='td'>{{item.benRiShuLiang}}</view>
+        <view class='td' >{{item.benRiJinE}}</view>
+        <view class='td' style='color:#ff7979'>{{item.benRiZhanBi}}</view>
+        <view class='td'>{{item.leiJiShuLiang}}</view>
+        <view class='td'>{{item.leiJiJinE}}</view>
+        <view class='td'style='color:#ff7979'>{{item.leiJiZhanBi}}</view>
+      </view>
+       <view class='tr'>
+        <!-- 合计固定列头 -->
+        <view class='td one' style="top:{{offsetTop+(40*(quans.length+gradeData.length+2+skLIst.length))-scrollTop}}px;color:#e74c3c" wx:if="{{total.length>0}}">售卡合计</view>
+        <view class='td' style='color:#e74c3c'>售卡合计</view>
+        <view class='td' wx:for='{{total}}' style='color:#e74c3c'>{{item}}</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

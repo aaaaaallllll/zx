@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-picker": "/miniprogram_npm/vant-weapp/picker/index",
+    "van-popup": "/miniprogram_npm/vant-weapp/popup/index",
+    "van-stepper": "/miniprogram_npm/vant-weapp/stepper/index"
+  },
+  "navigationBarTitleText": "加钟"
+}

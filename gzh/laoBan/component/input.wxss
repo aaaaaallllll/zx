@@ -1,0 +1,16 @@
+@import '/app.wxss';
+
+.form-row {
+  border: none;
+}
+.form-row .weui-input{
+  text-indent: 0;
+  margin-left: 56rpx;
+  width: 80%;
+}
+.form-row{
+  border: none;
+}
+.form-row .row-icon{
+  left: 0rpx;
+}

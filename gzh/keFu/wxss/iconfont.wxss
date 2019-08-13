@@ -1,0 +1,64 @@
+@font-face {
+  font-family: 'iconfont';  /* project id 1198324 */
+  src: url('//at.alicdn.com/t/font_1198324_rcb6r02qnxr.eot');
+  src: url('//at.alicdn.com/t/font_1198324_rcb6r02qnxr.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1198324_rcb6r02qnxr.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1198324_rcb6r02qnxr.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1198324_rcb6r02qnxr.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1198324_rcb6r02qnxr.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-user:before {
+  content: "\e7af";
+}
+
+.icon-team:before {
+  content: "\e7ae";
+}
+
+.icon-mobile:before {
+  content: "\e7b2";
+}
+
+.icon-solution:before {
+  content: "\e7b5";
+}
+
+.icon-home:before {
+  content: "\e7c6";
+}
+
+.icon-Dollar-circle-fill:before {
+  content: "\e846";
+}
+
+.icon-accountbook-fill:before {
+  content: "\e84d";
+}
+
+.icon-propertysafety-fill:before {
+  content: "\e855";
+}
+
+.icon-close:before {
+  content: "\e7fc";
+}
+
+.icon-plus-circle:before {
+  content: "\e781";
+}
+
+.icon-plus-square:before {
+  content: "\e797";
+}
+.icon-right:before {
+  content: "\e7eb";
+}

@@ -1,0 +1,128 @@
+<!--主盒子-->
+<view class="container2" wx:if="{{status==0}}">
+  <!--左侧栏-->
+  <view class="nav_left">
+    <block wx:for="{{list2}}" wx:key="id">
+      <view class="nav_left_items {{curIndex == index ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item}}">{{item}}</view>
+    </block>
+  </view>
+  <!--右侧栏-->
+  <view class="nav_right">
+    <!--如果有数据，才遍历项-->
+    <view wx:if="{{list.length>0}}">
+      <block wx:for="{{list}}" wx:key="id">
+        <view class="nav_right_items">
+          <image class="shangpin" src="{{item.imgUrl}}"></image>
+          <view class='nav_right_items_right'>
+            <view class='nav_right_items_right_title'>{{item.name}}</view>
+            <view class='nav_right_items_right_bottom'>
+              <view class='nav_right_items_right_price'>
+                ￥{{item.price}}
+              </view>
+              <view class='nav_right_items_right_num'>
+                <image wx:if="{{item.num>0}}" src="../../images/jian_1.png" bindtap='jian' data-index="{{index}}" data-id="{{catName}}"></image>
+                <view class="nav_right_items_right_num2" wx:if="{{item.num>0}}">{{item.num}}</view>
+                <image bindtap='add' data-index="{{index}}" data-id="{{catName}}" src="../../images/add_1.png"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <!--如果无数据，则显示数据-->
+    <view class="nodata_text" wx:else>该分类暂无数据</view>
+  </view>
+  <!-- 购物车 -->
+  <view class='cart' bindtap='jiesuan'>
+    <image src='../../images/cart.png'></image>
+    <text class='selectnumber'>{{selectnumber}}</text>
+  </view>
+
+</view>
+<!-- 确认信息 -->
+<van-popup show="{{ show }}" bind:close="onClose">
+  <view class='querenbody'>
+    <view class='close'>
+      <text bind:tap="onClose" class='icon iconfont icon-close1'></text>
+    </view>
+    <view class='lineshu'></view>
+    <view class='queren'>
+      <view class='close'></view>
+      <view class='querendan'>
+        <view class='querendantitle'>
+          输入信息以送单
+        </view>
+        <view class='listinputindex'>
+          <view class='listinput'>
+            <view class='listinputlabel'>
+              手牌号
+              <text>*</text>
+            </view>
+            <view>
+              <input value='{{seatText}}' bindinput="updateValue" data-name='seatText' placeholder='请输入手牌号'></input>
+            </view>
+          </view>
+          <view class='listinput'>
+            <view class='listinputlabel'>
+              桌台号
+            </view>
+            <view>
+              <input value='{{zhuoTai}}' bindinput="updateValue" data-name='zhuoTai' placeholder='请输入房间号'></input>
+            </view>
+          </view>
+          <view class='listinput'>
+            <view class='listinputlabel'>
+              人数
+            </view>
+            <view>
+              <input type='number' value='{{renShu}}' bindinput="updateValue" data-name='renShu' placeholder='请输入人数'></input>
+            </view>
+          </view>
+        </view>
+        <view class='sure'>
+          <view class='sure_but' bind:tap="onClose">否</view>
+          <view class='sure_but active' bind:tap="sublist">是</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</van-popup>
+
+<!-- 订单列表 -->
+<view class='diandanlistbody' wx:if="{{status==1}}">
+  <view class='diandanlist'>
+    <view class='diandancaozuo'>
+      <view class='jx' bindtap='diandan'>继续点单</view>
+      <view class='qk' bindtap='qingkong'>清空</view>
+    </view>
+    <view class='xiangmulist'>
+      <view class='diandanlist2'>
+        <view>项目</view>
+        <view>单价</view>
+        <view>金额</view>
+        <view>数量</view>
+      </view>
+      <view class='diandanlist3' wx:for="{{jslist}}">
+        <view class='dingdanw'>{{item.name}}</view>
+        <view class='dingdanw'>￥{{item.price}}</view>
+        <view class='dingdanw'>￥{{item.price*item.num}}</view>
+        <view class='dingdanw'>
+          <view class='nav_right_items_right_num'>
+            <image bindtap='jian' data-index="{{item.index}}" data-id="{{item.catName}}" src="../../images/jian_1.png"></image>
+            <view class="nav_right_items_right_num2">{{item.num}}</view>
+            <image data-index="{{item.index}}" data-id="{{item.catName}}" bindtap='add' src="../../images/add_1.png"></image>
+          </view>
+        </view>
+      </view>
+      <view class='diandanlist2 diandanlist4'>
+        <view class='dingdanw'>合计</view>
+        <view class='dingdanw'></view>
+        <view class='dingdanw'>￥{{jsprice}}</view>
+        <view class='dingdanw'>{{jsnumber}}</view>
+      </view>
+    </view>
+    <view class='sublist' bindtap='sub'>
+      提交运单
+    </view>
+  </view>
+</view>

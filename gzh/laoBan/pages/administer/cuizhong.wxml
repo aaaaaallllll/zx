@@ -1,0 +1,23 @@
+<view class='cui-cells'>
+  <view class='cui-cell'>
+    <view class='cui-txt'>*可通过锁牌号或技师工号调单</view>
+    <view class='cui-flex'>
+      <view class='col-6'>
+        <view data-id='1' class="cui-menu {{tagid==1?'active':''}}" bindtap='tagcheck'>
+          <view class='c-icon'><text class='iconfont icon-paijutubiao'></text></view>
+          <view class='text'>按锁牌</view>
+        </view>
+      </view>
+      <view class='col-6'>
+        <view data-id='2' class="cui-menu {{tagid==2?'active':''}}" bindtap='tagcheck'>
+          <view class='c-icon'><text class='iconfont icon-jishi'></text></view>
+          <view class='text'>按技师</view>
+        </view>
+      </view>
+    </view>
+    <view class='cui-form'>
+      <input class='weui-input' placeholder='请输入技师工号'></input>
+      <button class='weui-btn weui-cui-button'>调单</button>
+    </view>
+  </view>
+</view>

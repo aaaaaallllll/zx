@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "技师钟数统计",
+  "usingComponents": {
+    "getdatatime": "/component/getdatatime",
+    "z-select": "/component/select/select"
+  }
+}

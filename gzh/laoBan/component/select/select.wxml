@@ -1,0 +1,8 @@
+<view class='form-row'>
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{data}}">
+    <view class="picker">
+      <text class='text-gray'>{{title}}：</text><view class='text-type'>{{data[index]}}</view>
+    </view>
+  </picker>
+  <text class='iconfont icon-arrDown'></text>
+</view>

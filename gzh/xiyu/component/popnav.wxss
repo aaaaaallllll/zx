@@ -1,0 +1,5 @@
+@import "/app.wxss";
+
+.popnav-list {
+  padding-top: 70rpx;
+}

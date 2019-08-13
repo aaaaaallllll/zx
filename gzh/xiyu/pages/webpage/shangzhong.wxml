@@ -1,0 +1,37 @@
+<view class="inner-cells">
+  <view class='card-cell'>
+    <view class='card-body'>
+      <view class='weui-cell'>
+        <view class='weui-label'>房间号:</view>
+        <view class='weui-cell__bd'>
+          <!-- <input value='{{roomNo}}' bindinput="updateValue" data-name='roomNo' class='weui-input' placeholder='请选择或者输入房间号'></input> -->
+          <picker wx:if="{{!inputShowed}}" bindchange="bindPickerChange" value="{{index}}" range="{{roomNos}}">
+            <input value='{{roomNo}}' bindinput="updateValue" data-name='roomNo' disabled class='weui-input' placeholder='请选择或者输入房间号'></input>
+          </picker>
+            <input wx:else value='{{roomNo}}' bindinput="updateValue" data-name='roomNo'  class='weui-input' placeholder='请选择或者输入房间号'></input>
+        </view>
+        <view bindtap='changeselect' wx:if="{{inputShowed}}">手动输入</view>
+        <view bindtap='changeselect' wx:else>下拉选择</view>
+        <text class='iconfont icon-sanx-up'></text>
+      </view>
+      <view class='weui-cell'>
+        <view class='weui-label'>手牌号:</view>
+        <view class='weui-cell__bd'>
+          <input value='{{seatText}}' bindinput="updateValue" data-name='seatText' class='weui-input' placeholder='请选择或者输入手牌号'></input>
+        </view>
+        <text class='iconfont icon-sanx-up'></text>
+      </view>
+      <view class='weui-cell'>
+        <view class='weui-cell__bd'>
+          <view class='weui-text'>项目类别：</view>
+          <view class='weui-tags'>
+            <view wx:for="{{listData}}" data-id='{{index}}' class="weui-tab-li {{tagid==index?'active':''}}" bindtap='tagcheck'>
+              <text class='tag-text'>{{item}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view bind:tap="sub" class='weui-btn-default'>上钟</view>
+</view>

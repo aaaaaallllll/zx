@@ -1,0 +1,96 @@
+{
+  "pages": [
+    
+    "pages/data/data",
+    "pages/table/jsyjReport",
+    "pages/clock/newClock",
+    "pages/clock/handState",
+    "pages/data/passengerStatistics",
+    "pages/newLable/pageLeiBiePm",
+    "pages/staff/staTiChengXx",
+    "pages/staff/staTiCheng",
+    "pages/staff/staYeJi",
+    "pages/staff/staXiaoShou",
+    "pages/newLable/keDanJiaFx",
+    "pages/section/secPage",
+    "pages/newLable/keLiuReport",
+    "pages/section/secGrade",
+    "pages/newLable/casReport",
+    "pages/table/mdCas",
+    "pages/table/jsGrade",
+    "pages/table/mdfwGrade",
+    "pages/table/mdzyCvr",
+    "pages/table/mdywCvr",
+    "pages/table/mdfwCvr",
+    "component/toggle/toggle",
+    "pages/login/login",
+    "pages/myStore/list",
+    "pages/apply/apply",
+    "pages/myStore/delete",
+    "pages/myStore/add",
+    "pages/data/hand",
+    "pages/data/analysis",
+    "pages/user/user",
+    "pages/index/index",
+    "pages/administer/administer",
+    "pages/clock/clock",
+    "pages/administer/chargeback",
+    "pages/administer/adv",
+    "pages/administer/leave",
+    "pages/administer/cuizhong",
+    "pages/data/techNumStatistics",
+    "pages/data/userStatistics",
+    "pages/data/projectStatistics",
+    "pages/data/ranklist",
+    "pages/data/businessAnalysis",
+    "pages/data/xiadanShenhe",
+    "pages/data/yingyeStatistics",
+    "pages/data/techAdmin",
+    "pages/data/userAnalysis",
+    "pages/data/receivables",
+    "pages/data/kehuAnalysis",
+    "pages/table/yinYeReport",
+    "pages/table/mdGrade",
+    "pages/table/syingReport",
+    
+    "pages/table/mdzlCvr",
+    "pages/newLable/gradeReport",
+    "pages/newLable/mdKeLiu",
+    "pages/newLable/huiYuanKaBaoBiao",
+    "pages/newLable/huiYuanKaGl",
+    "pages/newLable/pageShouRuPm"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "中洗微助理",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#454952",
+    "selectedColor": "#00A4FF",
+    "backgroundColor": "#FFF",
+    "list": [
+      {
+        "pagePath": "pages/data/data",
+        "text": "数据",
+        "iconPath": "images/data.png",
+        "selectedIconPath": "images/data_on.png"
+      },
+      {
+        "pagePath": "pages/administer/administer",
+        "text": "管理",
+        "iconPath": "images/admin.png",
+        "selectedIconPath": "images/admin_on.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "images/user2.png",
+        "selectedIconPath": "images/user1.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

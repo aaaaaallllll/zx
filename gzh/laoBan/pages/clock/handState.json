@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "手牌状态",
+  "usingComponents": {
+    "tagger": "/component/toggle/toggle"
+  }
+}

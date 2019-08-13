@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "nolist": "/component/nolist"
+  },
+  "navigationBarTitleText": "排钟表"
+}

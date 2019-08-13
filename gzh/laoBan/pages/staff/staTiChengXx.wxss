@@ -1,0 +1,91 @@
+/* pages/staff/staTiChengXx.wxss */
+.btn{
+  background-color: #2971f9;
+  color: #FFF
+}
+/* 新表 */
+.scrollClass {
+  display: flex;
+  width: 100%;
+  white-space: nowrap;
+  margin-top: 23rpx;
+  height: 50000rpx;
+  background-color: white;
+  font-size: 24rpx;
+  /* padding: 20rpx;  */
+  box-sizing: border-box;
+}
+.table{
+  display: inline-flex;
+  flex-direction: column;
+  /* border: 1rpx solid rgba(218, 217, 217, 1); */
+  border-bottom: 0;
+  box-sizing: border-box;  
+}
+.table_header {
+  display: inline-flex;
+  /* display: table-header-group; */
+}
+.table_header .zhon{
+  line-height:40px
+}
+.tc{
+  display: inline-block;
+  height: 40px;
+  min-width:200rpx;
+  /* border: 1rpx solid #BBB; */
+  text-align: center; 
+  background: linear-gradient(to right,#0984e3,#178feb);
+  color: #FFF
+}
+
+.tc>.tt{
+  height: 40rpx;
+  box-sizing: border-box;
+  
+}
+.tc>.td{
+  height: 40rpx;
+  width:200rpx;
+  display: inline-block;
+  /* border: 1rpx solid #BBB; */
+  box-sizing: border-box;
+}
+.table_body .tr{
+  display: flex;
+  /* box-sizing: border-box; */
+  /* border: 1rpx solid #BBB; */
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+}
+.table_body .tr .td{
+  height: 40px;
+  width:200rpx;
+  display: inline-block;
+  border: 0.5rpx dashed rgb(241, 241, 241);
+  text-align: center;
+  line-height: 40px;
+  box-sizing: border-box;
+  background-color: #FFF;
+  color: #636e72
+}
+
+.scrollClass .one{
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 3
+}
+.scrollClass .one2{
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 4
+}
+.table_body .one{
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2
+}

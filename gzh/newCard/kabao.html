@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>卡包</title>
+    <script src="js/jquery.js"></script>
+    <script src="js/vue.min.js"></script>
+    <script src="js/jquery.qrcode.min.js"></script>
+    <link rel="stylesheet" href="http://www.intereek.com/pangu/html/kabao/css/style.css">
+    <style>
+        body{
+            background-color: #ececec;
+        }
+        .card_qf{
+            font-size: .28rem;color: #333333;padding:.25rem .6rem .25rem .2rem;line-height: .34rem;background: #fff;margin-bottom: .2rem;position:relative;
+        }
+        .card_qf:after{
+            content:'';position:absolute;background: url(./img/icon_02.png) no-repeat center;background-size:cover;width: .21rem;height: .12rem;top: 50%;right: .2rem;margin-top: -.06rem;
+        }
+        .card_Tsqf:after{background: url(./img/icon_02-1.png) no-repeat center;background-size:cover;}
+        /*.card_module .list #quans .clearfix{*/
+        /*    display: none;*/
+        /*}*/
+        /*.card_module .list #quans .on{*/
+        /*    display: block;*/
+        /*}*/
+        .back{
+            overflow: hidden;
+        }
+        .back img{
+            /*height: 860px;*/
+            width: 100%;
+            position: absolute;
+            top: 450px;
+            /*opacity: 0.3;*/
+            z-index: 999;
+        }
+        .back span{
+            position: absolute;
+            top: 950px;
+            z-index: 1111;
+            width: 100%;
+            font-size: 40px;
+            height: 60px;
+            display: block;
+            text-align: center;
+            color: #a1a1a1;
+        }
+        /*.on{*/
+        /*    display: block;*/
+        /*}*/
+        .off{
+            transform: rotate(180deg);
+        }
+        @font-face {
+            font-family: 'iconfont';  /* project id 1208028 */
+            src: url('//at.alicdn.com/t/font_1208028_ygw20p1i7vo.eot');
+            src: url('//at.alicdn.com/t/font_1208028_ygw20p1i7vo.eot?#iefix') format('embedded-opentype'),
+            url('//at.alicdn.com/t/font_1208028_ygw20p1i7vo.woff2') format('woff2'),
+            url('//at.alicdn.com/t/font_1208028_ygw20p1i7vo.woff') format('woff'),
+            url('//at.alicdn.com/t/font_1208028_ygw20p1i7vo.ttf') format('truetype'),
+            url('//at.alicdn.com/t/font_1208028_ygw20p1i7vo.svg#iconfont') format('svg');
+        }
+        .iconfont{
+            font-family:"iconfont" !important;
+            font-size:16px;font-style:normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;}
+        #card .list .quanCard{
+            height: 290px;
+        }
+        #card .list .quanCard img{
+            margin-top: 60px;
+            margin-left: -20px;
+        }
+        #card .list .quanCard .quanLeft{
+            float: left;
+            /*background-color: #333333;*/
+            /*line-height: 290px;*/
+            height: 240px;
+        }
+        #card .list .quanCard .quanLeft h3{
+            font-size: 40px;
+            height: 40px;
+            width: 400px;
+            line-height: 40px;
+            color: white;
+            margin-top: 15px;
+            overflow:hidden;
+            white-space:nowrap;
+            text-overflow:ellipsis;
+        }
+        #card .list .quanCard .quanLeft span i{
+            margin-left: 180px;
+            font-size: 26px;
+            transition: 0.6s;
+            transform: rotate(180deg);
+        }
+        #card .list .quanCard .quanLeft span{
+            margin-top: 20px;
+            display: block;
+            font-size: 26px;
+            line-height: 30px;
+            height: 30px;
+            width: 480px;
+            overflow:hidden;
+            white-space:nowrap;
+            text-overflow:ellipsis;
+            color: white;
+        }
+        #card .list .quanCard .quanRight{
+            float: right;
+            /*background-color: bisque;*/
+            height: 240px;
+            width: 200px;
+            font-size: 40px;
+            color: white;
+            padding-top: 80px;
+            text-align: right;
+        }
+        #card .list .quanCard .quanRight span{
+            line-height: 30px;
+            height: 30px;
+            width: 200px;
+            /*margin-top: 60px;*/
+        }
+        #card .list .quanCard .quanRight i{
+            font-size: 36px;
+        }
+        #card .list .quanCard .quanRight div{
+            line-height: 30px;
+            height: 30px;
+            width: 200px;
+            font-size: 29px;
+            margin-top: 60px;
+            margin-left: 20px;
+        }
+        .alertTop{
+            height: 800px;
+            width: 700px;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-top: -400px;
+            margin-left: -350px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 50px;
+            border: 1px solid #939393;
+            z-index: 99;
+        }
+        .alertTop #qrCode{
+            height: 500px;
+            width: 500px;
+            /*background-color: aquamarine;*/
+            text-align: center;
+            margin: 0 auto;
+        }
+        .alertTop .btn{
+            font-size: 30px;
+            display: inline-block;
+            height: 68px;
+            border-radius: 15px;
+            width: 220px;
+            background-color: bisque;
+            margin-top:40px;
+            line-height: 68px;
+            text-align: center;
+
+        }
+        .fade-enter-active, .fade-leave-active {
+            transition: width 0.61s ;
+        }
+        .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+            width: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="card" >
+<!--     v-show="cardData.length>0"-->
+
+    <div class="card_list" >
+        <!--加载动画-->
+        <div v-show="isShow"  class="back">
+            <img src="img/49df783627f946ba9f6694ffd9dfcb28.gif" >
+            <span>数据加载中...</span>
+            <div class="pop_bg" style="display: block;background-color: white"></div>
+
+        </div>
+        <div class="card_module this">
+            <div class="card_top">
+                <img src="http://www.intereek.com/pangu/html/kabao/images/icon_01.png" alt="" class="ico"/>卡包
+                <span class="num fr" id="cardNum">{{cardData.length}}张</span>
+            </div>
+            <ul class="list" id="cardLst">
+                <li class="item"v-for="(card,index) in cardData">
+                    <div class="li_t clearfix">
+                        <img src="http://www.intereek.com/pangu/html/kabao/images/icon_03.png" alt="" class="hdimg fl"/>
+                        <div class="info fl">
+                            <p class="name">{{card.cardNo}}</p>
+                            <p class="points">会员积分：{{card.jiFen}}</p>
+                        </div>
+                        <div class="price">
+                            &yen;{{card.balance}}
+                        </div>
+                    </div>
+                    <div class="li_b">
+                        <span class="tit">{{card.companyName}}</span>
+                        <a :href=`http://www.intereek.com/pangu/html/newcard/cardJiLu.html?cardNo=${card.cardNo}&companyCode=${companyCode}` class="button fr">记录</a>
+                        <a href="javascript:void(0)" class="button fr" @click="xiaoFei(card.cardNo)">消费</a>
+                        <a href="javascript:void(0)" class="button fr"@click="conZi(card.cardNo)">充值</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!--<div class="card_module" id="qianBaoDiv" v-show="this.qbData.length>0">
+            <div class="card_top">
+                <img src="http://www.intereek.com/pangu/html/kabao/images/icon_01.png" alt="" class="ico"/>钱包
+                <span class="num fr" id="qianBaoNum">{{qbData.length}}张</span>
+            </div>
+            <ul class="list" id="qianBaoLst">
+            </ul>
+        </div>-->
+
+
+        <div class="card_module">
+            <div class="card_top" @click.stop="getQuanData">
+                <img src="http://www.intereek.com/pangu/html/kabao/images/icon_05.png" alt="" class="ico"/><span id="quanbao">券包</span>
+                <span class="num fr" id="quanNum">{{quanData.length}}张</span>
+            </div>
+
+
+
+            <ul class="list">
+<!--                <div  class="card_qf "  >-->
+<!--                    &lt;!&ndash;                    <img src="http://www.intereek.com/pangu/html/kabao/images/icon_05.png" alt="" class="ico"/>&ndash;&gt;-->
+<!--                    <span  style="overflow:hidden;white-space:nowrap;font-size:30px ;width: 400px;text-overflow:ellipsis;display: inline-block;height: 34px;line-height: 30px">{{qlist[index].quanMing}}</span>-->
+<!--                    <span class="num fr" >{{qlist.length}}张</span>-->
+<!--                </div>-->
+
+                <div class="tic mem_main"  class="quans"  >
+
+                                    <div class="top clearfix quanCard" v-for="(last,index) in qbLastData" v-show="showIndex==99||showIndex==index"  >
+                                        <div class="logo fl">
+                                            <img src="http://www.intereek.com/pangu/html/kabao/images/mem_05.png" class="img fl">
+                                        </div>
+                                        <div class="quanLeft">
+                                            <h3>
+                                                {{last.quanMing}}
+                                            </h3>
+                                            <span>
+                                                    有效期至：{{last.youXiaoQi?last.youXiaoQi:'没有期限'}}
+                                            </span>
+                                            <span>
+                                                    说明 <i class="iconfont" @click.stop="showShuom(last.couponId)" v-show="showSm==last.couponId">&#xe7eb;</i>
+                                                        <i class="iconfont" @click.stop="showShuom(last.couponId)" v-show="showSm!=last.couponId">&#xe7ec;</i>
+                                            </span>
+
+                                            <span v-show="showSm==last.couponId">
+                                                    满{{last.xiaoFeiManCaiNengDiKou}}减{{last.shangChengDiKouJinE}}
+                                            </span>
+                                        </div>
+                                        <div class="quanRight">
+                                                <span @click.stop="showMa(last.couponId,last.fuKuanMa)">
+                                                    去使用
+                                                    <i class="iconfont">&#xe7ee;</i>
+                                                </span>
+                                            <div @click="showQuan(index)">
+                                                剩余：{{qfData[index].length+1}}张
+                                                <i class="iconfont"  v-show="showIndex!=index">&#xe8ec;</i>
+                                                <i class="iconfont"  v-show="showIndex==index">&#xe661;</i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+            </ul>
+<!--            <transition-group name="fade">-->
+
+<!--            </transition-group>-->
+            <div class="list">
+                <div class="tic mem_main"  id="quans"  v-show="showIndex==index"  v-for="(qlist,index) in qfData">
+
+                    <div class="top clearfix quanCard" v-for="quan in qlist">
+                        <div class="logo fl">
+                            <img src="http://www.intereek.com/pangu/html/kabao/images/mem_05.png" class="img fl">
+                        </div>
+                        <div class="quanLeft">
+                            <h3>
+                                {{quan.quanMing}}
+                            </h3>
+                            <span>
+                                有效期至：{{quan.youXiaoQi?quan.youXiaoQi:'没有期限'}}
+                            </span>
+                            <span>
+                                说明 <i class="iconfont" @click.stop="showShuom(quan.couponId)" v-show="showSm==quan.couponId">&#xe7eb;</i>
+                                    <i class="iconfont" @click.stop="showShuom(quan.couponId)" v-show="showSm!=quan.couponId">&#xe7ec;</i>
+                            </span>
+
+                            <span v-show="showSm==quan.couponId">
+                                满{{quan.xiaoFeiManCaiNengDiKou}}减{{quan.shangChengDiKouJinE}}
+                            </span>
+                        </div>
+                        <div class="quanRight">
+                            <span @click.stop="showMa(quan.couponId,quan.fuKuanMa)">
+                                去使用
+                                <i class="iconfont">&#xe7ee;</i>
+                            </span>
+<!--                            <div>-->
+<!--                                剩余：{{qlist.length}}张-->
+<!--                                <i class="iconfont">&#xe8ec;</i>-->
+<!--                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!--        <div class="card_module" id="liBaoDiv">-->
+        <!--            <div class="card_top">-->
+        <!--                <img src="http://www.intereek.com/pangu/html/kabao/images/icon_05.png" alt="" class="ico"/><span>礼券</span>-->
+        <!--                <span class="num fr" id="liBaoNum">0张</span>-->
+        <!--            </div>-->
+        <!--            <ul class="list">-->
+        <!--                <div class="tic mem_main"  id="liBaos">-->
+        <!--                </div>-->
+        <!--            </ul>-->
+        <!--        </div>-->
+
+        <div id="bottom" class="push_btn clearfix" v-show="!isShow">
+            <a href=`http://www.intereek.com/pangu/html/newcard/addCardByPhone.html?companyCode=${companyCode}&openid=${openid}` class="phone fl">绑定手机号</a>
+            <a href=`https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=http://www.intereek.com/pangu/intereektuangou.htm&response_type=code&scope=snsapi_userinfo&state=${companyCode}#wechat_redirect` class="dis fr">进入商城</a>
+            <a href="javascript:void(0)"  style='height:90px;width: 100%;background-color: #ff5319;margin-top: 10px;line-height: 90px' id='qiandao'>签到</a>
+        </div>
+    </div>
+
+<!--    弹窗-->
+    <div class="pop_bg" v-show="showFkm" style="display: block" @click.stop="outFkm"></div>
+    <div class="alertTop"  v-show="showFkm">
+        <div id="qrCode">
+
+        </div>
+        <div id="Fkm" style="height: 100px;width: 600px;line-height: 100px;font-size: 40px;text-align: center;color: #333333;margin: 0;padding: 0"></div>
+        <div class="btn" style=" float: right;color: white;background-color: #0984e3"  @click.stop="outFkm">确认</div>
+        <div class="btn"style=" float: left;color: #2d3436;background-color: #dfe6e9"  @click.stop="outFkm">取消</div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="http://www.intereek.com/pangu/html/kabao/js/common.js"></script>
+<script src="http://www.intereek.com/pangu/html/intereek/js/jquery.qrcode.min.js" type="text/javascript"></script>
+<script src="http://www.intereek.com/pangu/html/intereek/js/intereeks.js"></script>
+<script>
+    var aUrl  = "http://www.intereek.com/pangu/xcx.do";
+    // var aUrl  = "http://intereek.natapp1.cc/pangu/xcx.do";
+    var qdUrl="http://www.intereek.com/haotian/xcx.do"
+    var vm=new Vue({
+        el:'#card',
+        data:{
+            // code:'',
+            companyCode:'',
+            openid:'',
+            showSm:-1,
+            showFkm:false,
+            buYunXuWxPay:'',
+            qbLastData:[],
+            qbData:[],
+            quanData:[
+                // {
+                //     companyName: "赵飞",
+                //     couponId: "000558c8-cc27-43e7-835d-0b4f6c210650",
+                //     createTime: "2019-01-04 17:16:58.0",
+                //     fuKuanMa: "1273920038",
+                //     keYongYuShangChengDiKou: "n",
+                //     price: 0.01,
+                //     quanMing: "【助浴套餐59.9元】含【单人汗蒸洗浴搓澡仅售59.9元】（原价98元）",
+                //     shangChengDiKouJinE: "10",
+                //     xiaoFeiManCaiNengDiKou: "20",
+                //     youXiaoQi: "2019-12-03 10:54:45"
+                // },
+                // {
+                //     companyName: "赵飞",
+                //     couponId: "000558c8-cc27-43e7-835d-0b4f6c210650",
+                //     createTime: "2019-01-04 17:16:58.0",
+                //     fuKuanMa: "1273921038",
+                //     keYongYuShangChengDiKou: "n",
+                //     price: 0.01,
+                //     quanMing: "【助浴套餐59.9元】含【单人汗蒸洗浴搓澡仅售59.9元】（原价98元）",
+                //     shangChengDiKouJinE: "10",
+                //     xiaoFeiManCaiNengDiKou: "20",
+                //     youXiaoQi: "2019-12-03 10:54:45"
+                // },
+                // {
+                //     companyName: "赵飞",
+                //     couponId: "000558c8-cc27-43e7-835d-0b4f6c210650",
+                //     createTime: "2019-01-04 17:16:58.0",
+                //     fuKuanMa: "1273922038",
+                //     keYongYuShangChengDiKou: "n",
+                //     price: 0.01,
+                //     quanMing: "1111",
+                //     shangChengDiKouJinE: "10",
+                //     xiaoFeiManCaiNengDiKou: "20",
+                //     youXiaoQi: ""
+                // },
+
+            ],
+            cardData:[
+                // {
+                //     balance: 281353,
+                //     cardNo: "Wx181203101144",
+                //     cardType: "铂金卡",
+                //     cardTypeId: "eda92436-063b-4829-93e6-ec24b745d5d6",
+                //     companyCode: "m44gwOk2PSU4cMtqHiEw007",
+                //     companyName: "赵飞",
+                //     jiFen: 3491
+                // }
+            ],
+            qfData:[
+
+            ],
+            qm:[],
+            showIndex:99,
+            showImg:true,
+            isShow:true,
+            appid:'',
+            local:'',
+            nian:'',
+            yue:'',
+            ri:''
+        },
+
+        // computed:{
+        //     isShow(){
+        //         if(this.cardData.length>0){
+        //             return false
+        //         }else {
+        //             return true
+        //         }
+        //     }
+        // },
+
+        methods:{
+            f() {
+                const that=this
+                $('#qiandao').one('click',function () {
+                    if(that.cardData!=null||that.quanData!=null){
+                        $('#qiandao').css('background-color','#bababa').html('已签到')
+
+                        $.ajax({
+                            type: "get",
+                            url:qdUrl,
+                            dataType: "jsonp",
+                            data: {
+                                companyCode: that.companyCode,
+                                openid:that.openid,
+                                operationType:'wxQianDaoService'
+                            },
+                            success:function (data) {
+                                // if(data.)
+                                alert('已签到')
+                                console.log('成功'+data)
+                                console.log(data)
+                                that.setCookie('yue',that.yue , 2)
+                                that.setCookie('ri',that.ri , 2)
+                                that.setCookie('nian',that.nian , 2)
+                            },
+                            error:function (err) {
+                                console.log(err);
+                                console.log('获取失败')
+                            }
+                        })
+                    }else{
+                        window.location.href=`http://www.intereek.com/pangu/html/newJiShiYuYue/dist/banKa.html?appid=${that.appid}&companyCode=${that.companyCode}&openid=${that.openid}#/`
+                    }
+                })
+            },
+            //缓存cookie
+            setCookie(key, value, iDay) {
+                var oDate = new Date();
+                oDate.setDate(oDate.getDate() + iDay);
+                document.cookie = key + '=' + value + ';expires=' + oDate;
+
+            },
+            getCookie(key) {
+                var cookieArr = document.cookie.split('; ');
+                for(var i = 0; i < cookieArr.length; i++) {
+                    var arr = cookieArr[i].split('=');
+                    if(arr[0] === key) {
+                        return arr[1];
+                    }
+                }
+                return false;
+            },
+            removeCookie(key) {
+                setCookie(key, '', -1);//这里只需要把Cookie保质期退回一天便可以删除
+            },
+            getqiandao(){
+                const that=this
+                $.ajax({
+                    type: "post",
+                    url:aUrl,
+                    dataType: "jsonp",
+                    data: {
+                        companyCode: that.companyCode,
+                        openid:that.openid,
+                        operationType:'wxQianDaoService',
+                        type:'query'
+                    },
+                    success:function (date) {
+                        // alert('')
+                        console.log('成功')
+                        console.log(date)
+                        console.log(date.errorDesc)
+                        console.log(date.success)
+                        if(date.errorDesc){
+                            $('#qiandao').css('background-color','#bababa').html('已签到')
+                        }else {
+                            that.f()
+                        }
+                    },
+                    error:function (err) {
+                        console.log(err);
+                        console.log('获取失败')
+                    }
+                })
+            },
+
+            xiaoFei(cardNo){
+                const that=this
+                $('#qrCode').html('')
+                $('#Fkm').html('')
+                that.showFkm=true
+                var companyCode=that.companyCode
+                console.log(companyCode)
+                const openid=that.openid
+                const time=(new Date()).getTime()
+
+                jQuery(function(){
+                    jQuery('#qrCode').qrcode({width: 500,height:500,text:`cardNo:${cardNo},companyCode:${companyCode},openid:${openid},time:${time}`});
+                })
+            },
+            conZi(cardNo){
+                const that=this
+                if(!that.buYunXuWxPay){
+                    alert("请前往收银台进行充值");
+                    return;
+                }else {
+                    console.log(that.appid)
+                    console.log(that.companyCode)
+
+                    var url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+that.appid+
+                        "&redirect_uri=http://www.intereek.com/pangu/jiShiMaiKa.htm&response_type=code&scope=snsapi_userinfo&state="+
+                        "{\"companyCode\":\""+that.companyCode+"\",\"cardNo\":\""+cardNo+"\"}#wechat_redirect";
+                    console.log(url)
+                    window.location.href=url;
+                }
+
+
+            },
+            outFkm(){
+                this.showFkm=false
+            },
+            showMa(guid,Fkm){
+                $('#qrCode').html('')
+                $('#Fkm').html('')
+                this.showFkm=true
+                // const couponId="000558c8-cc27-43e7-835d-0b4f6c210650"
+                // const cardNo="Wx181203101144"
+                $('#Fkm').html(Fkm)
+                console.log(Fkm)
+                jQuery(function(){
+                    jQuery('#qrCode').qrcode({width: 500,height:500,text:guid});
+                })
+
+            },
+            showShuom(index){
+                if (this.showSm==index) {
+                    this.showSm=-1
+                }else {
+                    this.showSm=  index
+                    // console.log( this.showSm)
+                }
+            },
+            queryString(name){
+                let reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+                let r = window.location.search.substr(1).match(reg);
+                if(r!=null)return  unescape(r[2]); return null;
+            },
+            getData(code){
+                const that = this;
+                $.ajax({
+                    type: "POST",
+                    url: aUrl,
+                    dataType: "jsonp",
+                    data: {
+                        companyCode: that.companyCode,
+                        wxCode:code,
+                        operationType:'wxNewCard'
+                    },
+                    success: function (res) {
+                        that.isShow=false
+                        console.log(res)
+                        const index=that.local.indexOf('?')
+                        const _local=that.local.substring(0, index)
+                        console.log(_local)
+                        const local=_local+`?appid=${that.appid}&companyCode=${that.companyCode}`
+                        if(res==null){
+                            window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+that.appid+"&redirect_uri="+
+                                encodeURIComponent(local)+"&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect";
+                            return
+                        }
+                        if(res.result.openid){
+                            const data=res.result
+                            that.buYunXuWxPay=data.buYunXuWxPay
+                            that.openid=data.openid
+                            //that.qbData=data.qianBaos
+                            that.quanData=data.quans
+                            that.cardData=data.cards
+                            that.showImg=false
+                            console.log(that.quanData)
+                            console.log(that.cardData)
+                        }else {
+
+                        }
+
+                    },
+                    error:function (err) {
+                        console.log('no')
+                        console.log(err)
+                    }
+                });
+            },
+            getQuanData(){
+                if (this.qm.length>0){
+                    return
+                }
+                const that=this
+                let data=this.quanData
+                let list=[]  ;
+                let lastName=data[0].quanMing;
+                let n=true;
+                let list0=[];
+                let name=[];
+                let list4=[];
+                list0.push(data[0])
+                name.push(lastName)
+                list.push(list0)
+                for (let i=0 ;i<data.length;i++){
+                    n=true;
+                    for(let j=0;j<name.length;j++){
+                        if(name[j]==data[i].quanMing){
+                            list[j].push(data[i])
+                            n=false
+                        }else {
+                            if(j==name.length-1 && n){
+                                name.push(data[i].quanMing)
+                                let list2=[]
+                                list2.push(data[i])
+                                list.push(list2)
+                            }
+                        }
+                    }
+                }
+                for (let c=0;c<name.length;c++) {
+                    list4.push(list[c][0])
+                }
+                for(let c=0;c<name.length;c++){
+                    list[c].splice(0,2)
+                }
+                // console.log(name)
+                console.log(list)
+                // console.log(list2)
+                that.qbLastData=list4
+                that.qfData=list
+                that.qm=name
+                console.log(this.qbLastData)
+            },
+            showQuan(index){
+                if (this.showIndex==index) {
+                    this.showIndex=99
+                }else {
+                    this.showIndex=index
+                    // console.log( this.showIndex)
+                }
+            }
+        },
+
+        mounted(){
+            const that=this
+            const oDate = new Date();
+            const a=String(oDate)
+            const list=a.split(' ')
+            console.log(list)
+            that.yue=list[1]
+            that.ri=list[2]
+            that.nian=list[3]
+			// alert('1')
+            const code = that.queryString('code')
+            that.local = window.location.href;
+            that.appid=that.queryString('appid')
+            that.companyCode=that.queryString('companyCode')
+			console.log(that.yue)
+            console.log(that.ri)
+            console.log(that.nian)
+            console.log(that.getCookie('yue'))
+            console.log(that.getCookie('ri'))
+            console.log(that.getCookie('nian'))
+            document.getElementById("bottom").innerHTML = "<a href=\"http://www.intereek.com/pangu/html/newcard/addCardByPhone.html?openid="+that.openid+"&companyCode="+that.companyCode+"\" class=\"phone fl\">绑定手机号</a>"+
+                "<a href=\"https://open.weixin.qq.com/connect/oauth2/authorize?appid="+that.appid+"&redirect_uri=http://www.intereek.com/pangu/intereektuangou.htm&response_type=code&scope=snsapi_userinfo&state="+that.companyCode+"#wechat_redirect\" class=\"dis fr\">进入商城</a>"
+                // +
+                // `<a href="javascript:void(0)"  style='height:90px;width: 100%;background-color: #ff5319;margin-top: 10px;line-height: 90px' id='qiandao'>签到</a>`
+            if(that.getCookie('yue')==that.yue && that.getCookie('ri')==that.ri && that.getCookie('nian')==that.nian){
+                console.log('aaa')
+                $('#qiandao').css('background-color','#bababa').html('已签到')
+            }else {
+                console.log('bbb')
+                that.f()
+            }
+            // 获取code
+            if(code == null || code === ""){
+                window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+that.appid+"&redirect_uri="+
+                    encodeURIComponent(that.local)+"&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect";
+            }else{
+                console.log(code)
+                // that.code=code
+                that.getData(code)
+                // that.getqiandao()
+            }
+
+
+        },
+
+    })
+</script>
+</body>
+</html>

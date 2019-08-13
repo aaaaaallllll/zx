@@ -1,0 +1,22 @@
+<view class="inner-wrap">
+  <view class='yy-table'>
+    <view class='thead '>
+      <view class='active'>待审核</view>
+      <view>审核同意</view>
+      <view>审核不同意</view>
+    </view>
+    <view class='yy-body' >
+      <view class='tbody '>
+        <view>18212341234</view>
+        <view>已取消</view>
+        <view>09/27 20:02</view>
+      </view>
+    </view>
+  </view>
+  <view class='empty-tips'>
+    <image src='../../images/kong.png'></image>
+    <view>暂无内容</view>
+  </view>
+</view>
+<popnav></popnav>
+<!-- <template data="{{...data}}" is="popnav"></template> -->

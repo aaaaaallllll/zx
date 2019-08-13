@@ -1,0 +1,57 @@
+<view class='orders'>
+  <view class='order' wx:for="{{data}}">
+    <view class='orderhead'>
+      <view class='orderheadl'>
+        {{item.createTime}}
+      </view>
+      <view class='orderheadr' wx:if="{{item.paid}}">
+        已结账-待评价
+      </view>
+      <view class='orderheadr' wx:else>
+        未结账
+      </view>
+    </view>
+    <view class='orderbody'>
+      <view class='orderbodyml40'>
+        <view class='dianpu'>
+          <text class='icon iconfont icon-dianpu'></text>
+          <text>{{companyName}}</text>
+        </view>
+        <view class='suo'>
+          <text class='icon iconfont icon-paizhao'></text>
+          <text>客人锁牌：</text>
+          <text class='other'>{{item.seatText}}</text>
+        </view>
+        <view class='suo'>
+          <text class='icon iconfont icon-weizhi'></text>
+          <text>位置点：</text>
+          <text class='other'>{{item.roomNo}}</text>
+        </view>
+        <view class='suo'>
+          <text class='icon iconfont icon-fuwu'></text>
+          <text>服务项目：</text>
+          <text class='other'>{{item.menu}}</text>
+          <text class='lunzhong'>{{item.explain}}</text>
+        </view>
+        <view class='suo'>
+          <text class='icon iconfont icon-tubiaoku-'></text>
+          <text>服务时长：</text>
+          <text class='other'>{{item.timeSpan}}分</text>
+        </view>
+        <view class='suo'>
+          <text class='icon iconfont icon-naozhong'></text>
+          <text>上钟时间：</text>
+          <text class='other'>{{item.createTime}}</text>
+        </view>
+        <view class='suo'>
+          <text class='icon iconfont icon-naozhong'></text>
+          <text>下钟时间：</text>
+          <text class='other'>{{item.modifyTime}}</text>
+        </view>
+      </view>
+      <view class='pingjia'>
+        点击此处扫码评价
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,155 @@
+.all {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(180deg, rgba(16, 187, 255, 1) 0%, rgba(50, 142, 252, 1) 48%, rgba(58, 101, 231, 1) 100%);
+  position: fixed;
+  z-index: -1;
+}
+
+.all>image {
+  width: 100%;
+  height: 100%;
+}
+
+.rooms {
+  width: 100%;
+  height: 150rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rooms>text {
+  color: #fff;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+.input {
+  width: 70%;
+  height: 70rpx;
+  background: rgba(243, 231, 231, 0.788);
+  display: flex;
+  border-radius: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.input_1 {
+  width: 2.5rem;
+}
+
+.input_1>image {
+  width: 100%;
+  height: 100%;
+}
+
+.input_2 {
+  float: right;
+  width: 80%;
+  height: 100%;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  font-size: 0.8rem;
+}
+
+.fw {
+  width: 90%;
+  height: 120rpx;
+  background: #fff;
+  border-radius: 0.5rem;
+  margin: 0.7rem auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.dxfw{
+  margin-bottom:200rpx;
+}
+.fw>view{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.checkbox {
+  width: 50rpx;
+  height: 50rpx;
+  border: 3rpx solid #ccc;
+  border-radius: 50%;
+}
+
+.checkbox>view {
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  margin-top: calc(100% - 85%);
+  margin-left: calc(100% - 85%);
+}
+
+.content {
+  color: #4c4c4c;
+  font-size: 0.8rem;
+  margin-left:1rem;
+}
+
+.anniu {
+  width: 40%;
+  height: 70rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.anniu button {
+  width: 70rpx;
+  height: 70rpx;
+  text-align: center;
+  border-radius: 0; 
+  line-height: 70rpx;padding:0;margin: 0;
+  border:.5px solid #ccc;
+}
+.anniu>button:first-child{
+  border-top-left-radius: .2rem;
+  border-bottom-left-radius: .2rem;
+}
+.anniu>button:last-child{
+  border-top-right-radius: .2rem;
+  border-bottom-right-radius: .2rem;
+}
+.anniu>text {
+  width:100rpx;
+  height:67rpx;
+  line-height:67rpx;
+  text-align: center;
+  border: 3rpx solid #ccc;
+
+}
+
+button::after {
+  border-radius: 0; 
+}
+
+.bottoms{
+  width:100%;height:180rpx;
+  background: #fff;
+  box-shadow:inset 0px 0px 4px 0px rgba(0,0,0,0.5);
+  position:fixed;
+  left:0;bottom:0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.btm_s{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hujiaofuwu{
+  width:6rem;height:100rpx;
+  background:#FF8609;
+  text-align: center;
+  line-height: 100rpx;
+  color:#fff;
+  border-radius: 2rem;
+  font-size: .8rem;
+}

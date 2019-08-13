@@ -1,0 +1,68 @@
+.weui-cui-button {
+  border: 0;
+  width: 500rpx;
+  height: 80rpx;
+  background-color: #2971f9;
+  color: #fff;
+  padding: 0;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  border-radius: 40rpx;
+  margin-top: 30rpx;
+}
+.search-cells{
+  /* position: fixed;
+  top:0rpx;
+  background: #fff; */
+}
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tr .td {
+  min-width: 150rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.td {
+  border: none;
+}
+
+.tr {
+}
+
+.tbody .tr .td {
+  border-top: 1px solid #e5e5e5;
+}
+
+.table {
+  width: auto;
+}
+
+.tbody .tr::before {
+  border: none;
+}
+
+/* .tr .td:nth-child(1) {
+  width: 32%;
+}
+
+.tr .td:nth-child(4) {
+  width: 140rpx;
+} */
+
+.scroll-header {
+  display: flex;
+  white-space: nowrap;
+  /* height: 400rpx; */
+}
+
+/* .scroll-header view {
+  height: 128rpx;
+  width: 128rpx;
+  border: 1px solid red;
+  display: inline-block;
+} */

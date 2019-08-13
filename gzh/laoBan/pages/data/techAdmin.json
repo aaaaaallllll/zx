@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "tagger": "/component/toggle/toggle"
+  },
+  "navigationBarTitleText": "技师管理"
+}

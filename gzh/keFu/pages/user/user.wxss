@@ -1,0 +1,79 @@
+/* pages/user/user.wxss */
+page{
+  background-color: rgba(223, 228, 234, 0.3);
+  /* height: 100% */
+}
+.top{
+  height: 320rpx;
+  width: 100%;
+}
+.user{
+  position: relative;
+  width: 100%;
+}
+.head{
+  height: 250rpx;
+  width: 250rpx;
+  border: 1rpx solid #BBBBBB;
+  text-align: center;
+  line-height: 250rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 125rpx;
+  background-color: #ffffff;
+  z-index: 99;
+  display: inline-block;
+  position: absolute;
+  left: 25rpx;
+  top: 25rpx;
+}
+.head .img{
+   width: 150rpx;
+  height: 150rpx;
+  border-radius: 75rpx;
+  position: absolute;
+  left: 48rpx;
+  top: 48rpx;
+  overflow: hidden;
+}
+.head open-data{
+  width: 150rpx;
+  height: 150rpx;
+  /* border-radius: 75rpx;
+  position: absolute;
+  left: 48rpx;
+  top: 48rpx; */
+}
+.userInfo{
+  background-color: #ffffff;
+  border: 1rpx solid #BBBBBB;
+  height: 180rpx;
+  width: 76%;
+  display: inline-block;
+  /* margin-left: -200rpx; */
+  z-index: 1;
+  position: absolute;
+  left: 130rpx;
+  top: 90rpx;
+  border-radius: 20rpx;
+  padding-top: 30rpx;
+  box-sizing: border-box;
+}
+.userInfo text{
+  font-size: 24rpx;
+  display: block;
+  margin-left: 150rpx;
+  margin-top: 20rpx;
+  color: rgb(104, 103, 103)
+}
+.toLogin{
+  width: 90%;
+  height: 70rpx;
+  background-color: #4876FF;
+  color: #ffffff;
+  border-radius: 30rpx;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 70rpx;
+  margin: 0 auto;
+}

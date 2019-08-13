@@ -1,0 +1,15 @@
+<!--pages/select/selectPages.wxml-->
+<view class='page1'>
+
+  <view class='pageUl' wx:for="{{xmList}}" wx:key="index" bindtap='alterPg' data-id='{{index}}'>
+    <image src="../../images/j-p10.png" class='ty image1'></image>
+    <view class='ty text'>
+      <view >{{item.menuName}}</view>
+      <view >￥{{item.price}}/{{item.shiJian}}分钟</view>
+    </view>
+    <image src="../../images/j-p11.png" class='ty image2' wx-if="{{!item.checked}}"></image>
+    <image src="../../images/j-p12.png" class='ty image2' wx-if="{{item.checked}}"></image>
+  </view>
+ 
+  <view class='btn' bindtap='chenk'>选好了下一个</view>
+</view>

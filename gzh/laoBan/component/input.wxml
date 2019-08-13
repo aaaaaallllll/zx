@@ -1,0 +1,27 @@
+<view class='form-row' wx:if="{{type=='text'}}">
+  <view class='row-icon' wx:if="{{icon!=''}}">
+    <text class="iconfont {{icon}}"></text>
+  </view>
+  <input class='weui-input' placeholder="{{placeholder}}" placeholder-class="phcolor" bindinput="updateValue" data-name='value' value='{{value}}'></input>
+  <view class='form-icon' bind:tap="clearValue" data-name='value' wx:if="{{value.length>0}}">
+    <text class='iconfont icon-xClose'></text>
+  </view>
+</view>
+<view class='form-row' wx:if="{{type=='password' && !passwordshow}}">
+  <view class='row-icon' wx:if="{{icon!=''}}">
+    <text class="iconfont {{icon}}"></text>
+  </view>
+  <input class='weui-input' placeholder='密码' placeholder-class="phcolor" type='password' bindinput="updateValue" data-name='value' value='{{value}}'></input>
+  <view class='form-icon' bind:tap="showpassword">
+    <text class='iconfont icon-eye1'></text>
+  </view>
+</view>
+<view class='form-row' wx:if="{{type=='password' && passwordshow}}">
+  <view class='row-icon' wx:if="{{icon!=''}}">
+    <text class="iconfont {{icon}}"></text>
+  </view>
+  <input class='weui-input' placeholder='密码' placeholder-class="phcolor" type='text' bindinput="updateValue" data-name='value' value='{{value}}'></input>
+  <view class='form-icon' bind:tap="hidepassword">
+    <text class='iconfont icon-eye'></text>
+  </view>
+</view>

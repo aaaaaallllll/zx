@@ -1,0 +1,43 @@
+<view class="y-cells">
+  <view class='y-cell'>
+    <view class='y-cell-hd'>今日统计</view>
+    <view class='y-cell-bd'>
+      <view class='stat-list'>
+        <view><text>营业收入(元)：</text>1260.00</view>
+        <view><text>项目业绩(元)：</text>0</view>
+        <view><text>实际充值(元)：</text>00.00</view>
+        <view><text>挂账金额(元)：</text>1260.00</view>
+        <view><text>会员消费(元)：</text>1260.00</view>
+        <view><text>产品业绩(元)：</text>1260.00</view>
+        <view><text>挂账金额(元)：</text>1260.00</view>
+        <view><text>产品业绩(元)：</text>1260.00</view>
+        <view><text>挂账金额(个)：</text>22</view>
+        <view><text>新增会员(个)：</text>22</view>
+      </view>
+    </view>
+  </view>
+  <view class='ui-flex justify'>
+    <view class='ui-flex-item'>
+      <view class='ui-flex-cont'>
+        <image src='../../images/zuo.png'></image>
+        <view>昨天营业统计</view>
+      </view>
+      <image src='../../images/bg1.png' class='bg'></image>
+    </view>
+    <view class='ui-flex-item'>
+      <view class='ui-flex-cont'>
+        <image src='../../images/ben.png'></image>
+        <view>本月营业统计</view>
+      </view>
+      <image src='../../images/bg2.png' class='bg'></image>
+    </view>
+    <view class='ui-flex-item'>
+      <view class='ui-flex-cont'>
+        <image src='../../images/shang.png'></image>
+        <view>上月营业统计</view>
+      </view>
+      <image src='../../images/bg3.png' class='bg'></image>
+    </view>
+  </view>
+</view>
+<tagger></tagger>

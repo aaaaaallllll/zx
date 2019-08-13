@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "tagger": "/component/toggle/toggle"
+  }
+}

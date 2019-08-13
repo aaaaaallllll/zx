@@ -1,0 +1,69 @@
+<view class='home-cells'>
+  <!-- <image src='../../images/bg.png' class='bg'></image> -->
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="#e3e3e3" indicator-active-color="#3285fd" class='sw'>
+    <block>
+      <swiper-item>
+        <image src="../../images/sw3.png" class="slide-image" />
+      </swiper-item>
+      <swiper-item>
+        <image src="../../images/111.jpg" class="slide-image" />
+      </swiper-item>
+      <swiper-item>
+        <image src="../../images/222.jpg" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+  
+  <!-- <view class='center'>
+      <view class='refer' bindtap='toClock' animation="{{animation2}}">
+          <text class='.iconfont icon-home ic'></text>
+          <span >钟房查询</span>
+      </view>
+      <view class='refer' bindtap='toIndex' animation="{{animation1}}" 
+      style='height: 220rpx;width: 220rpx;border-radius: 110rpx;padding-top: 58rpx;background-color: #4876FF;'>
+          <text class='.iconfont icon-solution ic' style='color:#FFFFFF;'></text>
+          <span style='color:#FFFFFF;'>会员查询</span>
+      </view>    
+      <view class='refer' bindtap='toDispatch' animation="{{animation3}}">
+          <text class='.iconfont icon-team ic'></text>
+          <span >技师派遣</span>
+      </view>
+  </view> -->
+  <!-- 菜单 -->
+  <view class='menu-cells'>
+    <view class='menu-col'>
+      <formid bind:resdata="toIndex">
+        <view class='menu-box menu-1'>
+          <image src='../../images/admin1.jpg'></image>
+        </view>
+      </formid>
+      <formid bind:resdata="toDispatch">
+        <view class='menu-box menu-2'>
+          <image src='../../images/admin2.jpg'></image>
+        </view>
+      </formid>
+      <formid bind:resdata="toLudan">
+        <view class='menu-box menu-3'>
+          <image src='../../images/admin3.jpg'></image>
+        </view>
+      </formid>
+    </view>
+    <view class='menu-col'>
+      <formid bind:resdata="toClock">
+        <view class='menu-box menu-4'>
+          <image src='../../images/admin4.jpg'></image>
+        </view>
+      </formid>
+      <formid bind:resdata="toYeji">
+        <view class='menu-box menu-5' bindtap='toStatistics'>
+          <image src='../../images/admin5.jpg'></image>
+        </view>
+      </formid>
+      <formid bind:resdata="tohujiao">
+        <view class='menu-box menu-6'>
+          <image src='../../images/admin6.png'></image>
+        </view>
+      </formid>
+    </view>
+  </view>
+</view>

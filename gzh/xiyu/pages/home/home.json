@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "工作台",
+  "usingComponents": {
+    "popnav": "/component/popnav",
+    "formid": "/component/formid/formid"
+  }
+}

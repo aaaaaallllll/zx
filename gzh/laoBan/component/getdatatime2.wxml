@@ -1,0 +1,10 @@
+<view class='time-col' bindtap='showtimebegin'>
+  <view class="picker">
+    <text class='t'>{{title}}</text>
+    <text class='d'>{{data}}</text>
+  </view>
+  <text class='iconfont icon-rili'></text>
+</view>
+<van-popup show="{{ showbegin }}" position="bottom" bind:close="hidetimebegin" overlay="{{ true }}">
+  <van-datetime-picker type="datetime" bind:cancel="hidetimebegin" value="{{ datatime }}" bind:confirm="checkbegin" />
+</van-popup>

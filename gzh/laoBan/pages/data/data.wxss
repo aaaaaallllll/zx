@@ -1,0 +1,22 @@
+/* pages/data/data.wxss */
+@import"../../wxss/style.wxss";
+.v-panel:nth-last-child(2) .v-header {
+  color: #f9b729;
+}
+
+.v-panel:nth-last-child(2) .v-header::before {
+  background-color: #f9b729;
+}
+
+.form_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

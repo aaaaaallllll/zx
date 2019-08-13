@@ -1,0 +1,44 @@
+<!--pages/administer/administer.wxml-->
+<!-- <tabBar showIndex='2'></tabBar> -->
+<view class='v-panel'>
+  <view class='v-header'>管理审核</view>
+  <view class='v-body'>
+    <view class='menu-list'>
+      <!-- <view class='menu-list-item'> -->
+      <!-- bindtap='toTuidan' -->
+         <!-- <formid  bindtap=''>
+            <view class='menu-box'>
+              <image src='../../images/data_menu1.png' class='menu-lgpic'></image>
+              <view>退单审核</view>
+            </view>
+         </formid>
+      </view> -->
+      <!-- toXdsh -->
+      <!-- <view class='menu-list-item'>
+          <formid bindtap=''>
+            <view class='menu-box'>
+              <image src='../../images/data_menu3.png' class='menu-lgpic'></image>
+              <view>提前下单审核</view>
+            </view>
+          </formid>
+      </view> -->
+      <!-- toQingjia -->
+      <!-- <view class='menu-list-item'>
+          <formid bindtap=''>
+            <view class='menu-box'>
+              <image src='../../images/data_menu2.png' class='menu-lgpic'></image>
+              <view>请假审核</view>
+            </view>
+          </formid>
+      </view> -->
+      <view class='menu-list-item'>
+          <formid bindtap='toCuizhong'>
+            <view class='menu-box'>
+              <image src='../../images/data_menu4.png' class='menu-lgpic'></image>
+              <view>催钟</view>
+            </view>
+          </formid>
+      </view>
+    </view>
+  </view>
+</view>

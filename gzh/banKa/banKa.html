@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+        <link rel="stylesheet" href="http://www.intereek.com/pangu/html/banka/css/mui.min.css">
+        <link rel="stylesheet" type="text/css" href="http://www.intereek.com/pangu/html/banka/css/mui.picker.min.css" />
+        <link rel="stylesheet" href="http://www.intereek.com/pangu/html/banka/css/style.css">
+        <title>在线办卡</title>
+    </head>
+    <style>
+        /*body{*/
+        /*    color: #595f65;*/
+        /*}*/
+        /*#xuanLeiXing{*/
+        /*    height: 50px;*/
+        /*    width: 100%;*/
+        /*    line-height: 50px;*/
+        /*    font-size: 40px;*/
+        /*    appearance:none;*/
+        /*    -moz-appearance:none;*/
+        /*    -webkit-appearance:none;*/
+        /*}*/
+        /*option {*/
+        /*    !*color: red;*!*/
+        /*    font-size: 30px;*/
+        /*}*/
+
+    </style>
+</head>
+<body>
+<div class="order_order">
+    <div class="phone_main">
+        <img src="http://www.intereek.com/pangu/html/banka/images/card_07.png" alt="" class="top_img"/>
+        <h6 class="top_tit">在线办卡</h6>
+    </div>
+    <div class="row date_select">
+		<span class="tit">
+			请选择生日
+		</span>
+        <div class="info">
+            <button id='demo2' data-options='{"type":"date","beginYear":1950,"endYear":2019}' class="btn input_text"></button>
+            <div id='result' class="ui-alert"></div>
+        </div>
+    </div>
+    <div class="row">
+		<span class="tit">
+			<input id="phone" type="text" placeholder="请输入电话(必填)" class="input_text"/>
+		</span>
+        <div class="info">
+            <a href="javascript:;"  onclick="sendSms()" class="phone_code">发送验证码</a>
+        </div>
+    </div>
+    <div class="row">
+		<span class="tit">
+			<input id="yanZhengMa"  type="text" placeholder="验证码(必填)" class="input_text"/>
+		</span>
+        <div class="info">
+
+        </div>
+    </div>
+
+    <div class="row">
+		<span class="tit">
+			<input id="txtName"  type="text" placeholder="请输入姓名(选填)" class="input_text"/>
+		</span>
+        <div class="info">
+
+        </div>
+    </div>
+
+    <div class="row">
+		<span class="tit">
+			<input id="addr"  type="text" placeholder="请输入地址(选填)" class="input_text"/>
+		</span>
+        <div class="info">
+
+        </div>
+    </div>
+
+    <div class="row" id="leiXingRow">
+        <!--span class="tit">选择会员类型</span-->
+        <select name="" id="xuanLeiXing" class="text select">
+            <option value="">选择会员类型</option>
+            <!--option value="">15岁-20岁</option>
+            <option value="">15岁-20岁</option>
+            <option value="">15岁-20岁</option>
+            <option value="">15岁-20岁</option-->
+        </select>
+    </div>
+
+    <div class="btn_group clearfix">
+        <a href="#" class="button back fl">取消</a>
+        <a href="#" onclick="smsYanZheng()"  class="button yes fr">确认办卡</a>
+    </div>
+    <div class="order_order_tips clearfix">
+        <div class="l_box fl clearfix">
+            <img src="http://www.intereek.com/pangu/html/banka/images/card_16.png" alt="" class="fl"/><span class="fr">商家说明</span>
+        </div>
+        <div class="r_box fr">
+            <p id="shuoMing">送券说明后台自定义设置送券说明后台自定义设置送券说明后台自定义设置送券说明后台自定义设置送券说明后台自定义设置送券说明后台自定义设置送券说明后台自定义设置</p>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="http://www.intereek.com/pangu/html/banka/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="http://www.intereek.com/pangu/html/banka/js/common.js"></script>
+<script src="http://www.intereek.com/pangu/html/banka/js/mui.min.js"></script>
+<script src="http://www.intereek.com/pangu/html/banka/js/mui.picker.min.js"></script>
+<!--//挂载插件-->
+<!--<script src="banKa/js/classie.js"></script>-->
+
+
+<script>
+    //let ajaxUrl  = "http://intereek.natapp1.cc/";
+    var ajaxUrl  = "http://www.intereek.com/";
+    var companyCode=queryString('companyCode')
+    var appid=queryString('appid')
+    // let code=queryString('code')
+    var openid=queryString('openid')
+    var couponGuid = uuid();
+    // var couponGuid = uuid();
+
+    // $('.phone_code').click(sendSms())
+    console.log('appid='+appid)
+    console.log('companyCode='+companyCode)
+    console.log('openid='+openid)
+    getHuiYuanKa()
+
+    function uuid() {
+        var s = [];
+        var hexDigits = "0123456789abcdef";
+        for (var i = 0; i < 36; i++) {
+            s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+        }
+        s[14] = "4";  // bits 12-15 of the time_hi_and_version field to 0010
+        s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);  // bits 6-7 of the clock_seq_hi_and_reserved to 01
+        s[8] = s[13] = s[18] = s[23] = "-";
+
+        var uuid = s.join("");
+        return uuid;
+    }
+
+    function wxZhiFu(danJia,quanMing){
+
+        $.ajax({
+            type: "GET",
+            dataType: "jsonp",
+            jsonp:'callback',
+            async:false,
+            url: "http://www.intereek.com/pangu/pangu.do?requestData={\"operationType\":\"wxPay\",\"danJia\":\""+danJia+"\",\"openid\":\""+openid+"\",\"orderNo\":\""+couponGuid+"\",\"quanMing\":\""+quanMing+"\",\"companyCode\":\""+companyCode+"\"}",
+            success: function(json){
+                if(!json.success){
+                    showLoadingDlg(false,"");
+                    alert("查询失败，原因:"+json.errorDesc);
+                    //return;
+                }else{
+                    const appId = json.result.appid;
+                    const timestamp = json.result.timeStamp;
+                    const nonceStr = json.result.nonceStr;
+                    const packages = json.result.package;
+                    const finalsign = json.result.sign;
+
+                    WeixinJSBridge.invoke('getBrandWCPayRequest',{
+                        "appId" : appId,"timeStamp" : timestamp, "nonceStr" :nonceStr, "package" : packages,"signType" : "MD5", "paySign" : finalsign
+                    }, function(res) {
+                        //alert(res.err_msg);
+                        //alert(res.err_code+res.err_desc+res.err_msg);
+                        WeixinJSBridge.log(res.err_msg);
+                        if (res.err_msg == "get_brand_wcpay_request:ok") {
+                            //alert("支付成功!");
+                            //WeixinJSBridge.call('closeWindow');
+                            //buyQuan(quanMing,couponGuid);
+                            banKaBingSongQuan();
+                        } else if (res.err_msg == "get_brand_wcpay_request:cancel") {
+                            //alert("用户取消支付!");
+                        } else {
+                            //alert("支付失败!");
+
+                            WeixinJSBridge.call('closeWindow');
+                        }
+                    });
+                }
+
+                //自动关闭微信浏览器
+                //WeixinJSBridge.call('closeWindow');
+            },
+            error: function(json){
+                //showLoadingDlg(false,"失败"+json);
+            }
+        });
+    }
+
+    getcards()
+    function getcards() {
+        $.ajax({
+            type: "post",
+            url:`${ajaxUrl}/pangu/xcx.do`,
+            dataType: "jsonp",
+            data: {
+                companyCode: companyCode,
+                queryType:'queryBanKaParas',
+                operationType:'queryLocal'
+            },
+            success: function (data) {
+                console.log(data.result)
+                var dataMap = eval('(' + data.result + ')');
+                cards=eval('(' + dataMap.cards + ')')
+                // cards=[{
+                //     cardTypeName:'aaa',
+                //     chongZhiJinE:0
+                // }]
+                console.log(cards)
+                console.log(dataMap.shuoMing)
+                if(cards.length <= 0){
+                    alert("需要到后台设置微信办卡类型");
+                }else{
+                    if(cards.length === 1){
+                        document.getElementById("leiXingRow").style.display="none";
+                    }else{
+                        console.log(cards.length)
+                        var html = "<option value=\"\">选择会员类型</option>";
+                        for(var i = 0; i < cards.length; i++){
+                            html += "<option value=\""+cards[i].chongZhiJinE+"\">"+cards[i].cardTypeName+"</option>";
+                        }
+                        document.getElementById("xuanLeiXing").innerHTML=html;
+
+                    }
+                }
+                document.getElementById("shuoMing").innerHTML=dataMap.shuoMing;
+            },
+            error:function (err) {
+                console.log(err);
+                console.log('获取失败')
+            }
+        });
+    }
+    function getHuiYuanKa() {
+        $.ajax({
+            type: "post",
+            url:`${ajaxUrl}/pangu/xcx.do`,
+            dataType: "jsonp",
+            data: {
+                companyCode: companyCode,
+                openid:openid,
+                operationType:'wxNewCard'
+            },
+            success: function (data) {
+                console.log(data)
+                // console.log(data.result.cards)
+                // console.log('1')
+                // console.log(data.result.quans)
+                if(data.success){
+                    if(data.result.cards.length>0){
+                        alert('已有会员卡')
+                    }
+                }
+            },
+            error:function (err) {
+                console.log(err);
+                console.log('获取失败')
+            }
+        });
+    }
+    function sendSms(){
+
+        var phone = document.getElementById("phone").value;
+        if(phone == "" || phone.length != 11){
+            alert("需要输入11位有效手机号码");
+            return;
+        }
+        $.ajax({
+            type: "GET",
+            dataType: "jsonp",
+            jsonp:'callback',
+            url: "http://www.intereek.com/pangu/pangu.do?requestData={\"operationType\":\"queryLocal\",\"queryType\":\"sendSmsCode\",\"companyCode\":\""+
+                companyCode+"\",\"phone\":\""+phone+"\"}",
+            success: function(json){
+                if(!json.success){
+                    //showLoadingDlg(false,"");
+                    alert("验证码发送失败，原因:"+json.errorDesc);
+                }else{
+                    alert("验证码发送成功");
+                }
+            },
+            error: function(json){
+                alert("网络连接失败");
+            }
+        });
+    }
+    //获取路径属性
+    function queryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    //获取卡编号
+    function uuid() {
+        var s = [];
+        var hexDigits = "0123456789abcdef";
+        for (var i = 0; i < 36; i++) {
+            s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+        }
+        s[14] = "4";  // bits 12-15 of the time_hi_and_version field to 0010
+        s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);  // bits 6-7 of the clock_seq_hi_and_reserved to 01
+        s[8] = s[13] = s[18] = s[23] = "-";
+
+        var uuid = s.join("");
+        return uuid;
+    }
+
+    //验证短信
+    function smsYanZheng(){
+        var phone = document.getElementById("phone").value;
+        var cardName = document.getElementById("txtName").value;
+        var yanZhengMa = document.getElementById("yanZhengMa").value;
+
+        if(phone == "" || phone.length != 11){
+            alert("需要输入11位有效手机号码");
+            return;
+        }
+
+        if(yanZhengMa == ""){
+            alert("需要输入有效验证码");
+            return;
+        }
+
+        /*if(cardName == ""){
+            alert("需要输入姓名");
+            return;
+        }*/
+
+        var shengRi = document.getElementById("result").innerText;
+        if(shengRi == ""){
+            alert("需要选择有效生日");
+            return;
+        }
+
+        if(cards.length > 1){
+            var obj = document.getElementById("xuanLeiXing");
+            var index = obj.selectedIndex; // 选中索引
+            var cardType = obj.options[index].text; // 选中文本
+            if(cardType == "" || cardType == "选择会员类型"){
+                alert("需要选择会员类型");
+                return;
+            }
+        }
+
+        $.ajax({
+            type: "GET",
+            dataType: "jsonp",
+            jsonp:'callback',
+            url: "http://www.intereek.com/pangu/pangu.do?requestData={\"operationType\":\"queryLocal\",\"queryType\":\"smsYanZheng\",\"companyCode\":\""+
+                companyCode+"\",\"phone\":\""+phone+"\",\"openid\":\""+openid+"\",\"code\":\""+yanZhengMa+"\"}",
+            success: function(json){
+                if(!json.success){
+                    //showLoadingDlg(false,"");
+                    alert("短信验证失败，原因:"+json.errorDesc);
+                }else{
+                    //alert("办卡成功");
+                    gouMai();
+
+                }
+            },
+            error: function(json){
+                alert("网络连接失败");
+            }
+        });
+    }
+
+    //确认办卡
+    function banKaBingSongQuan(){
+        const phone = document.getElementById("phone").value;
+        const cardName = document.getElementById("txtName").value;
+        const addr = document.getElementById("addr").value;
+        const shengRi = document.getElementById("result").innerText;
+        const yanZhengMa = document.getElementById("yanZhengMa").value;
+        console.log("日期="+shengRi)
+        console.log("办卡人姓名="+cardName)
+        console.log("办卡人地址="+addr)
+        console.log("验证码="+yanZhengMa)
+        console.log("手机号="+phone)
+
+        // if(phone == "" || phone.length != 11){
+        //     alert("需要输入11位有效手机号码");
+        //     return;
+        // }
+        // if(yanZhengMa == ""){
+        //     alert("需要输入有效验证码");
+        //     return;
+        // }
+        // if(shengRi == ""){
+        //     alert("需要选择有效生日");
+        //     return;
+        // }
+
+        // var obj = document.getElementById("xuanLeiXing");
+        // var index = obj.selectedIndex; // 选中索引
+        // var cardType = obj.options[index].text; // 选中文本
+        // if(cards.length>1){
+        //     var obj = document.getElementById("xuanLeiXing");
+        //     var index = obj.selectedIndex; // 选中索引
+        //     cardType = obj.options[index].text; // 选中文本
+        // }else{
+        //     cardType = cards[0].cardTypeName;
+        // }
+        console.log("办卡类型="+cardType)
+        console.log("eee="+couponGuid)
+
+        // $.ajax({
+        //     type: "GET",
+        //     dataType: "jsonp",
+        //     jsonp:'callback',
+        //     url: "http://www.intereek.com/pangu/pangu.do",
+        //     data:{
+        //         operationType:'queryLocal',
+        //         queryType:'wxBanKa',
+        //         companyCode:companyCode,
+        //         phone:phone,
+        //         openid:openid,
+        //         shengRi:shengRi,
+        //         cardName:cardName,
+        //         addr:addr,
+        //         cardType:cardType,
+        //         orderNo:couponGuid,
+        //     },
+        //     success: function(json){
+        //         if(!json.success){
+        //             //showLoadingDlg(false,"");
+        //             alert("办卡失败，原因:"+json.errorDesc);
+        //             // window.location.href=`${ajaxUrl}pangu/html/jiShiYuYue/dist/index.html?appid=${appid}
+        //             //     &companyCode=${companyCode}&openid=${openid}#/`
+        //         }else{
+        //             alert("办卡成功");
+        //             window.location.href=`${ajaxUrl}pangu/html/jiShiYuYue/dist/index.html?appid=${appid}
+        //                 &companyCode=${companyCode}&openid=${openid}#/`
+        //         }
+        //     },
+        //     error: function(json){
+        //         alert("网络连接失败");
+        //     }
+        // });
+        var cardType = "";
+        if(cards.length>1){
+            var obj = document.getElementById("xuanLeiXing");
+            var index = obj.selectedIndex; // 选中索引
+            cardType = obj.options[index].text; // 选中文本
+        }else{
+            cardType = cards[0].cardTypeName;
+        }
+		var _t = encodeURI(encodeURI(encodeURI(cardName)))
+        $.ajax({
+            type: "GET",
+            dataType: "jsonp",
+            // jsonp:'callback',
+            url: "http://www.intereek.com/pangu/pangu.do?requestData={\"operationType\":\"queryLocal\",\"queryType\":\"wxBanKa\",\"companyCode\":\""+
+                companyCode+"\",\"phone\":\""+phone+"\",\"openid\":\""+openid+"\",\"shengRi\":\""+shengRi+"\",\"cardName\":\""+
+                _t+"\",\"addr\":\""+addr+"\",\"cardType\":\""+cardType+"\",\"orderNo\":\""+couponGuid+"\"}",
+            success: function(json){
+                if(!json.success){
+                    //showLoadingDlg(false,"");
+                    console.log(json)
+                    alert("办卡失败，原因:"+json.errorDesc);
+                    // window.location.href=`${ajaxUrl}pangu/html/jiShiYuYue/dist/index.html?appid=${appid}
+                    //     &companyCode=${companyCode}&openid=${openid}#/`
+                }else{
+                    //alert("办卡成功");
+
+                    window.location.href=
+                        "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+
+                        appid+
+                        "&redirect_uri=http://"+
+                        "www.intereek.com"+"/pangu//newcard.htm&response_type=code&scope=snsapi_userinfo&state="+companyCode+"#wechat_redirect";
+                }
+            },
+            error: function(json){
+                alert("网络连接失败");
+            }
+        });
+    }
+
+    function gouMai(){
+
+        var cardType = "";
+        var money = 0;
+        if(cards.length > 1){
+            var obj = document.getElementById("xuanLeiXing");
+            var index = obj.selectedIndex; // 选中索引
+            cardType = obj.options[index].text; // 选中文本
+            money = obj.value;
+        }else{
+            cardType = cards[0].cardTypeName; // 选中文本
+            money = cards[0].chongZhiJinE;
+        }
+
+        if(money > 0){
+            wxZhiFu(money, cardType);
+        }else{
+            banKaBingSongQuan();
+        }
+
+        /*if(phone == "" || phone.length != 11){
+            alert("需要输入11位有效手机号码");
+            return;
+        }
+
+        $.ajax({
+            type: "GET",
+            dataType: "jsonp",
+            jsonp:'callback',
+            url: "http://www.intereek.com/pangu/pangu.do?requestData={\"operationType\":\"queryLocal\",\"queryType\":\"sendSmsCode\",\"companyCode\":\""+
+                companyCode+"\",\"phone\":\""+phone+"\"}",
+            success: function(json){
+               if(!json.success){
+                   //showLoadingDlg(false,"");
+                    alert("验证码发送失败，原因:"+json.errorDesc);
+               }else{
+                    alert("验证码发送成功");
+               }
+            },
+            error: function(json){
+                alert("网络连接失败");
+            }
+        });*/
+    }
+
+    (function($) {
+        $.init();
+        var result = $('#result')[0];
+        var btns = $('.btn');
+        btns.each(function(i, btn) {
+            btn.addEventListener('tap', function() {
+                var _self = this;
+                if(_self.picker) {
+                    _self.picker.show(function (rs) {
+                        result.innerText = '' + rs.text;
+                        _self.picker.dispose();
+                        _self.picker = null;
+                    });
+                } else {
+                    var optionsJson = this.getAttribute('data-options') || '{}';
+                    var options = JSON.parse(optionsJson);
+                    var id = this.getAttribute('id');
+                    /*
+                     * 首次显示时实例化组件
+                     * 示例为了简洁，将 options 放在了按钮的 dom 上
+                     * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+                     */
+                    _self.picker = new $.DtPicker(options);
+                    _self.picker.show(function(rs) {
+                        /*
+                         * rs.value 拼合后的 value
+                         * rs.text 拼合后的 text
+                         * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
+                         * rs.m 月，用法同年
+                         * rs.d 日，用法同年
+                         * rs.h 时，用法同年
+                         * rs.i 分（minutes 的第二个字母），用法同年
+                         */
+                        result.innerText = '' + rs.text;
+                        /*
+                         * 返回 false 可以阻止选择框的关闭
+                         * return false;
+                         */
+                        /*
+                         * 释放组件资源，释放后将将不能再操作组件
+                         * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
+                         * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
+                         * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
+                         */
+                        _self.picker.dispose();
+                        _self.picker = null;
+                    });
+                }
+
+            }, false);
+        });
+    })(mui);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "getdatatime": "/component/getdatatime",
+    "select":"/component/select/select",
+    "tagger": "/component/toggle/toggle"
+  },
+  "navigationBarTitleText": "项目销售统计"
+}

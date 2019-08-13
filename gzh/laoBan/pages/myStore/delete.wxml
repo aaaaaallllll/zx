@@ -1,0 +1,15 @@
+<!--pages/myStore/delete.wxml-->
+<view class='top'>
+    <view class='shop'>
+      <view  wx:for="{{list}}" wx:key="index" wx:for-item='item' class="{{dIndex==index?'on':''}}" >
+            <text class="iconfont icon-home}}"  wx-if='{{dIndex!=index}}'></text>
+            <text class="iconfont icon-close-circle-fill" wx-if='{{dIndex==index}}' bindtap='deleteShop'></text>
+            <span bindtap='onDown'  data-name='{{index}}' id="{{item.companycode}}"> 门店ID：{{item.companycode}}</span>
+      </view>
+    </view>
+</view>
+<view class='kong' wx-if='{{kong}}'>门店信息为空</view> 
+<!-- <view class='btn' bindtap='deleteShop'>删除</view> -->
+<!-- 弹框 -->
+<modal hidden="{{nocancel}}" title="是否删除" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" >
+</modal>

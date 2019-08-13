@@ -1,0 +1,232 @@
+@import"../../wxss/iconfont.wxss";
+
+page{
+  /* background-color: #f1f2f6; */
+ background-color: rgba(223, 228, 234, 0.3);
+}
+.sav{
+  width: 93%;
+  text-align: center;
+  margin-bottom:10rpx;
+  background-color: #FFFFFF; 
+  height: 200rpx;
+  line-height: 200rpx;
+  padding-top: 50rpx;
+  margin: 30rpx auto;
+  border-radius: 20rpx;
+}
+.on{
+  /* margin-top: 80rpx; */
+}
+.sav .inputBox{
+  border: 1px solid #bdbdbd;
+  width: 70%;
+  height: 70rpx;
+  /* margin: 40rpx auto; */
+  text-align: center;
+  color: rgb(143, 138, 138);
+  font-size: 30rpx;
+  border-bottom-left-radius: 10rpx;
+  border-top-left-radius: 10rpx;
+  display: inline-block;
+  box-sizing: border-box;
+  background-color:#FFFFFF;
+}
+.sav .btn{
+  width: 140rpx;
+  height: 70rpx;
+  background-color: #4876FF;
+  border-bottom-right-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  display: inline-block;
+  /* border: 1px solid #000000; */
+  text-align: center;
+  font-size: 30rpx;
+  line-height: 70rpx;
+  color: #313131
+}
+.userInfo{
+  /* background-color: #FFFFFF; */
+  /* height: 800rpx; */
+  width: 96%;
+  margin: 40rpx auto;
+}
+.piccanvas{
+  width:680rpx;
+  height:600rpx;
+  /* transform:scale(0.4); */
+  /* margin: 55rpx -60rpx; */
+  
+}
+.canvas{
+  width:680rpx;
+  height:600rpx;
+  transform:scale(0.8);
+  margin: 55rpx -60rpx;
+}
+.list{
+  background-color: #FFFFFF;
+  /* padding: 20rpx 20rpx; */
+  width: 100%;
+  margin-bottom: 30rpx;
+  border-radius: 20rpx;
+  /* box-sizing: border-box; */
+  overflow: hidden;
+  text-align: center
+}
+.list span{
+  display: block;
+  font-size: 28rpx;
+  color: #5a5a5a;
+  width: 90%;
+  margin: 10rpx auto;
+  padding-left: 20rpx; 
+  border-bottom: 2rpx solid #dbdbdb;
+  margin-bottom: 30rpx;
+}
+.list text{
+  display: block;
+  font-size: 28rpx;
+  color: #2e86de;
+  padding-left: 20rpx; 
+  margin-top: 10rpx;
+  margin-left: 40rpx;
+  min-width: 90rpx
+}
+.list .left{
+  display: inline-block;
+  border-right: 1rpx solid #c0c0c0 ;
+}
+.list .right{
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+.list .right text{
+  font-size: 24rpx;
+  height: 40rpx;
+  margin-bottom: 24rpx;
+  margin-top: 32rpx;
+  background-color: #4876FF;
+  color: #FFFFFF;
+  line-height: 40rpx;
+  border-radius: 20rpx;
+  text-align: left;
+  margin-left: 30rpx;
+  overflow: hidden;
+}
+.list .left text{
+  margin:30rpx 
+}
+.xhList{
+  background-color: #FFFFFF;
+  /* padding: 20rpx 20rpx; */
+  width: 100%;
+  margin-bottom: 30rpx;
+  border-radius: 20rpx;
+  /* box-sizing: border-box; */
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 40rpx;
+  padding-left: 20rpx; 
+  padding-right: 20rpx; 
+}
+.xhList .lable{
+  height: 50rpx;
+  min-width: 150rpx;
+  margin-top: 30rpx;
+  margin-left: 6rpx;
+  margin-right: 6rpx;
+  /* padding: 5rpx; */
+  text-align: center;
+  background-color: #dcdde1;
+  line-height: 50rpx;
+  padding-left: 10rpx;
+  /* padding-right: 50rpx; */
+  border-radius: 25rpx;
+  transition: background-color 0.6s;
+  color: #535c68;
+}
+.xhList .lable view{
+  display: inline-block;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  height: 50rpx;
+}
+.xhList .lable .text{
+  
+  /* overflow: hidden;
+  min-width: 120rpx */
+  position: relative;
+  top:-2rpx;
+  left: -5rpx;
+  min-width: 50%;
+  padding-left: 5rpx;
+  padding-right: 5rpx 
+}
+.xhList .lable .icon-close{
+  float: right;
+  color: #FFF;
+  background-color: #eb4d4b;
+  margin-left: 10rpx;
+  /* border-top-right-radius: 20rpx;
+  border-bottom-right-radius: 20rpx; */
+  border-radius: 25rpx;
+  height: 50rpx;
+  width: 50rpx;
+}
+.xhList span{
+  display: block;
+  font-size: 28rpx;
+  color: #5a5a5a;
+  width: 90%;
+  margin: 10rpx auto;
+  padding-left: 20rpx; 
+  border-bottom: 2rpx solid #dbdbdb;
+  position: relative;
+  left: -20rpx;
+}
+.xhList>.ps{
+  height: 50rpx;
+  margin-top: 30rpx;
+  /* padding: 5rpx; */
+  background-color: #dcdde1;
+  line-height: 50rpx;
+  padding-left: 10rpx;
+  /* padding-right: 50rpx; */
+  /* border-radius: 20rpx; */
+  text-align: left;
+  min-width: 300rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-left: 30rpx;
+  /* margin-right: 30rpx; */
+}
+.push{
+  height: 50rpx;
+  width: 50rpx;
+  font-size: 40rpx;
+  color: #22a6b3;
+  display: inline-block;
+  /* overflow: hidden; */
+  float: right;
+}
+.xhList>.ps input{
+  display: inline-block;
+  min-width: 260rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 26rpx;
+  float: left;
+  text-align: center;
+  color: #535c68;
+}
+.userInfo .xhList .on{
+  background-color: #eb4d4b;
+  color: #FFF
+}

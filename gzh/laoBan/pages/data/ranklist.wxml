@@ -1,0 +1,47 @@
+<view class='top-cell'>
+  <view bindtap='changedata' wx:if="{{status}}" class='top-link'>时段查询</view>
+  <view bindtap='changedata' wx:if="{{!status}}" class='top-link'>日期查询</view>
+</view>
+<view class="search-cells" wx:if="{{status}}">
+  <view class='form-inner'>
+    <getdatatime type="date" bind:resshow="resshow" bind:resdata="getdatatimebegin" title="开始日期" data="{{begin}}" datatime="{{begintime}}"></getdatatime>
+    <getdatatime type="date" bind:resshow="resshow" bind:resdata="getdatatimeend" title="结束日期" data="{{end}}" datatime="{{endtime}}"></getdatatime>
+    <button bindtap='getList' class='weui-btn weui-cui-button'>查询</button>
+  </view>
+</view>
+<view class="inner-wrap">
+  <getdata wx:if="{{!status}}" bind:resdata='getdata'></getdata>
+  <!-- <getdatatime bind:resdata='resdatastart'></getdatatime> -->
+  <view class="e-panel">
+    <view class='e-panel-hd'>项目钟数统计
+      <text>（前十）</text>
+    </view>
+    <view class='e-panel-body' style='height:500rpx;'>
+      <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+    </view>
+  </view>
+  <view class="e-panel">
+    <view class='e-panel-hd'>技师上钟统计
+      <text>（前六）</text>
+    </view>
+    <view class='e-panel-body'>
+      <ec-canvas id="mychart-dom-bar2" canvas-id="mychart-bar" ec="{{ ec2 }}"></ec-canvas>
+    </view>
+  </view>
+  <view class="e-panel">
+    <view class='e-panel-hd'>库存消费品
+      <text>（前十）</text>
+    </view>
+    <view class='e-panel-body' style='height:auto;'>
+      <view class='rank-cells'>
+        <view class='rank-cell' wx:for="{{xiaofei}}">
+          <view class='rank-bar justify' style='width:{{item.width}}%'>
+            <view>{{index+1}}.{{item.tech}}</view>
+            <view>{{item.numer}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<tagger></tagger>

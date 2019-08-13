@@ -1,0 +1,126 @@
+<!--pages/control/control.wxml-->
+<view class="room">
+    <view class="roomName">
+      <text class="icon-fangjian2 iconfont"></text>
+      <text>008</text>
+    </view>
+    <view class="roomCenter">
+      <image src="../../images/fk_left.png" style="left:-24rpx;"></image>
+      <view class="wdInfo">
+         <text style="font-size: 80rpx;">25°C</text> 
+         <text>当前温度</text>
+      </view>
+      <image src="../../images/fk_right.png" style="right:-24rpx;"></image>
+    </view>
+    <view class="roomBottom">
+      <view class="msInfo" style="left:-70rpx;">
+        <text class="iconfont icon-mingliangmoshi-" style="font-size: 90rpx;text-align: center;"></text>
+        <text>灯光-明亮</text>
+      </view>
+      <view class="msInfo" style="right:-70rpx;">
+        <text class="iconfont icon-fangkerenshu" style="font-size: 90rpx;text-align: center;"></text>
+        <text >进客模式</text>
+      </view>
+    </view>
+</view>
+<view class="ctRoom">
+  <view class="nav">
+    <view class="btn {{msIndex==0?'btnOn':''}}" data-id="0" bindtap="msDeploy">
+      <text class="iconfont icon-qingjingmoshi" style="font-size: 80rpx;text-align: center;" ></text>
+      <text >情景模式</text>
+    </view>
+    <view class="btn {{msIndex==1?'btnOn':''}}" data-id="1" bindtap="msDeploy">
+      <text class="iconfont icon-b_icon__lamplight" style="font-size: 70rpx;text-align: center;" ></text>
+      <text >灯光控制</text>
+    </view>
+    <view class="btn {{msIndex==2?'btnOn':''}}" data-id="2" bindtap="msDeploy">
+      <text class="iconfont icon-kongtiao" style="font-size: 60rpx;text-align: center;"></text>
+      <text >空调控制</text>
+    </view>
+    <view class="btn {{msIndex==3?'btnOn':''}}" data-id="3" bindtap="msDeploy">
+      <text class="iconfont icon-yinle" style="font-size: 55rpx;text-align: center;"></text>
+      <text >背景音乐</text>
+    </view>
+  </view>
+  <view class="control">
+    <!-- 情景模式 -->
+    <view wx-if="{{msIndex==0}}" class="qjms">
+      <view class="qj_box {{qjIndex==0?'active':''}}" bindtap="qjDeploy" data-id="0">
+        <text class="iconfont icon-fangkerenshu" style="font-size: 100rpx;"></text>
+        <text>进客模式</text>
+      </view>
+       <view class="qj_box {{qjIndex==1?'active':''}}" bindtap="qjDeploy" data-id="1">
+        <text class="iconfont icon-fangjian" style="font-size: 90rpx;"></text>
+        <text>开房模式</text>
+      </view>
+       <view class="qj_box {{qjIndex==2?'active':''}}" bindtap="qjDeploy" data-id="2">
+        <text class="iconfont icon-fuwu2"></text>
+        <text>服务模式</text>
+      </view>
+       <view class="qj_box {{qjIndex==3?'active':''}}" bindtap="qjDeploy" data-id="3">
+        <text class="iconfont icon-daidasao"></text>
+        <text>待清模式</text>
+      </view>
+       <view class="qj_box {{qjIndex==4?'active':''}}" bindtap="qjDeploy" data-id="4">
+        <text class="iconfont icon-xiuxi"></text>
+        <text>休息模式</text>
+      </view>
+       <view class="qj_box {{qjIndex==5?'active':''}}" bindtap="qjDeploy" data-id="5">
+        <text class="iconfont icon-kongfang"></text>
+        <text>空房模式</text>
+      </view>
+    </view>
+    <!-- 灯光模式 -->
+    <view wx-if="{{msIndex==1}}">
+     <view class="moshi">
+        <text class="{{mosIndex==0?'active':''}}" data-id="0" bindtap="deploy">自定义</text>
+        <text class="{{mosIndex==1?'active':''}}" data-id="1" bindtap="deploy">明亮模式</text>
+        <text class="{{mosIndex==2?'active':''}}" data-id="2" bindtap="deploy">服务模式</text>
+        <text class="{{mosIndex==3?'active':''}}" data-id="3" bindtap="deploy">休闲模式</text>
+        <text class="{{mosIndex==4?'active':''}}" data-id="4" bindtap="deploy">睡眠模式</text>
+        <text class="{{mosIndex==5?'active':''}}" data-id="5" bindtap="deploy">空房模式</text>
+      </view>
+      <view class="deng">
+        <view class="deng_box" wx:for="{{dengList}}" wx:key="index" >
+          <text class="{{item.deng1ck?'active':''}}" data-id="{{index}}" data-ed="0" bindtap="deployDeng">{{item.deng1Name}}</text>
+          <text class="{{item.deng2ck?'active':''}}" data-id="{{index}}" data-ed="1" bindtap="deployDeng">{{item.deng2Name}}</text>
+          <view class="deng_length">
+            <text wx-if="{{item.deng1ck}}"></text>
+            <text wx-if="{{!item.deng2ck || !item.deng1ck}}" style="height:0"></text>
+            <text wx-if="{{item.deng2ck}}"></text>
+            
+          </view>
+        </view>
+
+      </view>
+    </view>
+     <!-- 空调控制 -->
+    <view wx-if="{{msIndex==2}}">
+      空调控制
+      <!-- <image src="../../images/zhexian.png" bindtap="cscs"></image> -->
+    </view>
+    <!-- 背景音乐 -->
+    <view wx-if="{{msIndex==3}}">
+      <view class="music_top ">
+          <text class="iconfont icon-yinliang music_left"></text>
+          <view class="music_right">
+              <view class="music_top_top">
+                  <text>0</text>
+                  <view>6</view>
+                  <text>30</text>
+              </view>
+              <view  class="music_top_bottom">
+              当前音量
+              </view>
+          </view>
+          
+      </view> 
+      <view class="music_bottom" bindtap="toMusic">
+          <image src="../../images/fk_3.png"></image>
+      </view>
+
+    </view>
+   
+
+  </view>
+</view>

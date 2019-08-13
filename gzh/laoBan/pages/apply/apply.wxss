@@ -1,0 +1,96 @@
+/* pages/apply/apply.wxss */
+@import'../../wxss/iconfont.wxss';
+.top{
+  height: 400rpx;
+  width: 100%;
+  text-align: center;
+  margin: 220rpx auto 60rpx ;
+  /* background-color: #AE2344 */
+}
+.top .inp{
+  height: 90rpx;
+  width: 90%;
+  background-color: #FFF;
+  margin: 40rpx auto;
+  border: 1rpx solid #dcdde1;
+  text-align: left;
+  line-height: 90rpx;
+  padding-left: 10rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+  color: #666666
+}
+.top  text{
+  display: inline-block;
+  height: 90rpx;
+  line-height: 90rpx;
+  overflow: hidden;
+}
+.top  input{
+  margin-left: 20rpx;
+  width: 75%;
+  /* background-color: #dcdde1; */
+  height: 90rpx;
+  display: inline-block;
+  font-size: 32rpx;
+  color: #2f3640;
+  text-align: left;
+}
+.fr{
+  color: #CCCCCC;
+  float:right;
+  margin-right: 10rpx;
+}
+.top .a{
+  height: 90rpx;
+  width: 90%;
+  margin: 40rpx auto;
+  text-align: left;
+  line-height: 90rpx;
+  overflow: hidden;
+  color: #666666;
+  position: relative;
+  
+}
+.top .a text{
+  position: absolute;
+  /* top: 50%; */
+  left: 12rpx;
+}
+.top .a input{
+  padding-left: 70rpx;
+}
+.top .yzm{
+  height: 90rpx;
+  width: 400rpx;
+  display: inline-block;
+  margin: 0;
+  background-color: #FFF;
+  border: 1rpx solid #dcdde1;
+  padding-left: 10rpx;
+  box-sizing: border-box;
+}
+.top .smsBtn{
+  width: 240rpx;
+  display: inline-block;
+  height: 90rpx;
+  background-color: #1e90ff;
+  float: right;
+  box-shadow: 0 0 2rpx rgb(129, 129, 129);
+  border-radius: 10rpx;
+  color: #FFF;
+  text-align: center;
+  line-height: 90rpx;
+  font-size: 28rpx;
+}
+.btn{
+  width: 90%;
+  height: 90rpx;
+  background-color: #2ed573;
+  box-shadow: 0 0 5rpx #666666;
+  text-align: center;
+  line-height: 90rpx;
+  font-size: 33rpx;
+  color: #FFF;
+  margin: 0 auto;
+}

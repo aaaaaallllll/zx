@@ -1,0 +1,84 @@
+<!--pages/table/mdCas.wxml-->
+<!-- <view class='top-cell' >
+  <view bindtap='changedata' wx:if="{{status}}" class='top-link'>时段查询</view>
+  <view bindtap='changedata' wx:if="{{!status}}" class='top-link'>日期查询</view>
+</view> -->
+<view class="search-cells" >
+  <view class='form-inner'>
+    <getdatatime bind:resdata="getdatatimebegin" title="开始日期" data="{{begin}}" datatime="{{begintime}}"></getdatatime>
+    <!-- <getdatatime bind:resdata="getdatatimeend" title="结束日期" data="{{end}}" datatime="{{endtime}}"></getdatatime> -->
+    <button bindtap='getList' class='btn'>查询</button>
+  </view>
+</view>
+<!-- <view class="inner-wrap" >
+  <getdata wx:if="{{!status}}" bind:resdata='resdata'></getdata> -->
+  <!-- <view class='table-cells'>
+    <nolist wx:if="{{listtitle.length==0}}"></nolist>
+    <view class='table2'>
+      <view class='table3 table4'>
+        <view wx:for="{{listtitle}}">{{item}}</view>
+      </view>
+      <view class='table3'>
+        <view wx:for="{{listdata}}">{{item}}</view>
+      </view>
+    </view>
+  </view> -->
+<!-- </view> -->
+
+<!-- 统计 -->
+<view class='e-table-tit'>{{shopName}}门店收银</view>
+  <!-- <tagger/> -->
+<scroll-view scroll-x="true" class='scrollClass' bindscroll='getLeft'  enable-back-to-top="true" >
+  <view class='table'>
+    <!-- 表头 -->
+    <view class='table_header'>
+      <view class='tc zhon'id='title' >
+        门店名
+      </view>
+      <view wx:for="{{shopTitles}}" wx:key='index' class="tc {{item.list.length>0?'':'zhon'}}">
+        <view class='tt'>{{item}}</view>
+        <!-- <view class='td' wx:for="{{item.list}}">{{item}}</view> -->
+      </view> 
+    </view>
+    <!-- 表头固定 -->
+    <view class='table_header one' style="left:-{{left}}px" wx-if="{{scrollTop>offsetTop}}">
+      <view class='tc zhon one2'>
+        门店名
+      </view>
+      <view class='tc zhon'>
+        门店名
+      </view>
+      <view wx:for="{{shopTitles}}" wx:key='index' class="tc {{item.list.length>0?'':'zhon'}}" >
+        <view class='tt'>{{item}}</view>
+        <!-- <view class='td' wx:for="{{item.list}}">{{item}}</view> -->
+      </view> 
+    </view>
+    <!-- 内容 -->
+    <view class='table_body'>
+      <view class='tr one'style="top:{{offsetTop-scrollTop}}px;color:#BBB" >
+        <!-- 固定门店 -->
+        <view class='td' style='background: linear-gradient(to right,#0984e3,#178feb);color:#FFF;border:none'>门店名</view>
+      </view>
+      <view class='tr' wx:for='{{gradeData}}' wx:key='index'>
+        <!-- 固定列头 -->
+        <view class='td one' style="top:{{offsetTop+(40*(index+1))-scrollTop}}px;color:#2d3436" >{{item.name}}</view>
+        <view class='td'>{{item.name}}</view>
+        <view class='td'>{{item.keliuliang}}</view>
+        <view class='td'>{{item.shijishouru}}</view>
+        <view class='td'>{{item.zongshouru}}</view>
+        <view class='td'>{{item.yingyeshouru}}</view>
+        <view class='td'>{{item.zongxianjin}}</view>
+        <view class='td'>{{item.zongyinlian}}</view>
+        <view class='td'>{{item.xianjin}}</view>
+        <view class='td'>{{item.yinlian}}</view>
+        <view class='td'>{{item.huiyuanka}}</view>
+        <view class='td'>{{item.youhuiquan}}</view>
+        <view class='td'>{{item.guazhang}}</view>
+        <view class='td'>{{item.zhaodai}}</view>
+        <view class='td'>{{item.moling}}</view>
+        <view class='td'>{{item.kerenmiandan}}</view>
+        <view class='td'>{{item.jifenduihuan}}</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

@@ -1,0 +1,13 @@
+<!--pages/myStore/list.wxml-->
+<view class='list'>
+    <view class="store {{dIndex==index?'on':''}}"  wx:for="{{list}}" wx:key="index" wx:for-item='item' bindtap='onDown'  data-name='{{index}}' id="{{item.companycode}}"  data-cname='{{item.companyname}}'>
+        <text class="iconfont icon-home {{dIndex==index?'on3':''}}"></text>
+        <view class='info'>
+            <view class='name'>{{item.companyname}}</view>
+            <view class="comCode {{dIndex==index?'on2':''}}">门店Id:{{item.companycode}}</view>
+            <!-- <view class='time'>创建时间:2019-05-30 20:07:59</view> -->
+        </view>
+        
+        <!-- <view class='isDelete'>已被删除</view> -->
+    </view>
+</view>

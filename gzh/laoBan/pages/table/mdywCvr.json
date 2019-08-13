@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "getdata": "/component/getdata",
+    "getdatatime": "/component/getdatatime3",
+    "tagger": "/component/toggle/toggle"
+  },
+  "navigationBarTitleText": "门店业务转化率"
+}

@@ -1,0 +1,48 @@
+<view class='menu-toggle' bindtap='clickMenu'>
+  <image src='../images/plus.png'></image>
+</view>
+<view class='nav-inner' wx:if="{{flag}}">
+  <view class='popnav-list'>
+    <view class='col-6' bindtap='paiqian'>
+      <view class='nav-item'>
+        <image src='../images/menu1.png'></image>
+        <view>派遣</view>
+      </view>
+    </view>
+    <view class='col-6' bindtap='shangzhong'>
+      <view class='nav-item'>
+        <image src='../images/menu2.png'></image>
+        <view>上钟</view>
+      </view>
+    </view>
+    <view class='col-6' bindtap='jiazhong'>
+      <view class='nav-item'>
+        <image src='../images/menu3.png'></image>
+        <view>加钟</view>
+      </view>
+    </view>
+    <view class='col-6' bindtap='xiazhong'>
+      <view class='nav-item'>
+        <image src='../images/menu4.png'></image>
+        <view>下钟</view>
+      </view>
+    </view>
+    <view class='col-6' bindtap='fuwu'>
+      <view class='nav-item'>
+        <image src='../images/menu5.png'></image>
+        <view>服务</view>
+      </view>
+    </view>
+    <view class='col-6' bindtap='ludan'>
+      <view class='nav-item'>
+        <image src='../images/menu6.png'></image>
+        <view>录单</view>
+      </view>
+    </view>
+    <view class='col-12'>
+      <view class='nav-close' bindtap='clickClose'>
+        <text class='iconfont icon-close'></text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,47 @@
+/* component/tabBar/tabBar.wxss */
+@import'../../wxss/iconfont.wxss';
+@import"../../wxss/style.wxss";
+.nav{
+  height: 100rpx;
+  width: 100%;
+  background-color: #FFFFFF;
+  color: #353b48;
+  display: flex;
+  justify-content:space-around;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  align-items:center;
+  font-size: 24rpx;
+  box-sizing: border-box;
+  line-height: 100rpx;
+  border-top: 1rpx solid #BBBBBB;
+  z-index: 98;
+}
+.nav-text{
+  text-align: center;
+  height: 80rpx;
+  line-height: 40rpx;
+}
+.nav-text text{
+  display: block;
+}
+.nav .nav-float{
+  height: 100rpx;
+  width: 100rpx;
+  border-radius: 50rpx;
+  border: 1rpx solid #BBBBBB;
+  z-index: 99;
+  position: relative;
+  top: -40rpx;
+  text-align: center;
+  line-height: 100rpx;
+  background-color: #FFFFFF;
+  
+}
+.nav .nav-float text{
+  font-size: 30rpx;
+}
+.on{
+  color: #0652DD
+}

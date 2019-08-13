@@ -1,0 +1,60 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/control/control",
+    "pages/control/ftRoom",
+    "pages/yuYue/dingDang",
+    "pages/webpage/newLudan",
+    "pages/yuYue/yuYue",
+    "pages/login/login",
+    "pages/user/user",
+    "pages/index/index",
+    "pages/clock/clock",
+    "pages/dispatch/dispatch",
+    "pages/select/select",
+    "pages/select/selectPages",
+    "pages/webpage/ludan",
+    "pages/webpage/statistics",
+    "pages/webpage/statisticsdetail",
+    "pages/hujiaofuwu/hujiaofuwu",
+    "pages/hujiaofuwu/toroom"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "客服端",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#454952",
+    "selectedColor": "#00A4FF",
+    "backgroundColor": "#FFF",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home_on.png"
+      },
+      {
+        "pagePath": "pages/yuYue/yuYue",
+        "text": "预约",
+        "iconPath": "images/yuYue.png",
+        "selectedIconPath": "images/yuYue-on.png"
+      },
+      {
+        "pagePath": "pages/control/ftRoom",
+        "text": "房控",
+        "iconPath": "images/fk1.png",
+        "selectedIconPath": "images/fk2.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/user 2.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

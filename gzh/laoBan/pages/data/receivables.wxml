@@ -1,0 +1,60 @@
+<view class='top-cell' >
+  <view bindtap='changedata' wx:if="{{status}}" class='top-link'>时段查询</view>
+  <view bindtap='changedata' wx:if="{{!status}}" class='top-link'>日期查询</view>
+</view>
+<view class="search-cells" wx:if="{{status}}">
+  <view class='form-inner'>
+    <getdatatime bind:resdata="getdatatimebegin" title="开始日期" data="{{begin}}" datatime="{{begintime}}"></getdatatime>
+    <getdatatime bind:resdata="getdatatimeend" title="结束日期" data="{{end}}" datatime="{{endtime}}"></getdatatime>
+    <button bindtap='getList' class='weui-btn weui-cui-button'>查询</button>
+  </view>
+</view>
+<view class="inner-wrap" >
+  <getdata wx:if="{{!status}}" bind:resdata='getList'></getdata>
+  <view class='table-cells'>
+    <nolist wx:if="{{listtitle.length==0}}"></nolist>
+    <view class='table2'>
+      <view class='table3 table4'>
+        <view wx:for="{{listtitle}}">{{item}}</view>
+      </view>
+      <view class='table3'>
+        <view wx:for="{{listdata}}">{{item}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- <tagger show='{{show}}'></tagger> -->
+<!-- bindtouchstart ='showTg' bindtouchend='showCg' -->
+
+<view class="ecList" >
+    <ec-canvas id="mychart-dom-bar1" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+</view>
+<view class="ecList" >
+    <ec-canvas id="mychart-dom-bar2" canvas-id="mychart-bar" ec="{{ ec2 }}"></ec-canvas>
+</view>
+<!-- 统计 -->
+<view class='stap-wrap'>
+  <view class="e-table-panel">
+    <view class='e-table-tit'>门店统计报表</view>
+    <view class='e-table-body'>
+      <view class='table-scroll'>
+        <view class='table table-lg'>
+          <view class='thead'>
+            <view class='tr'>
+              <!-- <view class='td'></view> -->
+          <!-- wx:for="{{listdate}}" -->
+              <view class='td'>门店名</view>
+              <view class='td' wx:for="{{shopTitle}}">{{item}}</view>
+            </view>
+          </view>
+          <view class='tbody'>
+            <view class='tr' wx:for="{{shopData}}">
+              <view class='td'>{{item.name}}</view>
+              <view class='td' wx:for="{{item.list}}">{{item}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  </view>

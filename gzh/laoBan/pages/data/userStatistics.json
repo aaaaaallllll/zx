@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "ec-canvas": "../../ec-canvas/ec-canvas",
+    "tagger": "/component/toggle/toggle"
+  },
+  "navigationBarTitleText": "会员统计分析"
+}

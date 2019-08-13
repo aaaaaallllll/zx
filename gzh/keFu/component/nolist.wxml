@@ -1,0 +1,4 @@
+<view wx:if="{{show}}" class='nolist'>
+  <image src='../images/kong.png'></image>
+  <view>暂无内容</view>
+</view>

@@ -1,0 +1,111 @@
+<!--pages/table/yinYeReport.wxml-->
+<!--pages/table/mdGrade.wxml-->
+<!-- <view class='top-cell' >
+  <view bindtap='changedata' wx:if="{{status}}" class='top-link'>时段查询</view>
+  <view bindtap='changedata' wx:if="{{!status}}" class='top-link'>日期查询</view>
+</view> -->
+<view class="search-cells" >
+  <view class='form-inner'>
+    <getdatatime bind:resdata="getdatatimebegin" title="选择日期" data="{{begin}}" datatime="{{begintime}}"></getdatatime>
+    <!-- <getdatatime bind:resdata="getdatatimeend" title="结束日期" data="{{end}}" datatime="{{endtime}}"></getdatatime> -->
+    <button bindtap='getList' class='weui-btn weui-cui-button' class='btn'>查询</button>
+  </view>
+</view>
+<!-- <view class="inner-wrap" >
+  <getdata wx:if="{{!status}}" bind:resdata='resdata'></getdata> -->
+  <!-- <view class='table-cells'>
+    <nolist wx:if="{{listtitle.length==0}}"></nolist>
+    <view class='table2'>
+      <view class='table3 table4'>
+        <view wx:for="{{listtitle}}">{{item}}</view>
+      </view>
+      <view class='table3'>
+        <view wx:for="{{listdata}}">{{item}}</view>
+      </view>
+    </view>
+  </view> -->
+<!-- </view> -->
+<!-- 统计 -->
+<view class='stap-wrap' bindtouchmove="longTap" bindtouchend ='topOut'>
+  <view class="e-table-panel">
+    <view class='e-table-tit'>{{shopName}}营业快报</view>
+    <view class='e-table-body'>
+      <view class='table-scroll'>
+        <view class='table table-lg'>
+       
+          <!-- <view class='thead gddw'  wx-if="{{showGdTitle}}">
+            <view class='tr' >
+              <view class='td'>统计项目</view>
+              <view class='td' wx:for="{{shopTitle}}">{{item}}</view>
+            </view>
+          </view> -->
+          
+          <view class='thead' id="title">
+            <view class='tr'>
+              <!-- <view class='td'></view> -->
+          <!-- wx:for="{{listdate}}" -->
+              <view class='td'>统计项目</view>
+              <view class='td' wx:for="{{shopTitle}}">{{item}}</view>
+            </view>
+          </view>
+          <view class='tbody'>
+           <view class='tr zss' wx:for="{{tous}}" style='background-color: #ff7979;color:#FFF'>
+              <view class='td' style='text-decoration : underline ' catchtap='toBmyj'>{{item.proName}}</view>
+              <view class='td'>{{item.benRiVal}}</view>
+              <view class='td'>{{item.benYueVal}}</view>
+            </view>
+            <view class='tr' wx:for="{{gradeData}}" style='color:#6c5ce7'>
+              <view class='td'>{{item.proName}}</view>
+              <view class='td'>{{item.benRiVal}}</view>
+              <view class='td'>{{item.benYueVal}}</view>
+            </view>
+             <view class='tr' wx:for="{{xmus}}" style='color:#22a6b3'>
+              <view class='td'>{{item.proName}}</view>
+              <view class='td'>{{item.benRiVal}}</view>
+              <view class='td'>{{item.benYueVal}}</view>
+            </view>
+            <view class='tr zss' wx:for="{{chans}}" style='color:#0984e3'>
+              <view class='td' >{{item.proName}}</view>
+              <view class='td'>{{item.benRiVal}}</view>
+              <view class='td'>{{item.benYueVal}}</view>
+            </view>
+            <view class='tr zss' wx:for="{{quans}}" style='color:#e17055'>
+              <view class='td' >{{item.proName}}</view>
+              <view class='td'>{{item.benRiVal}}</view>
+              <view class='td'>{{item.benYueVal}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  </view>
+
+<view class='stap-wrap' style='position: fixed;top: 0;left: 0;width: 95%;padding-top:0;padding-bottom:0' wx-if="{{showGdTitle}}" >
+  <view class="e-table-panel" style='padding-top:0;padding-bottom:0'>
+    <view class='e-table-body'>
+      <view class='table-scroll'>
+        <view class='table table-lg'>
+       
+          <!-- <view class='thead '  wx-if="{{showGdTitle}}">
+            <view class='tr' >
+              <view class='td'>统计项目</view>
+              <view class='td' wx:for="{{shopTitle}}">{{item}}</view>
+            </view>
+          </view> -->
+          
+          <view class='thead' id="title">
+            <view class='tr' style="position: relative;left:{{trLeft-25}}rpx">
+              <!-- <view class='td'></view> -->
+          <!-- wx:for="{{listdate}}" -->
+              <view class='td'>统计项目</view>
+              <view class='td' wx:for="{{shopTitle}}">{{item}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  </view>
+
+  <tagger/>

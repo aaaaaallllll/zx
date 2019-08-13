@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "getdata": "/component/getdata",
+    "getdatatime": "/component/getdatatime",
+    "tagger": "/component/toggle/toggle",
+    "ec-canvas": "../../ec-canvas/ec-canvas"
+  },
+  "navigationBarTitleText": "收款统计详情"
+}

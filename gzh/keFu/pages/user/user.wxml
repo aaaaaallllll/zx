@@ -1,0 +1,18 @@
+<view class='top'>
+  <view class='user'>
+      <view class='head'>
+          <!-- <image src='{{imgUrl}}'></image> -->
+          <view class='img'>
+              <open-data type="userAvatarUrl"></open-data>
+          </view>
+      </view>
+      <view class='userInfo'>
+          <text>门店名称: {{companyName}}</text>
+          <text>工号：{{techId}}</text>
+      </view>
+  </view>
+</view>
+
+<view class='toLogin' bindtap='toLogin'>
+    切换账号
+</view>

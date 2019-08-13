@@ -1,0 +1,36 @@
+<view class='top-cell'>
+  <view bindtap='changedata' wx:if="{{status}}" class='top-link'>时段查询</view>
+  <view bindtap='changedata' wx:if="{{!status}}" class='top-link'>日期查询</view>
+</view>
+<view class="search-cells" wx:if="{{status}}">
+  <view class='form-inner'>
+    <getdatatime type="date" bind:resshow="resshow" bind:resdata="getdatatimebegin" title="开始日期" data="{{begin}}" datatime="{{begintime}}"></getdatatime>
+    <getdatatime type="date" bind:resshow="resshow" bind:resdata="getdatatimeend" title="结束日期" data="{{end}}" datatime="{{endtime}}"></getdatatime>
+    <button bindtap='getList' class='weui-btn weui-cui-button'>查询</button>
+  </view>
+</view>
+<getdata datetype="date" wx:if="{{!status}}" bind:resdata='getdata'></getdata>
+<view class="e-panel">
+  <view class='e-panel-hd'>统计日期：{{begin}}至{{end}}</view>
+  <view class="e-panel-body3 {{!showchart ? 'e-panel-body2' : ''}}">
+    <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}">
+      <cover-view></cover-view>
+    </ec-canvas>
+  </view>
+  <!-- <view class='e-panel-tips'>
+    <text class='text-red'>*</text>注：报表切换横屏查看，更清晰</view> -->
+</view>
+
+<view class='v-panel'>
+  <view class='v-header'>数据分析</view>
+  <view class='v-body'>
+    <view class='ala-details'>
+      <view>今日进场客户总数：
+        <text class='text-blue'>{{fenxi['进客总数']}}</text>（注:数据整点更新）</view>
+      <view>今日买单客户总数：{{fenxi['买单总数']}}</view>
+      <view>高峰期客流最多入场人数达到{{fenxi['高峰进场']}}个客户</view>
+      <view>高峰期客流最多买单人数达到{{fenxi['高峰买单']}}个客户</view>
+    </view>
+  </view>
+</view>
+<tagger></tagger>

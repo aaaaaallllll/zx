@@ -1,0 +1,139 @@
+@import '/app.wxss';
+.justify {
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+}
+
+.pos {
+  position: absolute;
+  bottom: 0rpx;
+  right: 10rpx;
+  font-size: 16rpx;
+  text-align: right;
+}
+
+.menu-toggle {
+  position: fixed;
+  right: 30rpx;
+  bottom: 30rpx;
+  z-index: 100000;
+}
+
+.menu-toggle image {
+  width: 142rpx;
+  height: 142rpx;
+}
+
+.changedata {
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-cells {
+  background: none;
+}
+.weui-cui-button{
+  border: 0;
+  width: 500rpx;
+  height: 80rpx;
+  background-color: #2971f9;
+  color: #fff;
+  padding: 0;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  border-radius: 40rpx;
+  margin-top: 30rpx;
+}
+.filter-item {
+  width: 200rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 60rpx;
+  border: 1px solid #aaa;
+  text-align: center;
+  color: #999;
+  font-size: 30rpx;
+}
+
+.filter-item.active {
+  background-color: #2971f9;
+  color: #fff;
+  border: 1px solid #2971f9;
+}
+
+.weui-filter {
+  margin-bottom: 30rpx;
+}
+
+.stat-grid {
+  position: relative;
+  width: 680rpx;
+  height: 320rpx;
+  border-radius: 20rpx;
+}
+
+.stat-grid image {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 680rpx;
+  height: 320rpx;
+}
+
+.stat-cell {
+  position: relative;
+  z-index: 11;
+  color: #fff;
+  padding: 40rpx;
+}
+
+.stat-cell .stat-time {
+  font-size: 24rpx;
+  margin-bottom: 30rpx;
+}
+
+.stat-box {
+  text-align: center;
+}
+
+.stat-box view:first-child {
+  font-size: 72rpx;
+  margin-bottom: 30rpx;
+}
+
+.stat-box view:last-child {
+  font-size: 26rpx;
+}
+
+.stat-tips {
+  padding-top: 30rpx;
+  padding-bottom: 40rpx;
+  color: #999;
+  font-size: 24rpx;
+  line-height: 1.6;
+}
+
+.end-tips {
+  text-align: center;
+  margin-top: 50rpx;
+  font-size: 26rpx;
+}
+
+.stat-flex {
+  margin: 0 -8rpx;
+  overflow: hidden;
+}
+
+.stat-flex .stat-flex-item {
+  padding: 8rpx;
+  width: 33.33%;
+  float: left;
+  text-align: center;
+  box-sizing: border-box;
+}

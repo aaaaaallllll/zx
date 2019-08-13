@@ -1,0 +1,9 @@
+<view class='form-row' bindtap='showtimebegin'>
+  <view class="picker">
+    <text class='text-gray'>{{title}}：</text>{{data}}
+  </view>
+  <text class='iconfont icon-rili'></text>
+</view>
+<van-popup show="{{ showbegin }}" position="bottom"  bind:close="hidetimebegin" overlay="{{ true }}" >
+  <van-datetime-picker type="datetime" bind:cancel="hidetimebegin" value="{{ datatime }}" bind:confirm="checkbegin" />
+</van-popup>

@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "getdata": "/component/getdata",
+    "getdatatime": "/component/getdatatime3",
+    "tagger": "/component/toggle/toggle",
+    "van-picker": "/miniprogram_npm/vant-weapp/picker/index"
+  },
+  "navigationBarTitleText": "员工提成明细"
+}
