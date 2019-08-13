@@ -9,7 +9,7 @@ import qs from 'qs'
 import $ from 'jquery'
 import layer from 'vue-layer'
 Vue.prototype.$layer = layer(Vue,{
-  msgtime: 1.5,//目前只有一项，即msg方法的默认消失时间，单位：秒
+  msgtime: 1.5,//目前只有一项，即msg方法的默认消失时间，单位：秒s
 });
 
 Vue.config.productionTip = false
