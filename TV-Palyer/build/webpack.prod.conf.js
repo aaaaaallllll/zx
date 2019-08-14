@@ -10,6 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const CSSSplitWebpackPlugin = require('css-split-webpack-plugin').default
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -53,6 +54,11 @@ const webpackConfig = merge(baseWebpackConfig, {
       // increasing file size: https://github.com/vuejs-templates/webpack/issues/1110
       allChunks: true,
     }),
+    // 新增兼容ie老版本的依赖css分割插件
+    new CSSSplitWebpackPlugin({
+      size: 4000,
+      filename: utils.assetsPath('css/[name]-[part].[ext]')
+      }),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin({

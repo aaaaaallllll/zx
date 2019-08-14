@@ -8,9 +8,6 @@
           <div class="box">
             <span>Current password</span>
             <input type="text" v-model="currentPass">
-            <p>
-              <span style="color: #B2D7FF;">Forgot password</span>
-            </p>
           </div>
           <div class="box">
             <span>New password</span>
@@ -56,9 +53,9 @@
           const that=this
           const userId=that.getCookie('userid')
           const addr=that.getCookie('addr')
-          const country=that.getCookie('country')
+          const country=decodeURI(that.getCookie('country'))
           const createtime=that.getCookie('createtime')
-          const dailishangming=that.getCookie('dailishangming')
+          const dailishangming=decodeURI(that.getCookie('dailishangming'))
           const id=that.getCookie('id')
           const modifytime=that.getCookie('modifytime')
           const pwd=that.getCookie('pwd')
@@ -129,18 +126,16 @@
 
 <style scoped>
   .msg{
-    width: 400px;
-    min-height: 60px;
+    width: 30rem;
+    min-height:4rem;
     background-color: rgba(0,0,0,0.6);
-    border-radius: 8px;
+    border-radius: 0.5rem;
     text-align: center;
-    line-height: 60px;
-    font-size: 20px;
+    line-height: 4rem;
+    font-size: 1.2rem;
     position: fixed;
     top: 50%;
-    left: 50%;
-    margin-left: -200px;
-    margin-top: -30px;
+    left: 40%;
     z-index: 10;
     color: #FFF;
   }
@@ -149,76 +144,76 @@
     height: 100%;
   }
   .title{
-    height: 126px;
+    height:8rem;
     width: 100%;
     font-size: 24px;
     padding-left: 77px;
     color: #5C5C5C;
-    line-height: 126px;
+    line-height: 8rem;
     box-sizing: border-box;
   }
   .content{
-    height: calc(100% - 126px);
+    height: calc(100% - 8rem);
     width: 100%;
     background-color: #F3F9FE;
     box-shadow:inset 0 0 6px rgba(166,177,187,0.5);
-    padding-top: 124px;
+    padding-top:10rem;
     box-sizing: border-box;
-    padding-left: 96px;
+    padding-left:7rem;
     /*padding-right: 96px;*/
   }
   .password{
-    width: 1050px;
+    width:100%;
     /*margin: 0 auto;*/
   }
   .password .box{
-    height: 80px;
+    height: 5rem;
     width: 100%;
-    line-height: 80px;
-    margin: 10px 0;
+    line-height: 5rem;
+    margin: 0.8rem 0;
     display: flex;
     align-items: center;
   }
   .password .box>span{
-    font-size: 20px;
-    margin-right: 53px;
+    font-size: 1.2rem;
+    margin-right:3.2rem;
     color: #5C5C5C;
-    width: 190px;
-    height: 80px;
-    line-height: 80px;
+    width: 12rem;
+    height: 5rem;
+    line-height: 5rem;
     display: inline-block;
   }
   .password .box input{
     box-sizing: border-box;
-    height: 60px;
-    width: 392px;
-    line-height: 60px;
+    height: 3.75rem;
+    width: 24.5rem;
+    line-height: 3.75rem;
     margin: 0;
-    font-size: 20px;
+    font-size:1.2rem;
     color: #777777;
-    padding-left: 20px;
+    padding-left: 1.2rem;
   }
   .password .box p{
-    height: 60px;
-    line-height: 30px;
+    height: 3.75rem;
+    line-height:1.9rem;
   }
   .password .box p>span{
     position: relative;
-    top: 30px;
-    font-size: 21px;
-    margin-left: 36px;
+    top: 1.9rem;
+    font-size:1.2rem;
+    margin-left:2.2rem;
     color: #BCBCBC;
   }
   .btn{
-    width: 270px;
-    height: 60px;
+    width: 16.875rem;
+    height: 3.75rem;
     background-color: #4598FF;
     color: #FFF;
-    margin-top: 40px;
-    margin-left: 293px;
-    border-radius:8px;
-    line-height: 60px;
+    margin-top:2.5rem;
+    margin-left: 18.3125rem;
+    border-radius:0.5rem;
+    line-height: 3.75rem;
     text-align: center;
-    font-size: 32px;
+    font-size:2rem;
   }
 </style>

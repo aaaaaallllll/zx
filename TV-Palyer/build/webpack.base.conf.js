@@ -4,7 +4,7 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 const webpack = require('webpack')
-
+// const babelPolyfill = require('babel-ployfill')
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -14,7 +14,8 @@ function resolve (dir) {
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js'
+    // app: './src/main.js'
+    app: ["babel-polyfill","./src/main.js"]
   },
   output: {
     path: config.build.assetsRoot,
@@ -31,6 +32,10 @@ module.exports = {
     }
   },
   module: {
+    loaders:[
+      {test:/iview.src.*?js$/,loader:'babel'},
+      {test:/\.js$/,loader:'babel',exclude:/node_modules/}
+    ],
     rules: [
       {
         test: /\.vue$/,
@@ -84,6 +89,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       jQuery: "jquery",
       $: "jquery"
-    })
+    }),
+    new webpack.NormalModuleReplacementPlugin(/element-ui[\/\\]lib[\/\\]locale[\/\\]lang[\/\\]zh-CN/, 'element-ui/lib/locale/lang/en')
   ]
 }
