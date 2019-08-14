@@ -36,64 +36,13 @@ Page({
 
   },
   //获取房间状态
-  // getRoomData() {
-  //   wx.showLoading({
-  //     title: '加载中',
-  //   })
-  //   const that = this
-  //   let companyCode = wx.getStorageSync('userinfo').companyCode
-  //   let techId = wx.getStorageSync('userinfo').userId
-  //   wx.request({
-  //     url: api.url,
-  //     data: {
-  //       companyCode,
-  //       operationType: 'queryLocal',
-  //       queryType: 'paiQianInfo',
-  //       techId
-  //     },
-  //     header: {
-  //       'content-type': 'application/x-www-form-urlencoded'
-  //     },
-  //     method: 'post',
-  //     success(res) {
-  //       wx.hideLoading()
-  //       if (res.data.success) {
-  //         console.log(res);
-  //         const data = res.data.result.roomNos;
-  //         let list = [];
-  //         let list1=[];
-  //         for(let i in data){
-  //           list.push(data[i])
-  //           list1.push(data[i])
-  //         }
-  //         that.setData({
-  //           roomData: list,
-  //           roomData1: list1
-  //         });
-  //         console.log(that.data.roomData1)
-  //       } else {
-  //         wx.showToast({
-
-  //           title: res.data.errorDesc,
-
-  //           icon: 'none',
-
-  //           duration: 1000//持续的时间
-
-  //         })
-  //       }
-
-  //     }
-  //   })
-  // },
-  //获取房间状态
   getRoomData() {
     // wx.showLoading({
     //   title: '加载中',
     // })
     const that = this
     let companyCode = wx.getStorageSync('userinfo').companyCode
-    let userId = wx.getStorageSync('userinfo').techId
+    let userId = wx.getStorageSync('userinfo').userId
     console.log(companyCode)
     console.log(userId)
     wx.request({
@@ -180,7 +129,7 @@ Page({
   // 跳转到房间
   toroom(e) {
     let i = e.currentTarget.dataset.index;
-    let room = e.currentTarget.dataset.room[i];
+    let room = e.currentTarget.dataset.room[i].name;
     console.log(i)
     console.log(room)
     wx.navigateTo({
