@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>砍价</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script type="text/javascript" src="js/vue.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/mint-ui@1/lib/index.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/mint-ui@1/lib/style.css">
+    <style>
+      .surprise {
+  width: 80%;
+  height: 15rem;
+  background: #dd8d18;
+  position: fixed;
+  top: calc(50% - 11rem);
+  left: calc(50% - 40%);
+  border-radius: 1rem;
+}
+.touxiang {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  margin: -2rem auto 0;
+}
+.flex2 {
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+  margin:1rem 0;color:#737373;
+}
+.djcy{
+    width:80%;height:3.4rem;
+    margin-left:10%;
+    line-height: 3.4rem;
+    margin-top:1rem;
+    border-radius: .5rem;
+    border:none;
+    outline: none;
+    background:#DE3B2F; 
+    color:#fff;
+    font-size:1.4rem;
+}
+.flex_right{
+    display: flex;
+    justify-content: flex-end;
+    margin-top:-1.8rem;
+}
+.flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.zt{
+  width:100%;
+    font-size:1rem;
+}
+.red {
+  color: #de3b2f;
+  font-size:1.5rem;
+}
+.bargain {
+  width: 100%;
+  height: 100%;
+  background: url(./img/bg.png);
+  background-size: 100% 100%;
+  position: fixed;
+}
+.over {
+  width: 90%;
+  height: 70%;
+  background: #fff;
+  border-radius: 1rem;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.progress {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.title {
+  width:100%;
+  display: flex;
+  align-items: center;
+  padding:0.5rem;
+}
+.title_left {
+  width:20%;
+  width: 3rem;
+  height: 3rem;
+  background: #aaa;
+  border-radius: 50%;
+  border: 1px solid #666;
+}
+.title_right{
+  width:80%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.middle{
+    width:90%;
+    height:30%;
+    background:#fff;
+    margin: 0.5rem auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.middle_left{
+    width:50%;height:80%;
+    margin: 1rem;
+    background-color: #fff;
+}
+.middle_right{
+    display: flex;
+    flex-direction: column;
+    margin:1rem 1rem 1rem 0;
+}
+.kanjia{
+    font-size:1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#000;
+}
+.kanwo{
+    width: 100%;
+    height:3rem;
+    background: #DD8D18;
+    border-radius: 2rem;
+}
+.btn{
+    width:100%;height:2.6rem;
+    border-radius: 2rem;
+    border:none;outline: none;
+    background: #FFD32A;
+    color:#EC3C37;
+    font-size:1.4rem;
+}
+
+.last{
+    display: flex;
+    justify-content: center;
+    color:#000;
+    font-size:1rem;
+}
+.mt-progress-runway {
+  border-radius: 5rem;
+  background: #fff2bf;
+}
+.mt-progress-progress {
+  border-radius: 5rem;
+  background: #ffd32a;
+}
+    </style>
+</head>
+<body>
+<div id="card">
+    <div class="bargain">
+        <div class="over">
+          <!-- 标题  -->
+          <div class="title">
+            <div class="title_left">
+              <img style="width:100%;height:100%;border-radius:50%;" :src='params.imgUrl' alt />
+            </div>
+            <div class="title_right">
+              <p style="font-size:1.1rem;color:#989898;">{{params.userName}}</p>
+              <p class="zt">{{params.tuanGouQuanMing}}</p>
+            </div>
+          </div>
+          <!-- 中袋灰色 -->
+          <div class="middle">
+            <div class="middle_left">
+              <img style="width:100%;height:100%;" :src='params.imgUrl' alt />
+            </div>
+            <div class="middle_right">
+                <!-- <p style="font-size:1.1rem;">{{params.youHuiQuanMing}}</p> -->
+              <!-- <div class="flex" style="margin-top:2rem;"> -->
+                <!-- <p class="red">¥{{params.zongJiaZhi}}</p> -->
+                <!-- <p class="red" style="font-size:1rem;">已送出{{params.yiShouShuLiang}}件</p> -->
+              <!-- </div> -->
+            </div>
+          </div>
+          <!-- 砍价进度 -->
+          <div class="kanjia">
+            已砍
+            <p class="red">{{kanjiajine}}</p>元
+          </div>
+          <!-- 进度条 -->
+          <div class="progress">
+            <mt-progress :value="value" :bar-height="13"></mt-progress>
+          </div>
+          <!-- 帮忙砍按钮 -->
+          <div style='width:85%;margin:1rem auto;'>
+            <div class="kanwo">
+              <button class="btn" @click="btn">帮好友砍一刀</button>
+            </div>
+          </div>
+          <div class='last' v-show="timeshow=='y'?true:false">{{firsttime}}结束</div>
+          <!-- 弹框 -->
+      <div class="surprise" v-show='istankuang'>
+          <div class="touxiang">
+            <img
+              style="width:100%;height:100%;border-radius: 50%;"
+              :src="params.imgUrl"
+              alt
+            />
+          </div>
+          <div class="flex_right">
+              <svg @click="close1"
+              t="1564197033216"
+              class="icon"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="5186"
+              width="30"
+              height="30"
+            >
+              <path
+                d="M851.416 217.84l-45.256-45.248L512 466.744l-294.152-294.16-45.256 45.256L466.744 512l-294.152 294.16 45.248 45.256L512 557.256l294.16 294.16 45.256-45.256L557.256 512z"
+                fill="#bfbfbf"
+                p-id="5187"
+              />
+            </svg>
+          </div>
+          <div class="flex2">感谢你帮我砍了{{danjia}}元</div>
+          <div style="padding:1rem;text-align:center;">
+            <span style="font-size:1.2rem;">最多可以砍{{params.kanJiaMaxTime}}次哦~</span>
+            <span class="red"></span>
+            <span style="font-size:1.2rem;"></span>
+          </div>
+          <button class="djcy" @click="canyu">点击参与</button>
+        </div>
+        </div>
+      </div>
+</body>
+<script>
+const aUrl='http://intereek.natapp1.cc/pangu/xcx.do';
+var vm=new Vue({    
+    el:'#card',
+    data() {
+        return {
+            istankuang:false,
+
+            params:"",
+            kanjiajine:"",
+            danjia:"",
+
+            // guid:"",
+            quanId:'',
+            openid:'',
+            appid:"",
+            companyCode:"",
+            fromOpenid:'',
+
+            timeshow:"y",
+            kanjiatime:"",
+            firsttime:"",
+        };
+    },
+    computed:{
+    // 计算砍价的总额和已砍金额的百分比
+    value(){
+      const that=this;
+      var zongcishu=that.kanJiaMaxTime;
+      var yikan=that.kanJiaTimes;
+      return (yikan/zongcishu)*100
+    },
+  },
+    methods:{
+      canyu(){
+        const that=this;
+        console.log(1);
+        console.log(that.companyCode);
+        console.log(that.appid)
+        window.location.href="http://intereek.natapp1.cc/pangu/html/newtuangou/index.html?companyCode="+
+        that.companyCode+"&appid="+
+        that.appid+"&fromOpenid="+
+        that.fromOpenid;
+      },
+      btn(){
+          const that=this;
+          that.istankuang=true;
+          $.ajax({
+          type:"POST",
+          url:aUrl,
+          dataType:'jsonp',
+          data:{
+            operationType: "kanJia",
+            openid: that.openid,
+            // openid: "o3Whq1Mp-MDDwlJTbD_xEoVogHfg",
+            // guid: that.guid,
+            quanId: that.quanId,
+            fromOpenId:that.fromOpenid
+          },
+          success:function(res){
+            console.log(res)
+            if(res.errorDesc){
+              alert(res.errorDesc)
+            }else{
+              that.danjia=res.result;
+            }
+          }
+        })
+      },
+      close1(){
+          const that=this;
+          that.istankuang=false;
+      },
+      getparams(){
+        const that=this;
+        console.log("that.openid"+that.openid)
+        // console.log("guid"+that.guid)
+        console.log("quanId"+that.quanId)
+        console.log("fromOpenid"+that.fromOpenid)
+        $.ajax({
+          type:"POST",
+          url:aUrl,
+          dataType:'jsonp',
+          data:{
+            operationType:'getKanJiaInfo',
+            // guid:"fa57b346-1f17-4de6-867c-085efb5d509f",
+            // guid:that.guid,
+            openid:that.openid,
+            // quanId:498
+            quanId:that.quanId,
+            fromOpenId:that.fromOpenid
+          },
+          success:function(res){
+            console.log(res.result)
+            let datas=res.result.quan;
+            that.kanjiajine=res.result.kanJiaJinE;
+            that.kanJiaTimes=res.result.kanJiaTimes;
+            console.log(datas)
+            // 砍价最多次数
+            that.kanJiaMaxTime=datas.kanJiaMaxTime;
+            that.params=datas;
+            that.firsttime=res.result.expire;
+            console.log(that.firsttime)//2019-08-04 17:51:44
+            if(datas.qiYongKanJiaYouXiaoQi=="y"){
+              that.timeshow="y"
+            }else{
+              that.timeshow="n"
+            }
+          }
+        })
+      },
+      //获取openid
+      getOpenid(code){
+        const that=this;
+        const testServer="www.intereek.com"
+        $.ajax({
+            type: "POST",
+            dataType: "jsonp",
+            jsonp:'callback',
+            url: "http://"+testServer+"/pangu/pangu.do?requestData={\"operationType\":\"getOpenid\",\"companyCode\":\""+that.companyCode+"\",\"code\":\""+code+"\"}",
+            success: function(data){
+                console.log(data)
+                if(data.success){
+                    that.openid=data.result;
+                    console.log(that.openid)
+                    //alert(openid);
+                    that.setCookie('openid',data.result,365)
+                    that.getparams();
+                }
+            }
+        });
+            },
+      //获取地址参数
+      queryString(name){
+        let reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+         let r = window.location.search.substr(1).match(reg);
+          if(r!=null)return  unescape(r[2]); 		return null;
+        },
+      //缓存cookie
+      setCookie(key, value, iDay) {
+              var oDate = new Date();
+              oDate.setDate(oDate.getDate() + iDay);
+              document.cookie = key + '=' + value + ';expires=' + oDate;
+
+          },
+      getCookie(key) {
+          var cookieArr = document.cookie.split('; ');
+          for(var i = 0; i < cookieArr.length; i++) {
+              var arr = cookieArr[i].split('=');
+              if(arr[0] === key) {
+                  return arr[1];
+              }
+          }
+          return false;
+      },
+      removeCookie(key) {
+            this.setCookie(key, '', -1);//这里只需要把Cookie保质期退回一天便可以删除
+        },
+    },
+    mounted() {
+      const that=this;
+      // that.guid=that.queryString("guid");
+      that.quanId=that.queryString("quanId");
+      that.companyCode=that.queryString("companyCode");
+      that.fromOpenid=that.queryString("fromOpenid");
+      that.appid=that.queryString('appid')
+      if(that.getCookie('openid') && that.getCookie('openid')!='undefined'){
+          // alert(that.getCookie('openid'))
+          that.openid=that.getCookie('openid')
+          that.getparams();
+      }else {
+          const local = window.location.href;
+          const code = that.queryString('code')
+          // console.log("code"+code);
+          // 获取code
+          if(code == null || code === ""){
+              window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+that.appid+"&redirect_uri="+
+                  encodeURIComponent(local)+"&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect";
+              return;
+          }else{
+              that.getOpenid(code)
+          }
+      }
+     
+    },
+})
+</script>
+</html>

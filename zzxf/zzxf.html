@@ -7,10 +7,56 @@
     <link rel="stylesheet" type="text/css" href="css/xf.css"></link>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <title>自助消费</title>
 </head>
 <body>
 <div id="zzxf">
+    <div v-show="isShow">
+        <!-- 代码部分begin -->
+        <div class="pop"></div>
+        <div class="loader-inner">
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+        </div>
+        <div
+        style="color:#fff;font-size:1.5rem;text-align:center;position:relative;top:3rem;z-index:999;"
+      >加载中...</div>
+        <!-- 代码部分end -->
+    </div>
+
+
+    <!-- 进入页面时判断是否绑定手牌 -->
+    <div class="bindhandle" :class="close1==true?'dpn':'bh1'">
+        <div class="tankuang1">
+            <div class="imgs1">
+                <img style="width:100%;height:100%;" src="img/rice.png" alt="">
+            </div>
+            <div class="imgs2" @click="close1=!close1">
+                <img style="width:100%;height:100%;" src="img/c.png" alt="">
+            </div>
+            <p>需要先绑定手牌，请到绑定手牌菜单绑定手牌后进行点单操作</p>
+            <div class="btns">
+                <button @click="close1=!close1">确定</button>
+                <button @click="close1=!close1">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 正文 -->
     <!-- 左侧分类 -->
     <div class="left">
         <p :class="i==shopindex?'active':''" class="xiangmu" v-for="(type,i) of menustype" :key="i" @click="types(i)">{{type}}</p>
@@ -44,55 +90,108 @@
             <img src="img/buy.png" alt="">
         </div>
     </div>
+
     <!-- 所有商品的集合 -->
     <div class="bg" v-if="!act" @click="act=!act">
     </div>
-        <div class="jihe" :class="act==true?'dpn':'dpb'">
-            <div class="jihe1">
-                <div class="jihe1_1">
-                    <p>已选商品</p>
-                    <p @click="cancel">取消</p>
-                </div>
-                <ul style="margin:0;padding:0;">
-                    <li class="li" v-for="(detail,indx) in shops" :key="indx">
-                            <p class="wid" style="font-size:1rem;">{{detail.name}}</p>
-                            <p class="wid" style="text-align: right;color:orangered;">￥{{detail.price}}</p>
-                            <div class="wid wids" style="text-align:center">
-                                <button class="minus"><img src="img/remove.png" alt=""></button>
-                                <span>{{detail.num}}</span>
-                                <button class="add"><img src="img/add.png" alt=""></button>
-                            </div>
-                        </li>
-                </ul>
+    <div class="jihe" :class="act==true?'dpn':'dpb'">
+        <div class="jihe1">
+            <div class="jihe1_1">
+                <p>已选商品</p>
+                <p @click="cancel">取消</p>
             </div>
-            <div class="jihe2">
-                <p>合计：￥{{total}}</p>
-                <button>去结算</button>
+            <ul style="margin:0;padding:0;" :class="heighg==true?'heigh1':'heigh2'">
+                <li class="li" v-for="(detail,indx) in shops" :key="indx">
+                        <p class="wid" style="font-size:1rem;">{{detail.name}}</p>
+                        <p class="wid" style="text-align: right;color:orangered;">￥{{detail.price}}</p>
+                        <div class="wid wids" style="text-align:center">
+                            <button class="minus" @click="Remove(detail)"><img src="img/remove.png" alt=""></button>
+                            <span>{{detail.num}}</span>
+                            <button class="add" @click="Add(detail)"><img src="img/add.png" alt=""></button>
+                        </div>
+                    </li>
+            </ul>
+        </div>
+        <div class="jihe2">
+            <p>合计：￥{{total}}</p>
+            <button @click="gotopay">去结算</button>
+        </div>
+    </div>
+
+    <!-- 弹框 绑定桌号-->
+    <div class="bindhandle1" :class="close2==true?'dpn':'bh1'">
+        <div class="tankuang2">
+            <div class="imgs1">
+                <img style="width:100%;height:100%;" src="img/rice.png" alt="">
+            </div>
+            <div class="imgs2" @click="close2=!close2">
+                <img style="width:100%;height:100%;" src="img/c.png" alt="">
+            </div>
+            <p style="color:rgb(21, 160, 226)">输入信息以送单</p>
+            <div class="inputk">
+                <p>桌号</p>
+                <input type="number" placeholder="请在此输入桌号" v-model="zhuohao1">
+            </div>
+            <div class="inputk">
+                <p>重复桌号</p>
+                <input type="number" placeholder="请再次输入桌号" v-model="zhuohao2">
+            </div>
+            <div class="inputk">
+                <p>人数</p>
+                <input type="number" placeholder="请在此输入人数" v-model="renshu">
+            </div>
+            <div class="btns">
+                <button @click="pays">确定</button>
+                <button @click="close2=!close2">取消</button>
             </div>
         </div>
+    </div>
 </div>
 <script>
-const url="http://intereek.natapp1.cc/pangu/xcx.do";
+const url="http://www.intereek.natapp1.cc/pangu/xcx.do";
 const vm=new Vue({
     el:"#zzxf",
 data(){
     return{
+        isShow:true,
+        // openId:"",
+        // companyCode:"",
         openId:"o3Whq1Mp-MDDwlJTbD_xEoVogHfg",
         companyCode:"m44gwOk2PSU4cMtqHiEw007",
+        // 支付接口数据
+        mchId:"",
+        appid:"",
+        appssecret:"",
+        key:"",
         // 所有的类型数据
         menustype:[],
         // 所有类型下的数据
         list:[],
         // 用来判断左侧的高亮
         shopindex:0,
-        // 物品总价
-        total:0,
-        act:true,
+        act:true,//显示购物车详情
+        close1:true,//显示首页进来判断绑定手牌false为显示，true为不显示
+        close2:true,//显示购买后 false为显示，true为不显示
         // 保存所有添加进来的商品
         shoplist:[],
+        zhuohao1:"",
+        zhuohao2:"",
+        renshu:"",
+        heighg:false,//商品列表的高度
     }
 },
 computed: {
+    // 返回所有商品的价格集合
+    total(){
+        const that=this;
+        let shopjihe=that.shops;
+        let total=0;
+        for(let i in shopjihe){
+            total+=shopjihe[i].num*Math.floor(shopjihe[i].price).toFixed(2)
+        }
+        return total;
+    },
+    // 显示选中商品的集合
     shops(){
         const that=this;
         let newlist=[];
@@ -103,8 +202,10 @@ computed: {
                 }
             }
         }
+        that.shopjihe=newlist;
         return newlist;
     },
+    // 显示购物车中显示所有的数量
     totalnums(){
         const that=this;
         let number=0;
@@ -145,14 +246,26 @@ computed: {
     }
 },
 methods:{
+    // 去结算
+    gotopay(){
+        const that=this;
+        that.close2=false;
+    },
     // 点击购物车，显示所有商品
     detail(){
         this.act=false;
+        // 用商品的列表长度判断是否显示商品高度;
+        if(this.shops.length>0){
+           this.heighg=true;
+        }else{
+            this.heighg=false;
+        }
     },
     // 点击取消，显示首页
     cancel(){
         this.act=true;
     },
+    //加1
     btnjj(lis){
         const that=this;
         lis.num++;
@@ -162,6 +275,19 @@ methods:{
             that.ck=false;
         }
     },
+    // 购物车中数据增加
+    Add(data){
+        data.num++;
+    },
+    // 购物车中数据减少
+    Remove(data){
+        data.num--;
+        data.ck=false;
+        if(this.shops.length<=0){
+            this.heighg=false;
+        }
+    },
+    //减1
     btnj(lis){
         const that=this;
         lis.num--;
@@ -172,9 +298,23 @@ methods:{
             lis.ck=true;
         }
     },
+    //点击将右侧数组的索引传给左侧;
     types(i){
         this.shopindex=i;
     },
+    uuid() {
+    var s = [];
+    var hexDigits = "0123456789abcdef";
+    for (var i = 0; i < 36; i++) {
+        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+    }
+    s[14] = "4";  // bits 12-15 of the time_hi_and_version field to 0010
+    s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);  // bits 6-7 of the clock_seq_hi_and_reserved to 01
+    s[8] = s[13] = s[18] = s[23] = "-";
+ 
+    var uuid = s.join("");
+    return uuid;
+},
     //缓存cookie
     setCookie(key, value, iDay) {
     var oDate = new Date();
@@ -228,6 +368,105 @@ methods:{
             }
         });
         },
+    // 支付
+    zzxf(wxpaid){
+	$.ajax({
+		type: "POST",
+		dataType: "jsonp",
+		jsonp:'callback',
+		async:false, 
+		url:"http://www.intereek.natapp1.cc/pangu/xcx.do",
+        data:{
+            operationType:"wxzzxf",
+            orders:?????,
+            companyCode:that.companyCode,
+            wxPay:wxpaid,
+            systemId:?????,
+            zhuoTai:that.zhuohao1,
+            openId:that.openId
+        },
+        // requestData={\"operationType\":\"wxzzxf\",
+        // \"orders\":\"" + str + "" +"\",\"companyCode\":\""+
+		// 	data.companyCode+ "\",wxPay:\""+wxpaid+"\",
+        // \"systemId\":\""+systemId+"\",\"zhuoTai\":\""+
+        // zhuoTaiVal+"\",\"openId\":\""+data.openid+"\"}",
+		success: function(json){
+			if(!json.success){
+				//showLoadingDlg(false,"");
+				alert("提交失败，原因:"+json.errorDesc);
+				//return;
+			}else{
+				if(wxpaid=="y"){
+					WeixinJSBridge.call('closeWindow');
+				}else{
+					if(json.result==null || json.result==""){
+						alert("订单提交成功，请耐心等候");
+					}else{
+						alert(json.result);
+					}
+				}
+			}
+		},
+		error: function(json){
+		   alert(json.error);
+		}
+	});
+},
+    pays(){
+        const that=this;
+        let orderNo=that.uuid();
+        $.ajax({
+            type:'POST',
+            url:"http://www.intereek.natapp1.cc/pangu/xcx.do",
+            dataType:'jsonp',
+            jsonp:'callback',
+            data:{
+                operationType:"wxPay",
+                appid:that.appid,
+                mch_id:that.mchId,
+                danJia:that.total,
+                openid:that.openId,
+                orderNo,
+                quanMing:"自助消费",
+                companyCode:that.companyCode,
+                appssecret:that.appssecret,
+                key:that.key,
+            },
+            success:function(json){
+                if(!json.success){
+				alert("查询失败，原因:"+json.errorDesc);
+				return;
+                }else{
+                    var appId = json.result.appid;
+                    var timestamp = json.result.timeStamp;
+                    var nonceStr = json.result.nonceStr;
+                    var packages = json.result.package;
+                    var finalsign = json.result.sign;
+                    WeixinJSBridge.invoke("getBrandWCPayRequest",{
+                        "appId" : appId,
+                        "timeStamp" : timestamp,
+                        "nonceStr" :nonceStr,
+                        "package" : packages,
+                        "signType" : "MD5",
+                        "paySign" : finalsign
+                    }, function(res) {
+                        WeixinJSBridge.log(res.err_msg);
+                        if (res.err_msg == "get_brand_wcpay_request:ok") {
+                            zzxf("y");
+                        } else if (res.err_msg == "get_brand_wcpay_request:cancel") {
+                            //alert("用户取消支付!");
+                        } else {
+                            //alert("支付失败!");
+                            WeixinJSBridge.call('closeWindow');
+                        }
+                    });
+                }
+            },
+            error: function(json) {
+                console.log(json);
+            }
+        })
+    },
     getdata(){
         const that=this;
         $.ajax({
@@ -240,6 +479,21 @@ methods:{
                 companyCode:that.companyCode
             },
             success:function(res){
+                that.isShow=false;
+                console.log(res)
+                let data=res.result;
+                // 进入页面判断是否绑定手牌 ,n就是没绑定
+                if(res.result.buGuaShouPai=="n"){
+                    that.close1=false;
+                }
+                // 桌台
+                that.zhuohao1=data.zhuoTai;
+                that.zhuohao2=data.zhuoTai;
+                that.companyCode=data.companyCode;
+                that.appid=data.appid;
+                that.mchId=data.mchId;
+                that.appssecret=data.appSecret;
+                that.key=data.mchKey;
                 let menustypes=[];//保存所有类型
                 let lists=[];//保存所有类型下的数据
                 let menus=res.result.menus;
@@ -258,7 +512,7 @@ methods:{
         })
     },
 },
-mounted(){
+created(){
     const that=this;
     that.getdata();
     return;
