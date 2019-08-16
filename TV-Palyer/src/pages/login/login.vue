@@ -16,7 +16,7 @@
 
 <script>
 // const ajaxUrl='http://192.168.1.234:999/haotian/xcx.do'
-const ajaxUrl = "http://47.110.228.20:89/haotian/xcx.do";
+const ajaxUrl = "http://47.111.134.168:89/haotian/xcx.do";
 export default {
   name: "login",
   data() {

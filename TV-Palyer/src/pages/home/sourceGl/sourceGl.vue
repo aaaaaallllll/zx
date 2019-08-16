@@ -171,7 +171,7 @@
 <script>
 // const ajaxUrl='http://192.168.1.234:999/haotian/xcx.do'
 // const ajaxUrl= 'http://192.168.1.15:999/com_pangu_tang_web_war_exploded/xcx.do'
-const ajaxUrl = "http://47.110.228.20:89/haotian/xcx.do";
+const ajaxUrl = "http://47.111.134.168:89/haotian/xcx.do";
 export default {
   name: "agentGl",
   data() {
