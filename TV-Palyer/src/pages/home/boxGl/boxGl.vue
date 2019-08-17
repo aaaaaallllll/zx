@@ -1,17 +1,24 @@
 <template>
   <div id="box" @click="box">
     <div class="title">
-      <el-row>
-        <el-col :span="7">
+      <div class="lefts">
           <span>Boxes</span>
-        </el-col>
-        <el-col :span="17">
-          <div class="search">
-            <input v-focus type="text" placeholder="search for lD" v-model="search" />
+          <span style="color:#000;">盒子总数：{{nums}}</span>
+      </div>
+      <div class="rights">
+        <div class="search">
+            <input type="text" placeholder="search for lD" v-model="search" @keyup.enter="search1" />
             <i class="iconfont" @click="search1">&#xe645;</i>
           </div>
-        </el-col>
-      </el-row>
+          <div class="search">
+            <input type="text" placeholder="search for Agent name" v-model="search22" @keyup.enter="search2" />
+            <i class="iconfont" @click="search2">&#xe645;</i>
+          </div>
+          <div class="search">
+            <input type="text" placeholder="search for Remark" v-model="search33" @keyup.enter="search3" />
+            <i class="iconfont" @click="search3">&#xe645;</i>
+          </div>
+      </div>
     </div>
     <div class="content">
       <el-table :data="xsList" border style="width:100%;margin-top:1rem;">
@@ -22,10 +29,7 @@
         <el-table-column prop="agent" label="Agent Name:"></el-table-column>
         <el-table-column prop="remark" label="Remark:"></el-table-column>
         <el-table-column fixed="right" label="Actions">
-          <template
-            slot-scope="scope"
-            style="display:flex;flex-direction: column;align-items:center;"
-          >
+          <template slot-scope="scope">
             <el-button
               class="xiahuaxian"
               type="text"
@@ -73,7 +77,7 @@
               v-model="agent"
             />
 
-            <div class="xlk" style="width:30%;height:10rem;left:15rem;" v-if="shos">
+            <div class="xlk" style="width:100%;height:10rem;top:5rem;" v-if="shos">
               <ul>
                 <li v-for="(item,index) in listss" :key="index" @click="geiSs(item)">{{item.agent}}</li>
               </ul>
@@ -243,6 +247,7 @@ export default {
   name: "agentGl",
   data() {
     return {
+      nums: 0,
       active1: -1,
       active2: -1,
       active3: -1,
@@ -270,6 +275,8 @@ export default {
       createTime: "",
       cmsg: "",
       search: "", //搜索框内容
+      search22: "", //搜索框内容
+      search33: "", //搜索框内容
       showMsg: false, //弹窗控制
       upShow: true,
       xsList: [],
@@ -286,12 +293,12 @@ export default {
     };
   },
   directives: {
-    focus: {
-      // 指令的定义
-      inserted: function(el) {
-        el.focus();
-      }
-    }
+    // focus: {
+    //   // 指令的定义
+    //   inserted: function(el) {
+    //     el.focus();
+    //   }
+    // }
   },
   computed: {},
   methods: {
@@ -619,36 +626,57 @@ export default {
     search1() {
       var search = this.search;
       var lists = [];
-      console.log(this.list);
-      console.log(this.list[0].remark);
-      console.log(search);
       if (search !== "") {
         for (let i = 0; i < this.list.length; i++) {
-          if (this.list[i].remark != undefined) {
-            if (
-              this.list[i].id.toString().indexOf(search) != -1 ||
-              this.list[i].remark.toUpperCase().indexOf(search.toUpperCase()) !=
-                -1
-            ) {
-              lists.push(this.list[i]);
-            } else if (this.list[i].agent != undefined) {
-              if (this.list[i].agent.toUpperCase().indexOf(search.toUpperCase()) != -1) {
-                lists.push(this.list[i]);
-              }
-            }
-          } else {
             if (this.list[i].id.toString().indexOf(search) != -1) {
               lists.push(this.list[i]);
-            } else if (this.list[i].agent != undefined) {
-              if (this.list[i].agent.toUpperCase().indexOf(search.toUpperCase()) != -1) {
-                lists.push(this.list[i]);
-              }
             }
           }
-        }
         this.xsList = lists;
       } else {
         this.xsList = this.list;
+      }
+    },
+    search2() {
+      const that = this;
+      let search22 = that.search22;
+      let com = [];
+      if (search22 !== "") {
+        for (let i = 0; i < that.list.length; i++) {
+          if (that.list[i].agent != undefined) {
+            if (
+              that.list[i].agent.toUpperCase().indexOf(search22.toUpperCase()) !=
+              -1
+            ) {
+              com.push(that.list[i]);
+            }
+          }
+        }
+        that.xsList = com;
+      } else {
+        that.xsList=that.list;
+      }
+    },
+    search3() {
+      const that = this;
+      let search33 = that.search33;
+      console.log(search33)
+      let com = [];
+      console.log(that.list[0].remark)
+      if (search33 !== "") {
+        for (let i = 0; i < that.list.length; i++) {
+          if(that.list[i].remark!==undefined){
+            if (
+            that.list[i].remark.toUpperCase().indexOf(search33.toUpperCase()) !=
+            -1
+          ) {
+            com.push(that.list[i]);
+          }
+          }
+        }
+        that.xsList = com;
+      } else {
+        that.xsList=that.list;
       }
     },
     gbAdd() {
@@ -820,6 +848,8 @@ export default {
           if (!data.errorDesc) {
             let list = eval("(" + data.result + ")");
             console.log(list);
+            // 所有盒子总数
+            that.nums = list.length;
             let list2 = [];
             for (let i = 0; i < list.length; i++) {
               that.agentname.push(list[i].agentname);
@@ -1055,37 +1085,48 @@ export default {
   color: #5c5c5c;
   box-sizing: border-box;
   padding-top: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
-.title .search {
+.lefts{
+  width:20%;
+}
+.rights{
+  width:80%;
+}
+.rights .search {
   display: inline-block;
-  width: 25rem;
+  width: 12rem;
   height: 3rem;
+  position: relative;
 }
-.title span {
+.lefts span {
   display: inline-block;
-  width: 8rem;
+  width: 7rem;
   height: 3rem;
   line-height: 3rem;
 }
-.title .search input {
+.rights .search input {
+  width: 100%;
   height: 3rem;
   box-sizing: border-box;
   border-radius: 2rem;
   border: 2px solid #bbd5f6;
-  padding: 0 2rem 0 2rem;
+  padding: 0 2rem 0 1rem;
   line-height: 3rem;
   color: #5c5c5c;
-  font-size: 1rem;
+  font-size: .85rem;
   background-color: #e0f1ff;
   outline: none;
 }
-.title .search i {
+.rights .search i {
   font-size: 1.5rem;
+  position: absolute;
   color: #fff;
-  position: relative;
-  right: 3rem;
-  top: 0.2rem;
   cursor: pointer;
+  right: 0.8rem;
+  bottom: 0.6rem;
 }
 /*内容*/
 .content {
@@ -1181,6 +1222,7 @@ export default {
   width: 30%;
   height: 3rem;
   display: inline-block;
+  position: relative;
 }
 .redact .redact-hang .redact-ge span {
   font-size: 1rem;
@@ -1410,7 +1452,12 @@ input:-ms-input-placeholder {
   opacity: 0;
 }
 .el-popper[x-placement^="bottom"] {
-  left: 1110px !important;
-  top: 355px !important;
+  left: 58% !important;
+  top: 39% !important;
+}
+.el-table .cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>

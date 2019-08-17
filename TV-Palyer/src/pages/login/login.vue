@@ -4,10 +4,10 @@
       <h3>TBACKGROUND MANAGEMENT SYSTEM</h3>
       <span>we will give you the best service</span>
       <div class="bd"></div>
-      <input type="text" v-focus placeholder="Username or E-mail address" v-model="userId" />
-      <input type="password" placeholder="Password" v-model="pwd" />
+      <input type="text" v-focus placeholder="Username or E-mail address" @keyup.enter="switchs1" v-model="userId" />
+      <input type="password" id="input2" placeholder="Password" @keyup.enter="switchs2" v-model="pwd" />
       <p>I forgot my password</p>
-      <div class="sub" @click="sub()">SIGN IN</div>
+      <div class="sub" @click="sub">SIGN IN</div>
     </div>
     <div class="msg" v-if="showMsg">{{cmsg}}</div>
     <img src="../../common/images/logo.png" class="logo" />
@@ -32,16 +32,6 @@ export default {
       showMsg: false
     };
   },
-  mounted() {
-    let that = this;
-    document.onkeypress = function(e) {
-      var keycode = document.all ? event.keyCode : e.which;
-      if (keycode == 13) {
-        that.sub(); // 登录方法名
-        return false;
-      }
-    };
-  },
   directives: {
     focus: {
       // 指令的定义
@@ -51,9 +41,14 @@ export default {
     }
   },
   methods: {
+    switchs1(){
+      let input2=document.getElementById('input2');
+        input2.focus();
+    },
+    switchs2(){
+      this.sub();
+    },
     sub() {
-      // window.localStorage.setItem("userId",this.userId);
-      // console.log(localStorage.getItem("userId"))
       const that = this;
       $.ajax({
         type: "POST",
