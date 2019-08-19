@@ -2,12 +2,12 @@
 <view class="room">
     <view class="roomName">
       <text class="icon-fangjian2 iconfont"></text>
-      <text>008</text>
+      <text>{{roomNo}}</text>
     </view>
     <view class="roomCenter">
       <image src="../../images/fk_left.png" style="left:-24rpx;"></image>
       <view class="wdInfo">
-         <text style="font-size: 80rpx;">25°C</text> 
+         <text style="font-size: 80rpx;">{{newWenDu}}°C</text> 
          <text>当前温度</text>
       </view>
       <image src="../../images/fk_right.png" style="right:-24rpx;"></image>
@@ -19,7 +19,7 @@
       </view>
       <view class="msInfo" style="right:-70rpx;">
         <text class="iconfont icon-fangkerenshu" style="font-size: 90rpx;text-align: center;"></text>
-        <text >进客模式</text>
+        <text >{{qjText}}</text>
       </view>
     </view>
 </view>
@@ -96,7 +96,68 @@
     </view>
      <!-- 空调控制 -->
     <view wx-if="{{msIndex==2}}">
-      空调控制
+      <view class="kt_top " >
+        <view class="kt_kg {{ktIsOn?'':'kt_kg_off'}}" bindtap="toKtBtn" >
+          <view class="kt_kg_lm">
+            <text>ON</text>
+            <text class="kt_btn {{ktIsOn?'':'kt_btn_off'}}"></text>
+            <text>OFF</text>
+          </view>
+          
+        </view>
+        <view class="kt_wendu">
+          <view class="kt_wendu_lm" bindtap="coor" catchtouchmove="coorMove" catchtouchend ="coorOut">
+            <image src="../../images/fk_4.png" wx-if="{{ktIsOn}}"></image>
+            <image src="../../images/fk_5.png" wx-if="{{!ktIsOn}}"></image>
+            <view class="wend_btn {{ktIsOn?'':'wend_btn_on'}}" style="transform:rotateZ({{angle}}deg);">
+              <text></text>
+            </view>
+            <view class="wend_number">
+              <text wx-if="{{ktIsOn}}">{{wendu}}</text>
+              <text class="wdOn" wx-if="{{!ktIsOn}}" style="font-family:PingFangSC-Regular;">一</text>
+              <text class="{{ktIsOn?'':'wdOn'}}">°C</text>
+            </view>
+            <view class="wdMin {{ktIsOn?'':'wdOn'}}">16°C</view>
+            <view class="wdMax {{ktIsOn?'':'wdOn'}}">30°C</view>
+          </view>
+            
+        </view>
+      </view>
+      <view class="kt_bottom">
+        <view class="kt_bottom_top">
+          <view class="zl_tbiao {{ktIsOn?'':'wdOn'}}" bindtap="toKtMs" data-lx="0">
+            <text class="iconfont icon-fanhui" style="font-weight:600;font-size:26rpx;left: -5rpx;top:-5rpx"></text>
+          </view>
+          <view class="zl_box {{ktIsOn?'':'wdOn'}}">
+            <text class="iconfont icon-kongtiao" style="font-size:50rpx;left: 5rpx;position: relative;"></text>
+            <!-- 空调模式 -->
+            <text style="font-size:22rpx">{{ktMoshi}}</text>
+          </view>
+          <view class="zl_tbiao {{ktIsOn?'':'wdOn'}}" bindtap="toKtMs" data-lx="1">
+            <text class="iconfont icon-kuozhan" style="left: 3rpx;"></text>
+          </view>
+        </view>
+        <view class="kt_bottom_bottom">
+         
+            <view class="sf_left_box {{ktShaoFenS&&ktIsOn?'sfOn':''}}" bindtap="toShaoFenS">
+              <text class="iconfont icon-shangxiasaofeng"></text>
+              <text>上下扫风</text>
+            </view>
+            <view class="sf_left_box {{ktShaoFenZ&&ktIsOn?'sfOn':''}}" bindtap="toShaoFenZ">
+              <text class="iconfont icon-zuoyousaofeng"></text>
+              <text>左右扫风</text>
+            </view>
+         
+          <view class="sf_right {{ktIsOn?'':'wdOn'}}">
+            <view class="sf_right_top">
+              <text class="iconfont icon-icon-test" bindtap="fenShuAdd"></text>
+              <text class="iconfont icon-fengsu"></text>
+              <text class="iconfont icon-jian" bindtap="fenShuRemove"></text>
+            </view>
+            <view class="sf_right_bottom">风速: {{fengSu}}</view>
+          </view>
+        </view>
+      </view>
       <!-- <image src="../../images/zhexian.png" bindtap="cscs"></image> -->
     </view>
     <!-- 背景音乐 -->
@@ -106,7 +167,7 @@
           <view class="music_right">
               <view class="music_top_top">
                   <text>0</text>
-                  <view>6</view>
+                  <view>{{vol}}</view>
                   <text>30</text>
               </view>
               <view  class="music_top_bottom">
@@ -115,8 +176,14 @@
           </view>
           
       </view> 
-      <view class="music_bottom" bindtap="toMusic">
+      <view class="music_bottom" >
           <image src="../../images/fk_3.png"></image>
+          <view class="musicClick " style="left:50%;top: 0;margin-top: 10rpx; margin-left: -60rpx;" bindtap="toMusic" data-id="0"></view>
+          <view class="musicClick " style="top: 50%;left: 0;margin-left: 10rpx;margin-top: -60rpx" data-id="1" bindtap="toMusic"></view>
+          <view class="musicClick " style="top: 50%;right: 0;margin-right: 10rpx;margin-top: -60rpx" data-id="2" bindtap="toMusic"></view>
+          <view class="musicClick " style="bottom: 0;margin-bottom: 10rpx;left: 50%;margin-left: -60rpx;" data-id="3" bindtap="toMusic"></view>
+          <view class="musicClick " style="left:50%;top: 50%;margin-top: -60rpx;margin-left: -60rpx" data-id="4" bindtap="toMusic"></view>
+          <view class="iconfont icon-bofang musicBoFan" wx-if="{{!musicBl}}" ></view>
       </view>
 
     </view>

@@ -1,0 +1,51 @@
+@font-face
+{font-family: DIN-Medium;
+src: url('DIN-Medium.otf')}
+body,input,h1,h2,h3,h4,h5,h6,p,textarea,table,div,ul,li,select{margin:0;padding:0;color:inherit;line-height: inherit;font-family: "arial, helvetica, sans-serif";}
+img{border:0;display: inline-block;max-width:100%;vertical-align: middle;}
+.fl{float:left;}
+.fr{float:right;}
+ul,li{ list-style:none; }
+a{ text-decoration:none; color:inherit;}
+:focus{outline:none!important;border-color:inherit;}
+.clearfix{*zoom: 1;}
+.clearfix:before,.clearfix:after
+{display: table;line-height: 0;content: "";}
+.clearfix:after{clear: both;}
+*{box-sizing:border-box;}
+.img{width: 100%;display: block;}
+html{font-size:13.333vw;}
+
+
+/*抽奖*/
+.main{background: url(../images/bg.jpg) no-repeat center top #f16925;background-size:cover;padding-top: 1px;padding-bottom: 1rem;}
+.lottery_timg{width: 100%;margin-top: 1rem;}
+
+.lottery_zp{margin-top: .45rem;/*position:absolute;width: 100%;left: 0;bottom: 1.1rem;*/}
+.turntable-bg {
+  width: 6.5rem;height: 8.15rem;margin:0 auto;
+  margin: 0 auto;
+  position: relative;
+  background: url("../images/icon_02.png") no-repeat center;background-size:cover;  
+}
+.turntable-bg .mask {
+  width: 454px;
+  height: 451px;
+  position: absolute;
+  left: 116px;
+  top: 60px;
+  /*z-index:9;*/
+}
+
+
+
+
+.banner{display:block;margin:0 auto;width: 6.5rem;}
+.banner .turnplate{display:block;position:relative;    width: 6.5rem;height: 8.15rem;}
+.banner .turnplate canvas.item{width:5.6rem;height:5.6rem;position:absolute;    top: 1.18rem;left: .55rem;}
+.banner .turnplate img.pointer{position:absolute;width: 1.9rem;/*height: 2.6rem;*/left: 2.4rem;
+    top: 2.65rem;}
+
+.lottery_bot{padding-bottom: 1rem;background: url(../images/icon_07.png) no-repeat center;background-size:cover;height: 1.54rem;position:absolute;width: 100%;left: 0;bottom: 0;}
+.lottery_bot .person{width: 2.7rem;height: 2.85rem;position:absolute;left: 0;top: -2.2rem;}
+.lottery_bot .link{font-size: .24rem;color: #ffeb01;font-weight: bold;display: block;position:absolute;width: 100%;top: -.4rem;left: 0;padding-left: 3rem;    -webkit-text-stroke-width: .01rem;-webkit-text-stroke-color: #a25300;}

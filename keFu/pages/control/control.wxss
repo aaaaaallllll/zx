@@ -448,6 +448,7 @@ page{
   left: -20rpx;
   font-size: 30rpx;
 }
+
 .music_top_top{
   height: 84rpx;
   width: 260rpx;
@@ -483,10 +484,271 @@ page{
   height:446rpx;
   margin: 0 auto;
   border-radius: 223rpx;
+  position: relative;
 }
 .music_bottom image{
   width:448rpx;
   height:446rpx;
   border-radius: 223rpx;
   /* box-shadow:0px 0px 4px 0px rgba(40,120,255,1); */
+}
+.musicClick{
+  height: 120rpx;
+  width: 120rpx;
+  position: absolute;
+  /* left:50%;
+  top: 50%;
+  margin-top: -60rpx;
+  margin-left: -60rpx; */
+  z-index: 99;
+  /* background-color: #BBB */
+}
+/* _top{
+  left:50%;top: 0;margin-top: 10rpx; margin-left: -60rpx;
+} */
+.musicBoFan{
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  left: 50%;
+  top:50%;
+  margin-top: -40rpx;
+  margin-left: -30rpx;
+  font-size: 60rpx;
+  color: #FFF;
+  background-color: #36a4ff;
+  text-align: center;
+  line-height: 80rpx;
+  /* border-radius: 40rpx; */
+  overflow: hidden;
+  z-index: 9;
+}
+/* 空调控制 */
+.kt_top{
+  height: 396rpx;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+.kt_kg{
+  width:80rpx;
+  height:152rpx;
+  background:linear-gradient(180deg,rgba(114,190,255,1) 0%,rgba(54,164,255,1) 100%);
+  border-radius:44rpx;
+  /* box-sizing: border-box; */
+  /* border-image: inear-gradient(180deg,rgba(114,190,255,1) 0%,rgba(54,164,255,1) 100%) 30 30;
+  border:10rpx solid #ddd; */
+  /* text-align: center;
+  line-height: 152rpx; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: right;
+}
+.kt_kg_off{
+  background:linear-gradient(180deg,rgba(228,228,228,1) 0%,rgba(191,191,191,1) 100%);
+}
+.kt_kg_lm{
+  width:64rpx;
+  height:128rpx;
+  background:rgba(255,255,255,1);
+  /* box-shadow:1px 1px 3px 1px rgba(254,247,233,1); */
+  border-radius:44rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+}
+.kt_kg_lm text{
+  font-size: 24rpx;
+}
+.kt_kg_lm text:first-child{
+  color: #2878FF;
+}
+.kt_kg_lm text:last-child{
+  color: #BFBFBF;
+}
+.kt_btn{
+  position: absolute;
+  left: 50%;
+  margin-left: -28rpx;
+  top:68rpx;
+  z-index: 3;
+  width:56rpx;
+  height:56rpx;
+  border-radius: 28rpx;
+  background:linear-gradient(180deg,rgba(114,190,255,1) 0%,rgba(54,164,255,1) 100%);
+  transition: top 0.4s;
+}
+.kt_kg_lm .kt_btn_off{
+  top:5rpx;
+  background:linear-gradient(180deg,rgba(229,229,229,1) 0%,rgba(190,190,190,1) 100%);
+}
+.kt_wendu image{
+  width: 392rpx;
+  height: 268rpx;
+  margin: 0 auto;
+}
+.kt_wendu{
+  /* margin: 0 auto; */
+  width: 100%;
+  /* padding-top: 80rpx; */
+  box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -80rpx;
+}
+.kt_wendu_lm{
+  width: 392rpx;
+  position: relative;
+  /* background-color: #BFBFBF; */
+}
+.wend_btn{
+  width:56rpx;
+  height:56rpx;
+  background:linear-gradient(90deg,rgba(114,190,255,1) 0%,rgba(54,164,255,1) 100%);
+  box-shadow:0px 2px 4px 0px rgba(0,0,0,0.5);
+  position: absolute;
+  left: -14rpx;
+  bottom: 56rpx;
+  border-radius: 28rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-origin:210rpx 32rpx;
+  
+}
+.wend_btn text{
+  width:32rpx;
+  height:32rpx;
+  border-radius: 16rpx;
+  background:rgba(255,255,255,1);
+}
+.wend_number{
+  position: absolute;
+  width:162rpx;
+  height:112rpx;
+  font-size: 80rpx;
+  color: #2878FF;
+  left: 50%;
+  top: 50%;
+  margin-left: -81rpx;
+  margin-top: -30rpx;
+}
+.wend_number text:last-child{
+  font-size: 50rpx;
+}
+.wdMin{
+  color: #2878FF;
+  font-size:24rpx;
+  position: absolute;
+  left: 5rpx;
+  bottom:-40rpx;
+}
+.wdMax{
+  color: #2878FF;
+  font-size:26rpx;
+  position: absolute;
+  right: 5rpx;
+  bottom:-40rpx;
+}
+
+.wend_btn_on{
+  background:linear-gradient(180deg,rgba(229,229,229,1) 0%,rgba(190,190,190,1) 100%);
+}
+/* 空调控制下面 */
+.kt_bottom_top{
+  height: 120rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 110rpx;
+  box-sizing: border-box;
+}
+.zl_box{
+  height: 80rpx;
+  widows: 100rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: #2878FF;
+}
+.zl_tbiao{
+  width:56rpx;
+  height:56rpx;
+  background:rgba(255,255,255,1);
+  border-radius: 28rpx;
+  line-height: 56rpx;
+  text-align: center;
+  color: #2878FF;
+  
+  
+}
+.zl_tbiao text{
+  position: relative;
+}
+.kt_bottom_bottom{
+  height: 180rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.sf_left_box{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  font-size: 24rpx;
+  color: #BFBFBF;
+}
+.sf_left_box text:first-child{
+  font-size: 60rpx;
+}
+.sf_right{
+  
+  width: 200rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  color: #2878FF;
+}
+.sf_right_top{
+ 
+  
+}
+.sf_right_top text{
+  font-size: 60rpx;
+  position: relative;
+}
+.sf_right_top text:first-child{
+  font-size: 30rpx;
+  left: -20rpx;
+  top:-10rpx;
+}
+.sf_right_top text:last-child{
+  font-size: 30rpx;
+  left: 20rpx;
+  top:-5px;
+}
+.sf_right_bottom{
+  width: 100%;
+  text-align: center;
+  font-size: 24rpx;
+}
+.kt_bottom_bottom .sfOn{
+  color: #2878FF;
+}
+.wdOn{
+  color: #BFBFBF;
 }

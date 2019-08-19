@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/vue.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <title>评价</title>
+</head>
+<body>
+    <div id="vm">
+        <div class="img"><img style="width:90%;height:90%;" src="img/top.png" alt=""></div>
+        <div class="top">请对员工进行评价</div>
+        <div class="fuwu">服务态度：</div>
+        <div class="pinjia">
+            <span class="pinjia_span" @click="select1(i,fw)" v-for="(fw,i) in fuwu" :key="i" :class="active1==i?'gl':''">{{fw}}</span>
+        </div>
+        <div class="fuwu">技术：</div>
+        <div class="pinjia">
+            <span class="pinjia_span" @click="select2(index,fw)" v-for="(fw,index) in fuwu" :key="index" :class="active2==index?'gl':''">{{fw}}</span>
+        </div>
+    <div class="fuwu">建议：</div>
+    <textarea name="" id="" cols="25" rows="8" class="advice" v-model="remark"></textarea>
+    <div class="btn_top">
+        <button class="btn" @click="pinjia">提交评价</button>
+    </div>
+</body>
+<script>
+var vm=new Vue({
+    el:"#vm",
+    data(){
+        return{
+            active1:0,
+            active2:0,
+            // openid:"o3Whq1Mp-MDDwlJTbD_xEoVogHfg",
+            openid:"",
+            companyCode:"",
+            // companyCode:"m44gwOk2PSU4cMtqHiEw007",
+            fuwu:["优","良","一般"],
+            appid:"",
+            remark:"",
+            jiShu:"优",
+            userId:"",
+            fuWuTaiDu:"优",
+        }
+    },
+    methods:{
+        select1(i,fw){
+            this.active1=i;
+            this.fuWuTaiDu=fw;
+        },
+        select2(i,fw){
+            this.active2=i;
+            this.jiShu=fw;
+        },
+        pinjia(){
+            const that=this;
+            const fuWuTaiDu=that.fuWuTaiDu;
+            const jiShu=that.jiShu;
+            const remark=that.remark;
+            $.ajax({
+                type: "POST",
+                dataType: "jsonp",
+                jsonp:'callback',
+                url: "http://www.intereek.natapp1.cc/pangu/xcx.do",
+                data:{
+                    operationType:"queryLocal",
+                    queryType:"PingJiaUser",
+                    companyCode:that.companyCode,
+                    userId:that.userId,
+                    fuWuTaiDu,
+                    jiShu,
+                    remark
+                },
+                success: function(data){
+                    console.log(data)
+                    if(data.success){
+                        alert("感谢您的此次评价！")
+                    }
+                }
+            })
+        },
+        //获取openid
+      getOpenid(code){
+        const that=this;
+        $.ajax({
+            type: "POST",
+            dataType: "jsonp",
+            jsonp:'callback',
+            url: "http://www.intereek.com/pangu/pangu.do",
+            data:{
+                operationType:"getOpenid",
+                companyCode:that.companyCode,
+                code
+            },
+            success: function(data){
+            if(data.success){
+                that.openid=data.result;
+                that.setCookie('openid',data.result,365)
+            }
+            }
+        });
+    },
+    //获取地址参数
+    queryString(name){
+        let reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+         let r = window.location.search.substr(1).match(reg);
+          if(r!=null)return  unescape(r[2]); 		return null;
+        },
+      //缓存cookie
+      setCookie(key, value, iDay) {
+              var oDate = new Date();
+              oDate.setDate(oDate.getDate() + iDay);
+              document.cookie = key + '=' + value + ';expires=' + oDate;
+
+          },
+      getCookie(key) {
+          var cookieArr = document.cookie.split('; ');
+          for(var i = 0; i < cookieArr.length; i++) {
+              var arr = cookieArr[i].split('=');
+              if(arr[0] === key) {
+                  return arr[1];
+              }
+          }
+          return false;
+      },
+      removeCookie(key) {
+            this.setCookie(key, '', -1);//这里只需要把Cookie保质期退回一天便可以删除
+        },
+    },
+    created() {
+        const that=this;
+        that.companyCode=that.queryString("companyCode");
+        that.appid=that.queryString('appid');
+        that.userId=that.queryString('userId');
+        if(that.getCookie('openid') && that.getCookie('openid')!='undefined'){
+          // alert(that.getCookie('openid'))
+          that.openid=that.getCookie('openid');
+        }else {
+          const local = window.location.href;
+          const code = that.queryString('code')
+          // console.log("code"+code);
+          // 获取code
+          if(code == null || code === ""){
+              window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+that.appid+"&redirect_uri="+
+                  encodeURIComponent(local)+"&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect";
+              return;
+          }else{
+              that.getOpenid(code)
+          }
+      }
+    },
+})
+</script>
+</html>

@@ -3,7 +3,7 @@
     <view class="header-left" bindtap="toStatu2" data-name="2">
         <!-- <text class="icon-biaoge iconfont {{showIndex==2?'in':''}}"></text> -->
         <text class="iconfont icon-fangdajing"></text>
-        <input class="seek" data-name='roomName' placeholder='请输入房间号' bindinput='updateValue' value='{{roomName}}' placeholder-style="color:#FFF"></input>
+        <input class="seek" data-name='roomName' placeholder='请输入房间号' bindinput='sXuanUpdateValue' value='{{roomName}}' placeholder-style="color:#FFF"></input>
     </view>
     <view class="header-center" >
         <view class="header-btn" style="left:28rpx">
@@ -21,16 +21,16 @@
     </view>
 </view>
 <view class="kong"></view>
-<view class="content" wx-if="{{showIndex==0}}">
-    <view class="box" wx:for="{{roomData}}" wx:key="index" style="color:{{item.color}}">
+<view class="content" >
+    <view class="box" wx:for="{{xianShiList}}" wx:key="index" style="color:{{item.color}}" data-id="{{item.name}}" bindtap="toControl">
       <view class="box-top" style="background-color:{{item.color}}">
           <text class="icon-fangjian2 iconfont" style="font-size: 20rpx;" ></text>
-          <text>2</text>
+          <text>{{item.name}}</text>
       </view>
       <view class="box-content">
           <view class="back"></view>
           <view class="hang">
-              <view class="hang-ge" style="left:50rpx;" wx:if="{{item.techId!=''}}">
+              <view class="hang-ge" style="left:50rpx;">
                   <text style="font-size:33rpx">25°C</text>
                   <text style="font-size:14rpx">当前温度</text>
                   
@@ -50,8 +50,8 @@
     </view>
 </view>
 
-<view class="content" wx-if="{{showIndex==1}}">
-2
+<!-- <view class="content" wx-if="{{showIndex==1}}">
+2 -->
     <!-- <view class="box" wx:for="{{jSData}}" wx:key="index">
       <view class="box-top" style="background-color:{{item.color}}">
           <text class="icon-jishi iconfont" style="font-size: 20rpx;"></text>
@@ -84,7 +84,7 @@
           </view>
       </view>
     </view> -->
-    
-</view>
+<!--     
+</view> -->
 
 
